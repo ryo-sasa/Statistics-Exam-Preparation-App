@@ -200,7 +200,7 @@ export default function ChatPopup({ selectedLevel, visible }) {
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={(e) => {
+                  onKeyDown={(e) => {
                     if (e.key === 'Enter' && !isLoading) {
                       handleSendMessage();
                     }

@@ -1,8 +1,10 @@
+import { Sigma, Infinity } from 'lucide-react';
+
 export const topics1kyu = [
   {
     id: "measure_theory",
     name: "測度論的確率論",
-    icon: "∫",
+    icon: Sigma,
     sections: [
       {
         title: "σ-加法族と測度",
@@ -21,7 +23,7 @@ export const topics1kyu = [
   {
     id: "asymptotic",
     name: "漸近理論",
-    icon: "∞",
+    icon: Infinity,
     sections: [
       {
         title: "大数の法則（weak/strong）",

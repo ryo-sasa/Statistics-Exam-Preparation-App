@@ -4,7 +4,7 @@
 export const questions2kyu = [
   {
     id: 1,
-    topic: "descriptive_stats",
+    topic: "descriptive",
     type: "choice",
     question: "n個のデータ x₁, x₂, ..., xₙ の不偏分散の計算式として正しいものはどれか？",
     options: [
@@ -46,7 +46,7 @@ export const questions2kyu = [
   },
   {
     id: 4,
-    topic: "distributions",
+    topic: "distribution",
     type: "choice",
     question: "確率変数Xが標準正規分布N(0,1)に従うとき、P(X ≤ 1.96) はおおよそいくつか？",
     options: [
@@ -60,7 +60,7 @@ export const questions2kyu = [
   },
   {
     id: 5,
-    topic: "correlation",
+    topic: "regression",
     type: "choice",
     question: "重回帰モデルにおけるR²（決定係数）の意味として正しいものはどれか？",
     options: [
@@ -88,7 +88,7 @@ export const questions2kyu = [
   },
   {
     id: 7,
-    topic: "descriptive_stats",
+    topic: "descriptive",
     type: "choice",
     question: "変動係数（Coefficient of Variation, CV）の定義として正しいものはどれか？",
     options: [
@@ -139,7 +139,7 @@ export const questions2kyu = [
   },
   {
     id: 11,
-    topic: "distributions",
+    topic: "distribution",
     type: "choice",
     question: "正規分布N(μ, σ²)に従う確率変数Xについて、P(μ - σ ≤ X ≤ μ + σ) はおおよそいくつか？",
     options: [
@@ -153,7 +153,7 @@ export const questions2kyu = [
   },
   {
     id: 12,
-    topic: "correlation",
+    topic: "regression",
     type: "choice",
     question: "ピアソンの相関係数 r について正しい説明はどれか？",
     options: [
@@ -195,7 +195,7 @@ export const questions2kyu = [
   },
   {
     id: 15,
-    topic: "descriptive_stats",
+    topic: "descriptive",
     type: "written",
     question: "中央値（メディアン）と平均値の違いを説明し、どのような場合に中央値が適切か述べよ。",
     sampleAnswer: "中央値は順序統計量の中央の値であり、平均値はすべての値の算術平均である。外れ値の影響を受けやすい平均値に対し、中央値はロバストで外れ値の影響が少ないため、外れ値を含むデータセットでは中央値が適切である。",
@@ -218,7 +218,7 @@ export const questions2kyu = [
   },
   {
     id: 17,
-    topic: "distributions",
+    topic: "distribution",
     type: "choice",
     question: "ポアソン分布Poi(λ)の期待値と分散はいくつか？",
     options: [

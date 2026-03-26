@@ -1,8 +1,10 @@
+import { BarChart3, Dice1, TrendingUp, Search, LineChart } from 'lucide-react';
+
 export const topics2kyu = [
   {
     id: "descriptive",
     name: "記述統計",
-    icon: "📊",
+    icon: BarChart3,
     sections: [
       {
         title: "データの種類と尺度",
@@ -21,7 +23,7 @@ export const topics2kyu = [
   {
     id: "probability",
     name: "確率",
-    icon: "🎲",
+    icon: Dice1,
     sections: [
       {
         title: "確率の基本（axioms/addition/conditional/Bayes）",
@@ -36,7 +38,7 @@ export const topics2kyu = [
   {
     id: "distribution",
     name: "確率分布",
-    icon: "📈",
+    icon: TrendingUp,
     sections: [
       {
         title: "離散型分布（binomial/Poisson/geometric）",
@@ -51,7 +53,7 @@ export const topics2kyu = [
   {
     id: "inference",
     name: "推測統計",
-    icon: "🔍",
+    icon: Search,
     sections: [
       {
         title: "点推定と区間推定（unbiasedness/consistency/efficiency, CI formulas）",
@@ -66,7 +68,7 @@ export const topics2kyu = [
   {
     id: "regression",
     name: "回帰分析",
-    icon: "📉",
+    icon: LineChart,
     sections: [
       {
         title: "単回帰分析（OLS, R², t-test for coefficient）",

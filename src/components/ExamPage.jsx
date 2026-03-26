@@ -62,8 +62,8 @@ export default function ExamPage({ selectedLevel, questions, addResult, LEVELS }
       addResult({
         questionId: q.id,
         topicId: q.topic,
+        level: selectedLevel,
         isCorrect,
-        answered: new Date(),
       });
     });
 

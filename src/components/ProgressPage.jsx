@@ -172,7 +172,7 @@ export default function ProgressPage({ selectedLevel, results, topics }) {
                           </div>
                         </div>
                         <p className="text-sm text-slate-600">
-                          {formatDate(result.answered)}
+                          {formatDate(result.timestamp || result.answered)}
                         </p>
                       </div>
                     );

@@ -200,7 +200,7 @@ export const questionsJun1kyu = [
   // Clustering - 3問
   {
     id: 116,
-    topic: "clustering",
+    topic: "cluster",
     type: "choice",
     question: "クラスタリングにおいてWard法とシングルリンケージ法の主な違いはどれか？",
     options: [
@@ -214,7 +214,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 117,
-    topic: "clustering",
+    topic: "cluster",
     type: "choice",
     question: "k-meansアルゴリズムの収束性について正しいものはどれか？",
     options: [
@@ -228,7 +228,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 118,
-    topic: "clustering",
+    topic: "cluster",
     type: "written",
     question: "クラスタ数の決定方法を2つ以上挙げ、それぞれの特徴を説明せよ。",
     sampleAnswer: "エルボー法は群内平方和の減少率の変化点を調べる。シルエット分析はクラスタ内の凝縮度とクラスタ間分離度を評価する。X平均法やベイズ情報量基準（BIC）も用いられる。",
@@ -523,7 +523,7 @@ export const questionsJun1kyu = [
   // Poisson Process - 2問
   {
     id: 141,
-    topic: "poisson_process",
+    topic: "poisson-process",
     type: "choice",
     question: "強度λのポアソン過程において、到着間隔時間の分布はどれか？",
     options: [
@@ -537,7 +537,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 142,
-    topic: "poisson_process",
+    topic: "poisson-process",
     type: "written",
     question: "ポアソン過程の重ね合わせ性質と分岐性質を説明せよ。",
     sampleAnswer: "重ね合わせ：独立したポアソン過程の和もポアソン過程である。分岐：ポアソン過程の各イベントを確率pで2つのグループに分ける場合、各グループもポアソン過程になる。",
@@ -849,7 +849,7 @@ export const questionsJun1kyu = [
   // Clustering - 追加2問 (計5問)
   {
     id: 211,
-    topic: "clustering",
+    topic: "cluster",
     type: "choice",
     question: "DBSCAN（密度ベースクラスタリング）の特徴として正しいものはどれか？",
     options: [
@@ -863,7 +863,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 212,
-    topic: "clustering",
+    topic: "cluster",
     type: "written",
     question: "混合ガウスモデル（GMM）によるクラスタリングとk-meansの関係について説明せよ。",
     sampleAnswer: "GMMは各クラスタをガウス分布で表現し、各データ点の各クラスタへの所属確率（事後確率）を計算するソフトクラスタリングである。k-meansはGMMの特殊な場合（すべてのクラスタの共分散が等方的で等しい場合）と見なせる。",
@@ -1102,7 +1102,7 @@ export const questionsJun1kyu = [
   // Poisson Process - 追加3問 (計5問)
   {
     id: 231,
-    topic: "poisson_process",
+    topic: "poisson-process",
     type: "choice",
     question: "非斉次ポアソン過程（非定常ポアソン過程）について正しいものはどれか？",
     options: [
@@ -1116,7 +1116,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 232,
-    topic: "poisson_process",
+    topic: "poisson-process",
     type: "choice",
     question: "強度λのポアソン過程において、n番目のイベントが起きる時刻Tₙの分布はどれか？",
     options: [
@@ -1130,7 +1130,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 233,
-    topic: "poisson_process",
+    topic: "poisson-process",
     type: "written",
     question: "ポアソン過程の条件付き性質として、[0,T]でN(T)=n個のイベントが発生した場合の各イベント発生時刻の条件付き分布を述べよ。",
     sampleAnswer: "[0,T]でn個のイベントが発生したとき、n個のイベント時刻は[0,T]上の一様分布からのn個の順序統計量と同じ分布を持つ。すなわち、条件付きで各イベントは独立に一様分布U(0,T)に従い、それを順序付けたものである。",
@@ -1679,7 +1679,7 @@ export const questionsJun1kyu = [
   // Clustering - 追加3問 (計8問)
   {
     id: 316,
-    topic: "clustering",
+    topic: "cluster",
     type: "choice",
     question: "階層的クラスタリングの結果を表すデンドログラム（樹形図）について正しいものはどれか？",
     options: [
@@ -1693,7 +1693,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 317,
-    topic: "clustering",
+    topic: "cluster",
     type: "choice",
     question: "スペクトラルクラスタリングの基本的なアプローチとして正しいものはどれか？",
     options: [
@@ -1707,7 +1707,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 318,
-    topic: "clustering",
+    topic: "cluster",
     type: "written",
     question: "クラスタリングの外的評価指標（ランド指数、調整ランド指数）と内的評価指標（シルエット係数）の違いを説明せよ。",
     sampleAnswer: "外的評価指標は真のクラスタラベルとの一致度を測る。ランド指数RI = (a+d)/C(n,2)（a:同クラスタ一致ペア数、d:異クラスタ一致ペア数）。調整ランド指数ARIはランダムなクラスタリングでの期待値を補正する。内的評価指標はラベルなしでクラスタの質を測り、シルエット係数s(i) = (b(i)-a(i))/max(a(i),b(i))で凝集度と分離度を評価する。",
@@ -2030,7 +2030,7 @@ export const questionsJun1kyu = [
   // Poisson Process - 追加3問 (計8問)
   {
     id: 343,
-    topic: "poisson_process",
+    topic: "poisson-process",
     type: "choice",
     question: "複合ポアソン過程（compound Poisson process）S(t) = Σᵢ₌₁^{N(t)} Yᵢの性質として正しいものはどれか？",
     options: [
@@ -2044,7 +2044,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 344,
-    topic: "poisson_process",
+    topic: "poisson-process",
     type: "choice",
     question: "ポアソン過程の薄化（thinning）について正しいものはどれか？",
     options: [
@@ -2058,7 +2058,7 @@ export const questionsJun1kyu = [
   },
   {
     id: 345,
-    topic: "poisson_process",
+    topic: "poisson-process",
     type: "written",
     question: "ポアソン過程の最尤推定について、[0,T]の観測区間でN(T)=n個のイベントが観測された場合のλの最尤推定量を導出し、その統計的性質を述べよ。",
     sampleAnswer: "尤度関数はL(λ) = λⁿe^{-λT}/n!（ポアソン分布の確率関数）。対数尤度ℓ(λ) = n log λ - λT + const。∂ℓ/∂λ = n/λ - T = 0より、λ̂ = n/T = N(T)/T。E[λ̂] = λ（不偏）、V[λ̂] = λ/T。nが大きいとき、λ̂は漸近正規分布N(λ, λ/T)に従う。",

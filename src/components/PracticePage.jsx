@@ -39,8 +39,8 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
       addResult({
         questionId: currentQuestion.id,
         topicId: currentQuestion.topic,
+        level: selectedLevel,
         isCorrect,
-        answered: new Date(),
       });
     } else {
       if (!writtenAnswer.trim()) return;
@@ -48,8 +48,8 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
       addResult({
         questionId: currentQuestion.id,
         topicId: currentQuestion.topic,
+        level: selectedLevel,
         isCorrect: true,
-        answered: new Date(),
       });
     }
   };
