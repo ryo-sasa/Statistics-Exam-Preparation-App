@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Home, BookOpen, PenTool, FileText, BarChart3, Menu, X } from 'lucide-react';
+import { GraduationCap, Home, BookOpen, PenTool, FileText, BarChart3, User, Menu, X } from 'lucide-react';
 
 export default function Sidebar({ currentPage, setCurrentPage, isOpen, setIsOpen, selectedLevel, setSelectedLevel, LEVELS }) {
   const navItems = [
@@ -8,6 +8,7 @@ export default function Sidebar({ currentPage, setCurrentPage, isOpen, setIsOpen
     { id: 'practice', label: '問題演習', icon: PenTool },
     { id: 'exam', label: '模擬試験', icon: FileText },
     { id: 'progress', label: '学習進捗', icon: BarChart3 },
+    { id: 'profile', label: 'プロフィール', icon: User },
   ];
 
   const handleNavClick = (pageId) => {

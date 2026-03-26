@@ -1,38 +1,139 @@
-import { useState, useCallback } from "react";
-import { Menu, Flame } from "lucide-react";
+import { useState, useCallback, useEffect } from "react";
+import { Menu, Flame, User } from "lucide-react";
 
 // Data imports
 import { LEVELS, TOPICS, QUESTIONS } from "./data/index.js";
 
+// User management
+import {
+  signUp, login, logout, getCurrentUser,
+  saveResult, getResults, getStats, getStreak,
+  saveSelectedLevel, getSelectedLevel,
+  updateProfile, resetProgress,
+} from "./lib/userStore.js";
+
 // Component imports
+import AuthPage from "./components/AuthPage.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import HomePage from "./components/HomePage.jsx";
 import TextbookPage from "./components/TextbookPage.jsx";
 import PracticePage from "./components/PracticePage.jsx";
 import ExamPage from "./components/ExamPage.jsx";
 import ProgressPage from "./components/ProgressPage.jsx";
+import ProfilePage from "./components/ProfilePage.jsx";
 import ChatPopup from "./components/ChatPopup.jsx";
 
 export default function App() {
+  const [user, setUser] = useState(null);
+  const [isGuest, setIsGuest] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
+
   const [currentPage, setCurrentPage] = useState("home");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("jun1kyu");
   const [results, setResults] = useState([]);
+  const [stats, setStats] = useState({
+    totalAnswered: 0,
+    totalCorrect: 0,
+    studyDays: 0,
+    streak: 0,
+  });
 
-  const addResult = useCallback((result) => {
-    setResults((prev) => [...prev, { ...result, timestamp: Date.now() }]);
+  // Check for existing session on mount
+  useEffect(() => {
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      setUser(currentUser);
+      setSelectedLevel(getSelectedLevel());
+      setResults(getResults());
+      setStats(getStats());
+    }
+    setAuthChecked(true);
   }, []);
+
+  // Handle auth
+  const handleAuth = useCallback((mode, credentials) => {
+    if (mode === 'guest') {
+      setIsGuest(true);
+      setUser({ name: 'ゲスト', email: null });
+      return;
+    }
+
+    let result;
+    if (mode === 'signup') {
+      result = signUp(credentials.name, credentials.email, credentials.password);
+    } else {
+      result = login(credentials.email, credentials.password);
+    }
+
+    if (result.success) {
+      setUser(result.user);
+      setIsGuest(false);
+      setSelectedLevel(getSelectedLevel());
+      setResults(getResults());
+      setStats(getStats());
+    }
+    return result;
+  }, []);
+
+  // Handle logout
+  const handleLogout = useCallback(() => {
+    logout();
+    setUser(null);
+    setIsGuest(false);
+    setCurrentPage("home");
+    setResults([]);
+    setStats({ totalAnswered: 0, totalCorrect: 0, studyDays: 0, streak: 0 });
+  }, []);
+
+  // Handle level change
+  const handleSetSelectedLevel = useCallback((level) => {
+    setSelectedLevel(level);
+    if (!isGuest) saveSelectedLevel(level);
+  }, [isGuest]);
+
+  // Handle result
+  const addResult = useCallback((result) => {
+    const resultWithTime = { ...result, timestamp: Date.now() };
+    setResults((prev) => [...prev, resultWithTime]);
+
+    if (!isGuest) {
+      saveResult(resultWithTime);
+      setStats(getStats());
+    } else {
+      setStats((prev) => ({
+        ...prev,
+        totalAnswered: prev.totalAnswered + 1,
+        totalCorrect: prev.totalCorrect + (result.isCorrect ? 1 : 0),
+      }));
+    }
+  }, [isGuest]);
+
+  // Handle profile update
+  const handleUpdateProfile = useCallback((updates) => {
+    const result = updateProfile(updates);
+    if (result.success) {
+      setUser(result.user);
+    }
+  }, []);
+
+  // Handle reset
+  const handleResetProgress = useCallback(() => {
+    resetProgress();
+    setResults([]);
+    setStats(getStats());
+  }, []);
+
+  // Show loading while checking auth
+  if (!authChecked) return null;
+
+  // Show auth page if not logged in
+  if (!user) {
+    return <AuthPage onLogin={handleAuth} />;
+  }
 
   const topics = TOPICS[selectedLevel] || [];
   const questions = QUESTIONS[selectedLevel] || [];
-
-  const stats = {
-    totalAnswered: results.length,
-    totalCorrect: results.filter((r) => r.correct).length,
-    studyDays: 1,
-    streak: 1,
-  };
-
   const showChat = currentPage !== "exam";
   const currentLevel = LEVELS.find((l) => l.id === selectedLevel);
 
@@ -83,6 +184,15 @@ export default function App() {
             topics={topics}
           />
         );
+      case "profile":
+        return (
+          <ProfilePage
+            user={user}
+            onUpdateProfile={handleUpdateProfile}
+            onResetProgress={handleResetProgress}
+            onLogout={handleLogout}
+          />
+        );
       default:
         return (
           <HomePage
@@ -105,7 +215,7 @@ export default function App() {
         isOpen={sidebarOpen}
         setIsOpen={setSidebarOpen}
         selectedLevel={selectedLevel}
-        setSelectedLevel={setSelectedLevel}
+        setSelectedLevel={handleSetSelectedLevel}
         LEVELS={LEVELS}
       />
 
@@ -120,11 +230,22 @@ export default function App() {
           <div className="text-sm text-gray-500">
             統計検定{currentLevel?.name} — {currentLevel?.description}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <div className="flex items-center gap-1 text-sm">
               <Flame size={16} className="text-orange-500" />
               <span className="font-medium text-gray-700">{stats.streak}</span>
             </div>
+            <button
+              onClick={() => setCurrentPage("profile")}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+            >
+              <div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                {user?.name?.[0] || 'U'}
+              </div>
+              <span className="text-sm font-medium text-slate-700 hidden sm:inline">
+                {user?.name || 'ユーザー'}
+              </span>
+            </button>
           </div>
         </header>
 
