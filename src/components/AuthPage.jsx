@@ -1,32 +1,63 @@
 import React, { useState } from 'react';
-import { GraduationCap, LogIn, UserPlus, Eye, EyeOff } from 'lucide-react';
+import { GraduationCap, LogIn, UserPlus, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { validateEmail, validatePassword, validateName } from '../lib/userStore.js';
 
 export default function AuthPage({ onLogin }) {
-  const [mode, setMode] = useState('login'); // 'login' | 'signup'
+  const [mode, setMode] = useState('login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    if (mode === 'signup' && !name.trim()) {
-      setError('名前を入力してください');
-      return;
+    // バリデーション
+    if (mode === 'signup') {
+      const nameCheck = validateName(name);
+      if (!nameCheck.isValid) {
+        setError(nameCheck.error);
+        return;
+      }
     }
+
     if (!email.trim()) {
       setError('メールアドレスを入力してください');
       return;
     }
-    if (!password || password.length < 4) {
-      setError('パスワードは4文字以上で入力してください');
+
+    if (!validateEmail(email.trim())) {
+      setError('有効なメールアドレスを入力してください');
       return;
     }
 
-    onLogin(mode, { name: name.trim(), email: email.trim(), password });
+    if (mode === 'signup') {
+      const pwCheck = validatePassword(password);
+      if (!pwCheck.isValid) {
+        setError(pwCheck.errors[0]);
+        return;
+      }
+    } else {
+      if (!password || password.length < 1) {
+        setError('パスワードを入力してください');
+        return;
+      }
+    }
+
+    setLoading(true);
+    try {
+      const result = await onLogin(mode, { name: name.trim(), email: email.trim(), password });
+      if (result && !result.success) {
+        setError(result.error || 'エラーが発生しました');
+      }
+    } catch (err) {
+      setError('接続エラーが発生しました。もう一度お試しください。');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -76,6 +107,7 @@ export default function AuthPage({ onLogin }) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="山田太郎"
+                  maxLength={50}
                   className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900"
                 />
               </div>
@@ -93,13 +125,20 @@ export default function AuthPage({ onLogin }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">パスワード</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1">
+                パスワード
+                {mode === 'signup' && (
+                  <span className="text-xs text-slate-400 ml-2">
+                    8文字以上（大文字・小文字・数字を含む）
+                  </span>
+                )}
+              </label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="4文字以上"
+                  placeholder={mode === 'signup' ? '8文字以上' : 'パスワード'}
                   className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 pr-12"
                 />
                 <button
@@ -120,9 +159,12 @@ export default function AuthPage({ onLogin }) {
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-bold text-lg hover:from-blue-600 hover:to-blue-700 transition-all flex items-center justify-center gap-2"
+              disabled={loading}
+              className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-bold text-lg hover:from-blue-600 hover:to-blue-700 transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {mode === 'login' ? (
+              {loading ? (
+                <Loader2 size={20} className="animate-spin" />
+              ) : mode === 'login' ? (
                 <>
                   <LogIn size={20} />
                   ログイン
@@ -140,7 +182,8 @@ export default function AuthPage({ onLogin }) {
           <div className="mt-4 text-center">
             <button
               onClick={() => onLogin('guest')}
-              className="text-sm text-slate-500 hover:text-blue-600 underline"
+              disabled={loading}
+              className="text-sm text-slate-500 hover:text-blue-600 underline disabled:opacity-50"
             >
               ゲストとして利用する
             </button>

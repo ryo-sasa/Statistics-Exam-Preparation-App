@@ -6,17 +6,17 @@ export default function ProfilePage({ user, onUpdateProfile, onResetProgress, on
   const [saved, setSaved] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (editName.trim()) {
-      onUpdateProfile({ name: editName.trim() });
+      await onUpdateProfile({ name: editName.trim() });
       setSaved(true);
       setTimeout(() => setSaved(false), 2000);
     }
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     if (confirmReset) {
-      onResetProgress();
+      await onResetProgress();
       setConfirmReset(false);
     } else {
       setConfirmReset(true);

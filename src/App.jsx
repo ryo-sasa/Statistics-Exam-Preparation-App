@@ -41,44 +41,57 @@ export default function App() {
 
   // Check for existing session on mount
   useEffect(() => {
-    const currentUser = getCurrentUser();
-    if (currentUser) {
-      setUser(currentUser);
-      setSelectedLevel(getSelectedLevel());
-      setResults(getResults());
-      setStats(getStats());
-    }
-    setAuthChecked(true);
+    const init = async () => {
+      try {
+        const currentUser = await getCurrentUser();
+        if (currentUser) {
+          setUser(currentUser);
+          const level = await getSelectedLevel();
+          setSelectedLevel(level);
+          const r = await getResults();
+          setResults(r);
+          const s = await getStats();
+          setStats(s);
+        }
+      } catch (err) {
+        console.error('Failed to initialize:', err);
+      }
+      setAuthChecked(true);
+    };
+    init();
   }, []);
 
   // Handle auth
-  const handleAuth = useCallback((mode, credentials) => {
+  const handleAuth = useCallback(async (mode, credentials) => {
     if (mode === 'guest') {
       setIsGuest(true);
       setUser({ name: 'ゲスト', email: null });
-      return;
+      return { success: true };
     }
 
     let result;
     if (mode === 'signup') {
-      result = signUp(credentials.name, credentials.email, credentials.password);
+      result = await signUp(credentials.name, credentials.email, credentials.password);
     } else {
-      result = login(credentials.email, credentials.password);
+      result = await login(credentials.email, credentials.password);
     }
 
     if (result.success) {
       setUser(result.user);
       setIsGuest(false);
-      setSelectedLevel(getSelectedLevel());
-      setResults(getResults());
-      setStats(getStats());
+      const level = await getSelectedLevel();
+      setSelectedLevel(level);
+      const r = await getResults();
+      setResults(r);
+      const s = await getStats();
+      setStats(s);
     }
     return result;
   }, []);
 
   // Handle logout
-  const handleLogout = useCallback(() => {
-    logout();
+  const handleLogout = useCallback(async () => {
+    await logout();
     setUser(null);
     setIsGuest(false);
     setCurrentPage("home");
@@ -87,19 +100,20 @@ export default function App() {
   }, []);
 
   // Handle level change
-  const handleSetSelectedLevel = useCallback((level) => {
+  const handleSetSelectedLevel = useCallback(async (level) => {
     setSelectedLevel(level);
-    if (!isGuest) saveSelectedLevel(level);
+    if (!isGuest) await saveSelectedLevel(level);
   }, [isGuest]);
 
   // Handle result
-  const addResult = useCallback((result) => {
+  const addResult = useCallback(async (result) => {
     const resultWithTime = { ...result, timestamp: Date.now() };
     setResults((prev) => [...prev, resultWithTime]);
 
     if (!isGuest) {
-      saveResult(resultWithTime);
-      setStats(getStats());
+      await saveResult(resultWithTime);
+      const s = await getStats();
+      setStats(s);
     } else {
       setStats((prev) => ({
         ...prev,
@@ -110,18 +124,20 @@ export default function App() {
   }, [isGuest]);
 
   // Handle profile update
-  const handleUpdateProfile = useCallback((updates) => {
-    const result = updateProfile(updates);
+  const handleUpdateProfile = useCallback(async (updates) => {
+    const result = await updateProfile(updates);
     if (result.success) {
       setUser(result.user);
     }
+    return result;
   }, []);
 
   // Handle reset
-  const handleResetProgress = useCallback(() => {
-    resetProgress();
+  const handleResetProgress = useCallback(async () => {
+    await resetProgress();
     setResults([]);
-    setStats(getStats());
+    const s = await getStats();
+    setStats(s);
   }, []);
 
   // Show loading while checking auth
