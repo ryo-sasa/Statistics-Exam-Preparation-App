@@ -10,6 +10,8 @@ export default function AuthPage({ onLogin }) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showAdminPrompt, setShowAdminPrompt] = useState(false);
+  const [adminPassword, setAdminPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -178,15 +180,58 @@ export default function AuthPage({ onLogin }) {
             </button>
           </form>
 
-          {/* Guest mode */}
+          {/* Admin mode */}
           <div className="mt-4 text-center">
-            <button
-              onClick={() => onLogin('guest')}
-              disabled={loading}
-              className="text-sm text-slate-500 hover:text-blue-600 underline disabled:opacity-50"
-            >
-              ゲストとして利用する
-            </button>
+            {!showAdminPrompt ? (
+              <button
+                onClick={() => setShowAdminPrompt(true)}
+                disabled={loading}
+                className="text-sm text-slate-500 hover:text-blue-600 underline disabled:opacity-50"
+              >
+                管理者モード
+              </button>
+            ) : (
+              <div className="mt-2 space-y-2">
+                <input
+                  type="password"
+                  value={adminPassword}
+                  onChange={(e) => setAdminPassword(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      if (adminPassword === (import.meta.env.VITE_ADMIN_PASSWORD || '')) {
+                        onLogin('guest');
+                      } else {
+                        setError('管理者パスワードが正しくありません');
+                        setAdminPassword('');
+                      }
+                    }
+                  }}
+                  placeholder="管理者パスワード"
+                  className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 text-sm"
+                />
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => {
+                      if (adminPassword === (import.meta.env.VITE_ADMIN_PASSWORD || '')) {
+                        onLogin('guest');
+                      } else {
+                        setError('管理者パスワードが正しくありません');
+                        setAdminPassword('');
+                      }
+                    }}
+                    className="flex-1 py-2 bg-slate-700 text-white rounded-lg text-sm font-medium hover:bg-slate-800"
+                  >
+                    ログイン
+                  </button>
+                  <button
+                    onClick={() => { setShowAdminPrompt(false); setAdminPassword(''); setError(''); }}
+                    className="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-300"
+                  >
+                    戻る
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
