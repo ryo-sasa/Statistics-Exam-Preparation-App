@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { CheckCircle, AlertCircle, TrendingUp, Calendar, Target, ChevronDown, ChevronUp } from 'lucide-react';
+import { CheckCircle, AlertCircle, TrendingUp, Calendar, Target, ChevronDown, ChevronUp, AlertTriangle, PenTool } from 'lucide-react';
 
-export default function ProgressPage({ selectedLevel, results, topics, questions }) {
+export default function ProgressPage({ selectedLevel, results, topics, questions, setCurrentPage }) {
   // Calculate summary statistics
   const totalAnswers = results.length;
   const totalCorrect = results.filter(r => r.isCorrect).length;
@@ -112,6 +112,82 @@ export default function ProgressPage({ selectedLevel, results, topics, questions
             </p>
           </div>
         </div>
+
+        {/* Weakness Analysis */}
+        {(() => {
+          const weakTopics = topicProgress
+            .filter(t => t.answered >= 3 && Number(t.accuracy) < 60)
+            .sort((a, b) => Number(a.accuracy) - Number(b.accuracy));
+          const untouchedTopics = topicProgress.filter(t => t.totalQuestions > 0 && t.answered === 0);
+
+          if (weakTopics.length > 0 || untouchedTopics.length > 0) {
+            return (
+              <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="bg-amber-100 p-2 rounded-lg">
+                    <AlertTriangle size={24} className="text-amber-600" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-slate-900">弱点分析</h2>
+                    <p className="text-sm text-slate-500">正答率60%未満のカテゴリ（3問以上回答済み）</p>
+                  </div>
+                </div>
+
+                {weakTopics.length > 0 ? (
+                  <div className="space-y-3 mb-6">
+                    {weakTopics.map(topic => (
+                      <div key={topic.id} className="flex items-center gap-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="font-semibold text-slate-900">{topic.name}</h3>
+                            <span className="text-xs px-2 py-0.5 bg-red-100 text-red-700 rounded-full font-medium">
+                              正答率 {topic.accuracy}%
+                            </span>
+                          </div>
+                          <p className="text-sm text-slate-600">
+                            {topic.answered}問回答 / {topic.correct}問正解
+                          </p>
+                        </div>
+                        <div className="w-24 bg-red-200 rounded-full h-2">
+                          <div
+                            className="bg-red-500 h-2 rounded-full"
+                            style={{ width: `${topic.accuracy}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-slate-600 mb-6">正答率60%未満のカテゴリはありません。</p>
+                )}
+
+                {untouchedTopics.length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="text-sm font-semibold text-slate-500 uppercase mb-3">未着手のカテゴリ</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {untouchedTopics.map(topic => (
+                        <span key={topic.id} className="px-3 py-1.5 bg-slate-100 text-slate-600 rounded-full text-sm">
+                          {topic.name} ({topic.totalQuestions}問)
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {setCurrentPage && (
+                  <button
+                    onClick={() => setCurrentPage('practice')}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                  >
+                    <PenTool size={16} />
+                    問題演習で復習する
+                  </button>
+                )}
+              </div>
+            );
+          }
+          return null;
+        })()}
 
         {/* Empty State */}
         {totalAnswers === 0 ? (

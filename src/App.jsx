@@ -10,6 +10,7 @@ import {
   saveResult, getResults, getStats, getStreak,
   saveSelectedLevel, getSelectedLevel,
   updateProfile, resetProgress,
+  toggleBookmark, getBookmarks,
 } from "./lib/userStore.js";
 
 // Component imports
@@ -31,6 +32,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("jun1kyu");
+  const [bookmarks, setBookmarks] = useState([]);
   const [results, setResults] = useState([]);
   const [stats, setStats] = useState({
     totalAnswered: 0,
@@ -52,6 +54,8 @@ export default function App() {
           setResults(r);
           const s = await getStats();
           setStats(s);
+          const b = await getBookmarks();
+          setBookmarks(b);
         }
       } catch (err) {
         console.error('Failed to initialize:', err);
@@ -85,6 +89,8 @@ export default function App() {
       setResults(r);
       const s = await getStats();
       setStats(s);
+      const b = await getBookmarks();
+      setBookmarks(b);
     }
     return result;
   }, []);
@@ -96,6 +102,7 @@ export default function App() {
     setIsGuest(false);
     setCurrentPage("home");
     setResults([]);
+    setBookmarks([]);
     setStats({ totalAnswered: 0, totalCorrect: 0, studyDays: 0, streak: 0 });
   }, []);
 
@@ -123,6 +130,16 @@ export default function App() {
     }
   }, [isGuest]);
 
+  // Handle bookmark toggle
+  const handleToggleBookmark = useCallback(async (questionId) => {
+    setBookmarks(prev =>
+      prev.includes(questionId) ? prev.filter(id => id !== questionId) : [...prev, questionId]
+    );
+    if (!isGuest) {
+      await toggleBookmark(questionId);
+    }
+  }, [isGuest]);
+
   // Handle profile update
   const handleUpdateProfile = useCallback(async (updates) => {
     const result = await updateProfile(updates);
@@ -136,6 +153,7 @@ export default function App() {
   const handleResetProgress = useCallback(async () => {
     await resetProgress();
     setResults([]);
+    setBookmarks([]);
     const s = await getStats();
     setStats(s);
   }, []);
@@ -183,6 +201,8 @@ export default function App() {
             questions={questions}
             topics={topics}
             addResult={addResult}
+            bookmarks={bookmarks}
+            onToggleBookmark={handleToggleBookmark}
           />
         );
       case "exam":
@@ -201,6 +221,7 @@ export default function App() {
             results={results}
             topics={topics}
             questions={allQuestions}
+            setCurrentPage={setCurrentPage}
           />
         );
       case "profile":

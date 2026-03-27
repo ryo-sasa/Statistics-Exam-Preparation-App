@@ -7,6 +7,7 @@ export const questionsJun1kyuExam = [
     id: 1001,
     topic: "mle",
     type: "choice",
+    difficulty: "basic",
     question: "指数分布$\\text{Exp}(\\lambda)$からの無作為標本$x_1, x_2, \\ldots, x_n$に基づく、$\\lambda$の最尤推定量はどれか？",
     options: [
       "$\\hat{\\lambda} = 1/\\bar{x}$",
@@ -27,6 +28,7 @@ export const questionsJun1kyuExam = [
     id: 1002,
     topic: "mle",
     type: "choice",
+    difficulty: "basic",
     question: "最尤推定量の漸近的性質として正しくないものはどれか？",
     options: [
       "一致性を持つ",
@@ -47,6 +49,7 @@ export const questionsJun1kyuExam = [
     id: 1003,
     topic: "mle",
     type: "choice",
+    difficulty: "standard",
     question: "ベルヌーイ分布$B(1, p)$から$n$個の独立な観測値を得た。成功回数が$k$のとき、$p$の最尤推定量のフィッシャー情報量$I(p)$はどれか？",
     options: [
       "$I(p) = n/(p(1-p))$",
@@ -67,6 +70,7 @@ export const questionsJun1kyuExam = [
     id: 1004,
     topic: "mle",
     type: "choice",
+    difficulty: "standard",
     question: "EMアルゴリズムにおけるE-stepで行う操作として正しいものはどれか？",
     options: [
       "現在のパラメータ推定値のもとで、完全データの対数尤度の条件付き期待値を計算する",
@@ -87,6 +91,7 @@ export const questionsJun1kyuExam = [
     id: 1005,
     topic: "mle",
     type: "choice",
+    difficulty: "advanced",
     question: "一様分布$U(0, \\theta)$から$n$個の標本$x_1, \\ldots, x_n$を得たとき、$\\theta$の最尤推定量はどれか？",
     options: [
       "$\\hat{\\theta} = \\bar{x}$",
@@ -109,6 +114,7 @@ export const questionsJun1kyuExam = [
     id: 1006,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "basic",
     question: "ウィルコクソンの順位和検定において、2群の標本サイズがそれぞれ$n_1=8, n_2=10$のとき、順位和統計量$W$の期待値$E(W)$はいくらか？（$n_1$群の順位和を用いる）",
     options: [
       "$E(W) = 76$",
@@ -129,6 +135,7 @@ export const questionsJun1kyuExam = [
     id: 1007,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "basic",
     question: "コルモゴロフ・スミルノフ検定の検定統計量として正しいものはどれか？",
     options: [
       "経験分布関数と理論分布関数の差の二乗和",
@@ -149,6 +156,7 @@ export const questionsJun1kyuExam = [
     id: 1008,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "standard",
     question: "スピアマンの順位相関係数$r_s$について正しくないものはどれか？",
     options: [
       "値域は-1から1である",
@@ -169,6 +177,7 @@ export const questionsJun1kyuExam = [
     id: 1009,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "standard",
     question: "フリードマン検定について正しい記述はどれか？",
     options: [
       "独立な多群の比較に用いる",
@@ -189,6 +198,7 @@ export const questionsJun1kyuExam = [
     id: 1010,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "advanced",
     question: "ブートストラップ法による95%信頼区間の構成法のうち、パーセンタイル法で正しいものはどれか？（$B$回のブートストラップ反復で得られた統計量を$\\hat{\\theta}^*_1, \\ldots, \\hat{\\theta}^*_B$とする）",
     options: [
       "$\\hat{\\theta}^*$の2.5パーセンタイルと97.5パーセンタイルを端点とする",
@@ -211,6 +221,7 @@ export const questionsJun1kyuExam = [
     id: 1011,
     topic: "markov",
     type: "choice",
+    difficulty: "basic",
     question: "2状態マルコフ連鎖の推移確率行列$P = \\begin{pmatrix} 0.7 & 0.3 \\\\ 0.4 & 0.6 \\end{pmatrix}$の定常分布$\\pi = (\\pi_1, \\pi_2)$を求めよ。",
     options: [
       "$\\pi = (4/7, 3/7)$",
@@ -231,6 +242,7 @@ export const questionsJun1kyuExam = [
     id: 1012,
     topic: "markov",
     type: "choice",
+    difficulty: "basic",
     question: "マルコフ連鎖のエルゴード定理が成り立つための条件として、正しいものの組み合わせはどれか？",
     options: [
       "既約性と非周期性",
@@ -251,6 +263,7 @@ export const questionsJun1kyuExam = [
     id: 1013,
     topic: "markov",
     type: "choice",
+    difficulty: "standard",
     question: "3状態マルコフ連鎖の推移確率行列$P = \\begin{pmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\ 1 & 0 & 0 \\end{pmatrix}$の周期はいくらか？",
     options: [
       "1",
@@ -271,6 +284,7 @@ export const questionsJun1kyuExam = [
     id: 1014,
     topic: "markov",
     type: "choice",
+    difficulty: "standard",
     question: "詳細つり合い条件（detailed balance）$\\pi_i \\cdot p_{ij} = \\pi_j \\cdot p_{ji}$ を満たすマルコフ連鎖について正しいものはどれか？",
     options: [
       "$\\pi$は必ず定常分布である",
@@ -291,6 +305,7 @@ export const questionsJun1kyuExam = [
     id: 1015,
     topic: "markov",
     type: "choice",
+    difficulty: "advanced",
     question: "マルコフ連鎖モンテカルロ法（MCMC）のメトロポリス・ヘイスティングスアルゴリズムにおいて、提案分布$q(x'|x)$から生成された候補$x'$の採択確率$\\alpha(x, x')$の正しい式はどれか？（$\\pi(x)$は目標分布）",
     options: [
       "$\\alpha(x, x') = \\min(1, \\pi(x')q(x|x') / (\\pi(x)q(x'|x)))$",
@@ -313,6 +328,7 @@ export const questionsJun1kyuExam = [
     id: 1016,
     topic: "brownian",
     type: "choice",
+    difficulty: "basic",
     question: "標準ブラウン運動$B(t)$について、$\\text{Cov}(B(s), B(t))$（$s \\leq t$）の値はどれか？",
     options: [
       "$\\min(s, t) = s$",
@@ -333,6 +349,7 @@ export const questionsJun1kyuExam = [
     id: 1017,
     topic: "brownian",
     type: "choice",
+    difficulty: "basic",
     question: "幾何ブラウン運動$dS = \\mu S \\, dt + \\sigma S \\, dB$に従う株価$S(t)$の解として正しいものはどれか？（$S(0) = S_0$）",
     options: [
       "$S(t) = S_0 \\exp((\\mu - \\sigma^2/2)t + \\sigma B(t))$",
@@ -353,6 +370,7 @@ export const questionsJun1kyuExam = [
     id: 1018,
     topic: "brownian",
     type: "choice",
+    difficulty: "standard",
     question: "標準ブラウン運動$B(t)$の二次変分（quadratic variation）$[B, B](t)$の値はどれか？",
     options: [
       "$0$",
@@ -373,6 +391,7 @@ export const questionsJun1kyuExam = [
     id: 1019,
     topic: "brownian",
     type: "choice",
+    difficulty: "standard",
     question: "ブラウン運動$B(t)$について、$E[B(t)^4]$の値はどれか？",
     options: [
       "$t^2$",
@@ -393,6 +412,7 @@ export const questionsJun1kyuExam = [
     id: 1020,
     topic: "brownian",
     type: "choice",
+    difficulty: "advanced",
     question: "オルンシュタイン・ウーレンベック過程$dX(t) = -\\theta X(t) dt + \\sigma dB(t)$（$\\theta > 0$）の長期的な振る舞いとして正しいものはどれか？",
     options: [
       "$t \\to \\infty$で$X(t)$は発散する",
@@ -415,6 +435,7 @@ export const questionsJun1kyuExam = [
     id: 1021,
     topic: "timeseries",
     type: "choice",
+    difficulty: "basic",
     question: "ARIMA(p, d, q)モデルにおいて、d=1のとき原系列に対して行う操作はどれか？",
     options: [
       "対数変換",
@@ -435,6 +456,7 @@ export const questionsJun1kyuExam = [
     id: 1022,
     topic: "timeseries",
     type: "choice",
+    difficulty: "basic",
     question: "AR(1)モデル $y_t = \\phi y_{t-1} + \\varepsilon_t$ が定常であるための条件はどれか？",
     options: [
       "$|\\phi| < 1$",
@@ -455,6 +477,7 @@ export const questionsJun1kyuExam = [
     id: 1023,
     topic: "timeseries",
     type: "choice",
+    difficulty: "standard",
     question: "MA(1)モデル $y_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$ の自己相関関数（ACF）の特徴として正しいものはどれか？",
     options: [
       "ACFは指数的に減衰する",
@@ -475,6 +498,7 @@ export const questionsJun1kyuExam = [
     id: 1024,
     topic: "timeseries",
     type: "choice",
+    difficulty: "standard",
     question: "時系列モデルの次数選択にAICを用いる場合、AICの定義式として正しいものはどれか？（$k$はパラメータ数、$\\hat{L}$は最大尤度）",
     options: [
       "$\\text{AIC} = -2 \\log \\hat{L} + 2k$",
@@ -495,6 +519,7 @@ export const questionsJun1kyuExam = [
     id: 1025,
     topic: "timeseries",
     type: "choice",
+    difficulty: "advanced",
     question: "GARCH(1,1)モデルにおいて、条件付き分散$\\sigma_t^2$の式として正しいものはどれか？",
     options: [
       "$\\sigma_t^2 = \\omega + \\alpha_1 \\varepsilon_{t-1}^2 + \\beta_1 \\sigma_{t-1}^2$",
@@ -517,6 +542,7 @@ export const questionsJun1kyuExam = [
     id: 1026,
     topic: "cluster",
     type: "choice",
+    difficulty: "basic",
     question: "k-means法のクラスター数kの決定に用いるエルボー法の考え方として正しいものはどれか？",
     options: [
       "クラスター内変動の合計（SSW）をkの関数としてプロットし、減少が緩やかになる点を選ぶ",
@@ -537,6 +563,7 @@ export const questionsJun1kyuExam = [
     id: 1027,
     topic: "cluster",
     type: "choice",
+    difficulty: "basic",
     question: "階層的クラスタリングにおいて、ウォード法（Ward's method）で用いるクラスター間距離の基準はどれか？",
     options: [
       "2つのクラスターの最近傍点間距離",
@@ -557,6 +584,7 @@ export const questionsJun1kyuExam = [
     id: 1028,
     topic: "cluster",
     type: "choice",
+    difficulty: "standard",
     question: "k-means法の問題点として正しくないものはどれか？",
     options: [
       "初期値依存性がある",
@@ -577,6 +605,7 @@ export const questionsJun1kyuExam = [
     id: 1029,
     topic: "cluster",
     type: "choice",
+    difficulty: "standard",
     question: "シルエット係数s(i)の値域と、その解釈として正しいものはどれか？",
     options: [
       "$0 \\leq s(i) \\leq 1$で、1に近いほど良いクラスタリング",
@@ -597,6 +626,7 @@ export const questionsJun1kyuExam = [
     id: 1030,
     topic: "cluster",
     type: "choice",
+    difficulty: "advanced",
     question: "DBSCAN（Density-Based Spatial Clustering of Applications with Noise）の特徴として正しくないものはどれか？",
     options: [
       "ノイズ（外れ値）を自動的に識別できる",
@@ -619,6 +649,7 @@ export const questionsJun1kyuExam = [
     id: 1031,
     topic: "pca",
     type: "choice",
+    difficulty: "basic",
     question: "$p$変量データに対する主成分分析で、第$k$主成分の寄与率の定義として正しいものはどれか？（$\\lambda_k$は第$k$固有値）",
     options: [
       "$\\lambda_k / \\sum_{i=1}^{p} \\lambda_i$",
@@ -639,6 +670,7 @@ export const questionsJun1kyuExam = [
     id: 1032,
     topic: "pca",
     type: "choice",
+    difficulty: "basic",
     question: "相関行列に基づく主成分分析と分散共分散行列に基づく主成分分析について、正しい記述はどれか？",
     options: [
       "変数の単位が異なる場合は、分散共分散行列を用いるべきである",
@@ -659,6 +691,7 @@ export const questionsJun1kyuExam = [
     id: 1033,
     topic: "pca",
     type: "choice",
+    difficulty: "standard",
     question: "5変量データの主成分分析で固有値が$\\lambda_1=3.2, \\lambda_2=1.1, \\lambda_3=0.4, \\lambda_4=0.2, \\lambda_5=0.1$のとき、第2主成分までの累積寄与率はいくらか？",
     options: [
       "64%",
@@ -679,6 +712,7 @@ export const questionsJun1kyuExam = [
     id: 1034,
     topic: "pca",
     type: "choice",
+    difficulty: "standard",
     question: "主成分分析において、主成分負荷量（factor loading）$a_{kj}$の解釈として正しいものはどれか？",
     options: [
       "第k主成分と第j変数との相関係数に相当する",
@@ -699,6 +733,7 @@ export const questionsJun1kyuExam = [
     id: 1035,
     topic: "pca",
     type: "choice",
+    difficulty: "advanced",
     question: "カーネル主成分分析（Kernel PCA）について正しい記述はどれか？",
     options: [
       "線形主成分分析と同じ結果を与える",
@@ -721,6 +756,7 @@ export const questionsJun1kyuExam = [
     id: 1036,
     topic: "factor",
     type: "choice",
+    difficulty: "basic",
     question: "因子分析モデル $x = \\Lambda f + e$ において、$\\Lambda$（因子負荷行列）の推定方法として一般的でないものはどれか？",
     options: [
       "最尤法",
@@ -741,6 +777,7 @@ export const questionsJun1kyuExam = [
     id: 1037,
     topic: "factor",
     type: "choice",
+    difficulty: "basic",
     question: "因子分析における因子回転の目的として最も適切なものはどれか？",
     options: [
       "因子数を減らすこと",
@@ -761,6 +798,7 @@ export const questionsJun1kyuExam = [
     id: 1038,
     topic: "factor",
     type: "choice",
+    difficulty: "standard",
     question: "バリマックス回転（varimax rotation）の特徴として正しいものはどれか？",
     options: [
       "斜交回転であり、因子間の相関を許す",
@@ -781,6 +819,7 @@ export const questionsJun1kyuExam = [
     id: 1039,
     topic: "factor",
     type: "choice",
+    difficulty: "standard",
     question: "因子分析において共通性（communality）$h_i^2$の意味として正しいものはどれか？",
     options: [
       "第i変数の全分散のうち、共通因子によって説明される割合",
@@ -801,6 +840,7 @@ export const questionsJun1kyuExam = [
     id: 1040,
     topic: "factor",
     type: "choice",
+    difficulty: "advanced",
     question: "主成分分析と因子分析の違いとして正しいものはどれか？",
     options: [
       "主成分分析は観測変数の線形結合として主成分を定義するが、因子分析は潜在因子から観測変数が生成されるモデルを仮定する",
@@ -823,6 +863,7 @@ export const questionsJun1kyuExam = [
     id: 1041,
     topic: "anova",
     type: "choice",
+    difficulty: "basic",
     question: "一元配置分散分析において、群数$k=4$、各群の標本サイズ$n=10$のとき、$F$検定統計量の自由度はどれか？",
     options: [
       "(3, 36)",
@@ -843,6 +884,7 @@ export const questionsJun1kyuExam = [
     id: 1042,
     topic: "anova",
     type: "choice",
+    difficulty: "basic",
     question: "二元配置分散分析で交互作用が有意であった場合の解釈として最も適切なものはどれか？",
     options: [
       "両方の主効果は有意ではない",
@@ -863,6 +905,7 @@ export const questionsJun1kyuExam = [
     id: 1043,
     topic: "anova",
     type: "choice",
+    difficulty: "standard",
     question: "分散分析の前提条件として正しくないものはどれか？",
     options: [
       "各群のデータが正規分布に従う",
@@ -883,6 +926,7 @@ export const questionsJun1kyuExam = [
     id: 1044,
     topic: "anova",
     type: "choice",
+    difficulty: "standard",
     question: "テューキーのHSD検定（Tukey's Honestly Significant Difference test）の用途として正しいものはどれか？",
     options: [
       "分散分析の前提条件の確認",
@@ -903,6 +947,7 @@ export const questionsJun1kyuExam = [
     id: 1045,
     topic: "anova",
     type: "choice",
+    difficulty: "advanced",
     question: "反復測定分散分析（repeated measures ANOVA）において特に問題となる仮定はどれか？",
     options: [
       "正規性",
@@ -925,6 +970,7 @@ export const questionsJun1kyuExam = [
     id: 1046,
     topic: "sampling",
     type: "choice",
+    difficulty: "basic",
     question: "層化抽出法における比例配分と最適配分（ネイマン配分）の違いとして正しいものはどれか？",
     options: [
       "比例配分は各層の標本サイズを母集団比に応じて配分し、最適配分は各層の分散も考慮して配分する",
@@ -945,6 +991,7 @@ export const questionsJun1kyuExam = [
     id: 1047,
     topic: "sampling",
     type: "choice",
+    difficulty: "basic",
     question: "二段抽出法（two-stage sampling）の手順として正しいものはどれか？",
     options: [
       "第1段で母集団を層に分け、第2段で各層から無作為抽出する",
@@ -965,6 +1012,7 @@ export const questionsJun1kyuExam = [
     id: 1048,
     topic: "sampling",
     type: "choice",
+    difficulty: "standard",
     question: "比推定量（ratio estimator）$\\hat{Y}_R = (\\bar{y}/\\bar{x})X$の特徴として正しいものはどれか？（$\\bar{y}, \\bar{x}$は標本平均、$X$は補助変数の母平均）",
     options: [
       "常に不偏推定量である",
@@ -985,6 +1033,7 @@ export const questionsJun1kyuExam = [
     id: 1049,
     topic: "sampling",
     type: "choice",
+    difficulty: "standard",
     question: "系統抽出法（systematic sampling）の手順として正しいものはどれか？（母集団サイズ$N$、標本サイズ$n$）",
     options: [
       "抽出間隔$k = N/n$とし、1から$k$までの間から最初の抽出番号をランダムに選び、以降$k$間隔で抽出する",
@@ -1005,6 +1054,7 @@ export const questionsJun1kyuExam = [
     id: 1050,
     topic: "sampling",
     type: "choice",
+    difficulty: "advanced",
     question: "ホルビッツ・トンプソン推定量の特徴として正しいものはどれか？",
     options: [
       "等確率抽出でのみ使用可能である",
@@ -1027,6 +1077,7 @@ export const questionsJun1kyuExam = [
     id: 1051,
     topic: "conditional",
     type: "choice",
+    difficulty: "basic",
     question: "全期待値の法則$E[X] = E[E[X|Y]]$について、正しい解釈はどれか？",
     options: [
       "$X$の期待値は、$Y$で条件付けた条件付き期待値の$Y$に関する期待値に等しい",
@@ -1047,6 +1098,7 @@ export const questionsJun1kyuExam = [
     id: 1052,
     topic: "conditional",
     type: "choice",
+    difficulty: "basic",
     question: "全分散の法則$V(X) = E[V(X|Y)] + V(E[X|Y])$において、$V(E[X|Y])$の意味として正しいものはどれか？",
     options: [
       "群内分散の期待値",
@@ -1067,6 +1119,7 @@ export const questionsJun1kyuExam = [
     id: 1053,
     topic: "conditional",
     type: "choice",
+    difficulty: "standard",
     question: "ベイズの定理$P(A|B) = P(B|A)P(A)/P(B)$において、$P(B)$を展開した式として正しいものはどれか？（$A$と$\\bar{A}$が排反で全事象をカバー）",
     options: [
       "$P(B) = P(B|A)P(A) + P(B|\\bar{A})P(\\bar{A})$",
@@ -1087,6 +1140,7 @@ export const questionsJun1kyuExam = [
     id: 1054,
     topic: "conditional",
     type: "choice",
+    difficulty: "standard",
     question: "X, Yが独立な確率変数であるとき、正しいものはどれか？",
     options: [
       "$E[XY] = E[X] \\cdot E[Y]$ かつ $V(X+Y) = V(X) + V(Y)$",
@@ -1107,6 +1161,7 @@ export const questionsJun1kyuExam = [
     id: 1055,
     topic: "conditional",
     type: "choice",
+    difficulty: "advanced",
     question: "条件付き期待値$E[X|Y]$の性質として正しくないものはどれか？",
     options: [
       "$E[aX + bZ | Y] = aE[X|Y] + bE[Z|Y]$（線形性）",
@@ -1129,6 +1184,7 @@ export const questionsJun1kyuExam = [
     id: 1056,
     topic: "qualreg",
     type: "choice",
+    difficulty: "basic",
     question: "ロジスティック回帰モデルにおいて、オッズ比$\\exp(\\beta_1)$の解釈として正しいものはどれか？",
     options: [
       "説明変数$x$が1単位増加したとき、成功確率が$\\beta_1$増加する",
@@ -1149,6 +1205,7 @@ export const questionsJun1kyuExam = [
     id: 1057,
     topic: "qualreg",
     type: "choice",
+    difficulty: "basic",
     question: "プロビットモデルで用いるリンク関数はどれか？",
     options: [
       "ロジット関数（logit）",
@@ -1169,6 +1226,7 @@ export const questionsJun1kyuExam = [
     id: 1058,
     topic: "qualreg",
     type: "choice",
+    difficulty: "standard",
     question: "順序ロジスティック回帰モデル（比例オッズモデル）の仮定として正しいものはどれか？",
     options: [
       "各カテゴリ間の回帰係数は異なる",
@@ -1189,6 +1247,7 @@ export const questionsJun1kyuExam = [
     id: 1059,
     topic: "qualreg",
     type: "choice",
+    difficulty: "standard",
     question: "多項ロジスティック回帰モデルにおいて、$J$個のカテゴリがある場合、推定するパラメータベクトルの数はいくつか？（参照カテゴリを1つ設定する場合）",
     options: [
       "$J$個",
@@ -1209,6 +1268,7 @@ export const questionsJun1kyuExam = [
     id: 1060,
     topic: "qualreg",
     type: "choice",
+    difficulty: "advanced",
     question: "ロジスティック回帰モデルの適合度検定として用いられるホスマー・レメショウ検定の方法として正しいものはどれか？",
     options: [
       "予測確率に基づいてデータをグループ分けし、各グループの観測頻度と期待頻度をカイ二乗検定で比較する",
@@ -1231,6 +1291,7 @@ export const questionsJun1kyuExam = [
     id: 1061,
     topic: "survival",
     type: "choice",
+    difficulty: "basic",
     question: "カプラン・マイヤー推定量の特徴として正しいものはどれか？",
     options: [
       "パラメトリックな分布を仮定する",
@@ -1251,6 +1312,7 @@ export const questionsJun1kyuExam = [
     id: 1062,
     topic: "survival",
     type: "choice",
+    difficulty: "basic",
     question: "コックス比例ハザードモデル$h(t|x) = h_0(t)\\exp(\\beta' x)$の「比例ハザード仮定」の意味として正しいものはどれか？",
     options: [
       "ハザード関数が時間に対して一定である",
@@ -1271,6 +1333,7 @@ export const questionsJun1kyuExam = [
     id: 1063,
     topic: "survival",
     type: "choice",
+    difficulty: "standard",
     question: "ログランク検定（log-rank test）の用途として正しいものはどれか？",
     options: [
       "生存関数のパラメータを推定する",
@@ -1291,6 +1354,7 @@ export const questionsJun1kyuExam = [
     id: 1064,
     topic: "survival",
     type: "choice",
+    difficulty: "standard",
     question: "生存時間$T$が指数分布$\\text{Exp}(\\lambda)$に従うとき、ハザード関数$h(t)$はどのような形をとるか？",
     options: [
       "$h(t) = \\lambda$（定数）",
@@ -1311,6 +1375,7 @@ export const questionsJun1kyuExam = [
     id: 1065,
     topic: "survival",
     type: "choice",
+    difficulty: "advanced",
     question: "ワイブル分布のハザード関数$h(t) = (k/\\lambda)(t/\\lambda)^{k-1}$において、$k > 1$のときの解釈として正しいものはどれか？",
     options: [
       "ハザードは時間とともに減少する（初期故障型）",
@@ -1333,6 +1398,7 @@ export const questionsJun1kyuExam = [
     id: 1066,
     topic: "mgf",
     type: "choice",
+    difficulty: "basic",
     question: "確率変数$X$の積率母関数（MGF）$M_X(t) = E[e^{tX}]$が存在するとき、$E[X^2]$を求める方法として正しいものはどれか？",
     options: [
       "$M_X(t)$を$t$で2回微分し$t=0$を代入する",
@@ -1353,6 +1419,7 @@ export const questionsJun1kyuExam = [
     id: 1067,
     topic: "mgf",
     type: "choice",
+    difficulty: "basic",
     question: "ポアソン分布$\\text{Po}(\\lambda)$の積率母関数$M(t)$はどれか？",
     options: [
       "$M(t) = \\exp(\\lambda(e^t - 1))$",
@@ -1373,6 +1440,7 @@ export const questionsJun1kyuExam = [
     id: 1068,
     topic: "mgf",
     type: "choice",
+    difficulty: "standard",
     question: "$X_1, X_2, \\ldots, X_n$が互いに独立な確率変数であるとき、$Y = X_1 + X_2 + \\cdots + X_n$の積率母関数$M_Y(t)$はどのように表されるか？",
     options: [
       "$M_Y(t) = M_{X_1}(t) + M_{X_2}(t) + \\cdots + M_{X_n}(t)$",
@@ -1393,6 +1461,7 @@ export const questionsJun1kyuExam = [
     id: 1069,
     topic: "mgf",
     type: "choice",
+    difficulty: "standard",
     question: "正規分布$N(\\mu, \\sigma^2)$の積率母関数$M(t)$はどれか？",
     options: [
       "$M(t) = \\exp(\\mu t + \\sigma^2 t^2/2)$",
@@ -1413,6 +1482,7 @@ export const questionsJun1kyuExam = [
     id: 1070,
     topic: "mgf",
     type: "choice",
+    difficulty: "advanced",
     question: "キュムラント母関数$K(t) = \\log M(t)$の$n$次微分$K^{(n)}(0)$を$n$次キュムラント$\\kappa_n$という。$\\kappa_1$と$\\kappa_2$は何に等しいか？",
     options: [
       "$\\kappa_1 = E[X]$、$\\kappa_2 = V(X)$",
@@ -1435,6 +1505,7 @@ export const questionsJun1kyuExam = [
     id: 1071,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "basic",
     question: "強度$\\lambda$のポアソン過程$N(t)$において、時刻0から$t$までのイベント数$N(t)$の分散はいくらか？",
     options: [
       "$\\lambda$",
@@ -1455,6 +1526,7 @@ export const questionsJun1kyuExam = [
     id: 1072,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "basic",
     question: "強度$\\lambda$のポアソン過程において、連続する2つのイベント間の時間間隔$T$の分布はどれか？",
     options: [
       "ポアソン分布$\\text{Po}(\\lambda)$",
@@ -1475,6 +1547,7 @@ export const questionsJun1kyuExam = [
     id: 1073,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "standard",
     question: "非斉次ポアソン過程（強度関数$\\lambda(t)$）において、時刻$s < t$の区間$(s, t]$でのイベント数$N(t)-N(s)$の分布はどれか？",
     options: [
       "$\\text{Po}(\\lambda(t) - \\lambda(s))$",
@@ -1495,6 +1568,7 @@ export const questionsJun1kyuExam = [
     id: 1074,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "standard",
     question: "強度$\\lambda_1$のポアソン過程$N_1(t)$と強度$\\lambda_2$のポアソン過程$N_2(t)$が独立であるとき、$N(t) = N_1(t) + N_2(t)$はどのような過程か？",
     options: [
       "強度$\\lambda_1 \\lambda_2$のポアソン過程",
@@ -1515,6 +1589,7 @@ export const questionsJun1kyuExam = [
     id: 1075,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "advanced",
     question: "強度$\\lambda$のポアソン過程において、$n$番目のイベント到着時刻$S_n$の分布はどれか？",
     options: [
       "指数分布$\\text{Exp}(n\\lambda)$",
@@ -1537,6 +1612,7 @@ export const questionsJun1kyuExam = [
     id: 1076,
     topic: "bayes",
     type: "choice",
+    difficulty: "basic",
     question: "ベイズ推定において、事後分布$\\pi(\\theta|x)$の計算式として正しいものはどれか？",
     options: [
       "$\\pi(\\theta|x) \\propto f(x|\\theta)\\pi(\\theta)$",
@@ -1557,6 +1633,7 @@ export const questionsJun1kyuExam = [
     id: 1077,
     topic: "bayes",
     type: "choice",
+    difficulty: "basic",
     question: "共役事前分布（conjugate prior）の定義として正しいものはどれか？",
     options: [
       "事前分布と事後分布が同じ分布族に属する性質を持つ事前分布",
@@ -1577,6 +1654,7 @@ export const questionsJun1kyuExam = [
     id: 1078,
     topic: "bayes",
     type: "choice",
+    difficulty: "standard",
     question: "二項分布$B(n, p)$の尤度に対する共役事前分布はどれか？",
     options: [
       "正規分布",
@@ -1597,6 +1675,7 @@ export const questionsJun1kyuExam = [
     id: 1079,
     topic: "bayes",
     type: "choice",
+    difficulty: "standard",
     question: "ベイズ推定における事後平均と事後中央値と事後最頻値（MAP推定量）について、二乗損失関数のもとでのベイズ推定量はどれか？",
     options: [
       "事後最頻値",
@@ -1617,6 +1696,7 @@ export const questionsJun1kyuExam = [
     id: 1080,
     topic: "bayes",
     type: "choice",
+    difficulty: "advanced",
     question: "ベイズ情報量規準（BIC）のAICに対する特徴として正しいものはどれか？",
     options: [
       "BICはAICより常に小さい値をとる",
@@ -1639,6 +1719,7 @@ export const questionsJun1kyuExam = [
     id: 1081,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "basic",
     question: "$p$次元多変量正規分布$N(\\mu, \\Sigma)$に従う$X$に対して、$(X-\\mu)'\\Sigma^{-1}(X-\\mu)$はどのような分布に従うか？",
     options: [
       "標準正規分布",
@@ -1659,6 +1740,7 @@ export const questionsJun1kyuExam = [
     id: 1082,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "basic",
     question: "二変量正規分布$(X, Y)' \\sim N_2(\\mu, \\Sigma)$において、$X$と$Y$の共分散が0であるとき、$X$と$Y$の関係について正しいものはどれか？",
     options: [
       "XとYは無相関だが独立とは限らない",
@@ -1679,6 +1761,7 @@ export const questionsJun1kyuExam = [
     id: 1083,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "standard",
     question: "多変量正規分布$N(\\mu, \\Sigma)$に従うベクトル$X$を$X = (X_1, X_2)'$と分割するとき、$X_1|X_2 = x_2$の条件付き分布の平均として正しいものはどれか？（$\\Sigma = \\begin{pmatrix} \\Sigma_{11} & \\Sigma_{12} \\\\ \\Sigma_{21} & \\Sigma_{22} \\end{pmatrix}$）",
     options: [
       "$\\mu_1$",
@@ -1699,6 +1782,7 @@ export const questionsJun1kyuExam = [
     id: 1084,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "standard",
     question: "ホテリングの$T^2$統計量について正しい記述はどれか？",
     options: [
       "1変量の$t$検定を多変量に拡張したもので、$T^2 = n(\\bar{x}-\\mu_0)'S^{-1}(\\bar{x}-\\mu_0)$で計算される",
@@ -1719,6 +1803,7 @@ export const questionsJun1kyuExam = [
     id: 1085,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "advanced",
     question: "多変量正規分布$N(\\mu, \\Sigma)$において、精度行列（precision matrix）$\\Omega = \\Sigma^{-1}$のゼロ要素の意味として正しいものはどれか？",
     options: [
       "対応する変数間の相関が0である",
@@ -1741,6 +1826,7 @@ export const questionsJun1kyuExam = [
     id: 1086,
     topic: "incomplete",
     type: "choice",
+    difficulty: "basic",
     question: "欠測データのメカニズムのうち、MCAR（Missing Completely At Random）の意味として正しいものはどれか？",
     options: [
       "欠測の発生が観測データにも欠測データにも依存しない",
@@ -1761,6 +1847,7 @@ export const questionsJun1kyuExam = [
     id: 1087,
     topic: "incomplete",
     type: "choice",
+    difficulty: "basic",
     question: "多重代入法（multiple imputation）の手順として正しいものはどれか？",
     options: [
       "欠測値を1回だけ代入し、通常の分析を行う",
@@ -1781,6 +1868,7 @@ export const questionsJun1kyuExam = [
     id: 1088,
     topic: "incomplete",
     type: "choice",
+    difficulty: "standard",
     question: "EMアルゴリズムの収束性について正しい記述はどれか？",
     options: [
       "常に大域的最適解に収束する",
@@ -1801,6 +1889,7 @@ export const questionsJun1kyuExam = [
     id: 1089,
     topic: "incomplete",
     type: "choice",
+    difficulty: "standard",
     question: "MAR（Missing At Random）の仮定のもとで適切な分析手法はどれか？",
     options: [
       "リストワイズ除去のみ",
@@ -1821,6 +1910,7 @@ export const questionsJun1kyuExam = [
     id: 1090,
     topic: "incomplete",
     type: "choice",
+    difficulty: "advanced",
     question: "ルービンの結合規則（Rubin's combining rules）において、$m$回の多重代入から得られた推定値の統合推定量$\\bar{Q}$の計算方法として正しいものはどれか？",
     options: [
       "m回の推定値の中央値",
@@ -1843,6 +1933,7 @@ export const questionsJun1kyuExam = [
     id: 1091,
     topic: "multreg",
     type: "choice",
+    difficulty: "basic",
     question: "重回帰分析において、VIF（分散拡大係数）が10以上の説明変数がある場合に疑われる問題はどれか？",
     options: [
       "不均一分散",
@@ -1863,6 +1954,7 @@ export const questionsJun1kyuExam = [
     id: 1092,
     topic: "multreg",
     type: "choice",
+    difficulty: "basic",
     question: "重回帰分析の自由度調整済み決定係数$\\bar{R}^2$の式として正しいものはどれか？（$n$は標本数、$p$は説明変数の数）",
     options: [
       "$\\bar{R}^2 = 1 - (1-R^2)(n-1)/(n-p-1)$",
@@ -1883,6 +1975,7 @@ export const questionsJun1kyuExam = [
     id: 1093,
     topic: "multreg",
     type: "choice",
+    difficulty: "standard",
     question: "リッジ回帰の推定量$\\hat{\\beta}_{\\text{ridge}} = (X'X + \\lambda I)^{-1}X'y$の特徴として正しいものはどれか？",
     options: [
       "$\\lambda > 0$のとき、OLS推定量よりバイアスが小さい",
@@ -1903,6 +1996,7 @@ export const questionsJun1kyuExam = [
     id: 1094,
     topic: "multreg",
     type: "choice",
+    difficulty: "standard",
     question: "最小二乗推定量$\\hat{\\beta} = (X'X)^{-1}X'y$がBLUE（Best Linear Unbiased Estimator）であるための条件を定めた定理はどれか？",
     options: [
       "中心極限定理",
@@ -1923,6 +2017,7 @@ export const questionsJun1kyuExam = [
     id: 1095,
     topic: "multreg",
     type: "choice",
+    difficulty: "advanced",
     question: "重回帰分析においてクックの距離（Cook's distance）が大きい観測値の意味として正しいものはどれか？",
     options: [
       "残差が大きい外れ値",
@@ -1945,6 +2040,7 @@ export const questionsJun1kyuExam = [
     id: 1096,
     topic: "contingency",
     type: "choice",
+    difficulty: "basic",
     question: "$2 \\times 2$分割表におけるカイ二乗独立性検定の自由度はいくらか？",
     options: [
       "1",
@@ -1965,6 +2061,7 @@ export const questionsJun1kyuExam = [
     id: 1097,
     topic: "contingency",
     type: "choice",
+    difficulty: "basic",
     question: "フィッシャーの正確検定（Fisher's exact test）を$2 \\times 2$分割表のカイ二乗検定の代わりに用いるべき状況はどれか？",
     options: [
       "標本サイズが十分に大きいとき",
@@ -1985,6 +2082,7 @@ export const questionsJun1kyuExam = [
     id: 1098,
     topic: "contingency",
     type: "choice",
+    difficulty: "standard",
     question: "マクネマー検定（McNemar's test）が用いられるのはどのような状況か？",
     options: [
       "独立な2群の比率の差の検定",
@@ -2005,6 +2103,7 @@ export const questionsJun1kyuExam = [
     id: 1099,
     topic: "contingency",
     type: "choice",
+    difficulty: "standard",
     question: "対数線形モデル（log-linear model）の飽和モデルにおいて、3元分割表（$A \\times B \\times C$）に含まれるパラメータの種類として正しい組み合わせはどれか？",
     options: [
       "全体平均、主効果（A, B, C）、2因子交互作用（AB, AC, BC）、3因子交互作用（ABC）",
@@ -2025,6 +2124,7 @@ export const questionsJun1kyuExam = [
     id: 1100,
     topic: "contingency",
     type: "choice",
+    difficulty: "advanced",
     question: "クラメールのV（Cramér's V）について正しい記述はどれか？",
     options: [
       "値域は-1から1で、関連の方向と強さを示す",
@@ -2047,6 +2147,7 @@ export const questionsJun1kyuExam = [
     id: 1101,
     topic: "graphical",
     type: "choice",
+    difficulty: "basic",
     question: "有向非巡回グラフ（DAG）に基づくベイジアンネットワークにおいて、同時確率分布の因数分解として正しいものはどれか？",
     options: [
       "$P(X_1,\\ldots,X_n) = \\prod P(X_i)$（全変数が独立）",
@@ -2067,6 +2168,7 @@ export const questionsJun1kyuExam = [
     id: 1102,
     topic: "graphical",
     type: "choice",
+    difficulty: "basic",
     question: "d-分離（d-separation）の概念において、3変数$A \\to C \\leftarrow B$のV構造（collider）で、$C$が観測されていないとき、$A$と$B$の関係はどうなるか？",
     options: [
       "AとBは条件付き独立ではない",
@@ -2087,6 +2189,7 @@ export const questionsJun1kyuExam = [
     id: 1103,
     topic: "graphical",
     type: "choice",
+    difficulty: "standard",
     question: "マルコフ確率場（マルコフランダムフィールド、MRF）と呼ばれる無向グラフィカルモデルにおいて、同時確率分布はどのように表現されるか？",
     options: [
       "条件付き確率の積",
@@ -2107,6 +2210,7 @@ export const questionsJun1kyuExam = [
     id: 1104,
     topic: "graphical",
     type: "choice",
+    difficulty: "standard",
     question: "ガウシアングラフィカルモデル（Gaussian Graphical Model）において、辺の有無を決定するために推定すべき行列はどれか？",
     options: [
       "相関行列",
@@ -2127,6 +2231,7 @@ export const questionsJun1kyuExam = [
     id: 1105,
     topic: "graphical",
     type: "choice",
+    difficulty: "advanced",
     question: "信念伝播（Belief Propagation、メッセージパッシング）アルゴリズムが厳密な推論を行えるグラフ構造はどれか？",
     options: [
       "任意のグラフ",
@@ -2149,6 +2254,7 @@ export const questionsJun1kyuExam = [
     id: 1106,
     topic: "other_mv",
     type: "choice",
+    difficulty: "basic",
     question: "正準相関分析（canonical correlation analysis）の目的として正しいものはどれか？",
     options: [
       "1つの目的変数と複数の説明変数の関係を分析する",
@@ -2169,6 +2275,7 @@ export const questionsJun1kyuExam = [
     id: 1107,
     topic: "other_mv",
     type: "choice",
+    difficulty: "basic",
     question: "多次元尺度構成法（MDS: Multidimensional Scaling）の目的として正しいものはどれか？",
     options: [
       "データの分散を最大化する方向を見つける",
@@ -2189,6 +2296,7 @@ export const questionsJun1kyuExam = [
     id: 1108,
     topic: "other_mv",
     type: "choice",
+    difficulty: "standard",
     question: "対応分析（correspondence analysis）が適用されるデータの種類として正しいものはどれか？",
     options: [
       "連続変数の多変量データ",
@@ -2209,6 +2317,7 @@ export const questionsJun1kyuExam = [
     id: 1109,
     topic: "other_mv",
     type: "choice",
+    difficulty: "standard",
     question: "構造方程式モデリング（SEM）の特徴として正しくないものはどれか？",
     options: [
       "観測変数と潜在変数の両方を扱える",
@@ -2229,6 +2338,7 @@ export const questionsJun1kyuExam = [
     id: 1110,
     topic: "other_mv",
     type: "choice",
+    difficulty: "advanced",
     question: "独立成分分析（ICA）と主成分分析（PCA）の最も重要な違いはどれか？",
     options: [
       "ICAは教師あり学習、PCAは教師なし学習",
@@ -2251,6 +2361,7 @@ export const questionsJun1kyuExam = [
     id: 1111,
     topic: "discriminant",
     type: "choice",
+    difficulty: "basic",
     question: "フィッシャーの線形判別分析で最大化する基準はどれか？",
     options: [
       "群内分散",
@@ -2271,6 +2382,7 @@ export const questionsJun1kyuExam = [
     id: 1112,
     topic: "discriminant",
     type: "choice",
+    difficulty: "basic",
     question: "二次判別分析（QDA）が線形判別分析（LDA）と異なる仮定はどれか？",
     options: [
       "各群のデータが正規分布に従わない",
@@ -2291,6 +2403,7 @@ export const questionsJun1kyuExam = [
     id: 1113,
     topic: "discriminant",
     type: "choice",
+    difficulty: "standard",
     question: "判別分析のモデル評価において、交差検証法（クロスバリデーション）を用いる主な理由はどれか？",
     options: [
       "計算速度を向上させるため",
@@ -2311,6 +2424,7 @@ export const questionsJun1kyuExam = [
     id: 1114,
     topic: "discriminant",
     type: "choice",
+    difficulty: "standard",
     question: "マハラノビス距離に基づく判別法において、個体$x$を群$k$に分類する基準として正しいものはどれか？",
     options: [
       "ユークリッド距離が最小の群に分類する",
@@ -2331,6 +2445,7 @@ export const questionsJun1kyuExam = [
     id: 1115,
     topic: "discriminant",
     type: "choice",
+    difficulty: "advanced",
     question: "$k$群の判別分析においてフィッシャーの線形判別で得られる判別関数の最大数はどれか？（$p$次元データ）",
     options: [
       "$k$",

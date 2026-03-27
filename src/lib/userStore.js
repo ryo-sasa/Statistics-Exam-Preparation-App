@@ -218,6 +218,7 @@ export async function saveResult(result) {
       level: result.level,
       is_correct: result.isCorrect,
       user_answer: result.userAnswer || null,
+      difficulty: result.difficulty || null,
       created_at: new Date().toISOString(),
     });
 

@@ -7,6 +7,7 @@ export const questionsJun1kyu = [
     id: 101,
     topic: "mle",
     type: "choice",
+    difficulty: "basic",
     question: "最尤推定量（MLE）の不変性定理について、正しい説明はどれか？",
     options: [
       "$\\theta$の最尤推定量が$\\hat{\\theta}$であるとき、関数$g(\\theta)$の最尤推定量は$g(\\hat{\\theta})$である",
@@ -27,6 +28,7 @@ export const questionsJun1kyu = [
     id: 102,
     topic: "mle",
     type: "choice",
+    difficulty: "basic",
     question: "正規分布$N(\\mu, \\sigma^2)$のパラメータ$\\mu$と$\\sigma^2$の最尤推定量として正しいものはどれか？",
     options: [
       "$\\hat{\\mu} = \\bar{x}$, $\\hat{\\sigma}^2$ = $\\frac{1}{n}\\sum(x_i - \\bar{x})^2$",
@@ -47,6 +49,7 @@ export const questionsJun1kyu = [
     id: 103,
     topic: "mle",
     type: "written",
+    difficulty: "standard",
     question: "フィッシャー情報量（Fisher Information）の定義と統計的意味を説明せよ。",
     sampleAnswer: "フィッシャー情報量$I(\\theta)$ = E[($\\partial$log L/$\\partial \\theta$)^2]で定義される。これはパラメータ$\\theta$に関する情報量を表し、値が大きいほど$\\theta$の推定精度が高いことを示す。",
     keywords: ["情報量", "対数尤度", "推定精度", "クラメール・ラオ下限"],
@@ -58,6 +61,7 @@ export const questionsJun1kyu = [
     id: 104,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "basic",
     question: "符号検定（Sign Test）と符号付き順位検定（Wilcoxon Signed Rank Test）の主な違いはどれか？",
     options: [
       "符号検定は中央値、符号付き順位検定は平均値を検定対象とする",
@@ -78,6 +82,7 @@ export const questionsJun1kyu = [
     id: 105,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "basic",
     question: "マン・ホイットニーのU検定について正しいものはどれか？",
     options: [
       "対応のある2標本の検定である",
@@ -98,6 +103,7 @@ export const questionsJun1kyu = [
     id: 106,
     topic: "nonparametric",
     type: "written",
+    difficulty: "standard",
     question: "クラスカル・ワリス検定（Kruskal-Wallis test）の用途と利点を説明せよ。",
     sampleAnswer: "3つ以上のグループの中央値を検定するノンパラメトリック検定で、一元配置分散分析に対応する。正規性の仮定が不要で、外れ値に対してロバストである。",
     keywords: ["複数グループ", "中央値", "ノンパラメトリック", "ロバスト"],
@@ -109,6 +115,7 @@ export const questionsJun1kyu = [
     id: 107,
     topic: "markov",
     type: "choice",
+    difficulty: "basic",
     question: "マルコフ連鎖において定常分布$\\pi$が存在するための十分条件はどれか？",
     options: [
       "推移確率行列が対角行列である",
@@ -129,6 +136,7 @@ export const questionsJun1kyu = [
     id: 108,
     topic: "markov",
     type: "choice",
+    difficulty: "basic",
     question: "定常分布$\\pi$は推移確率行列Pの関して、以下のどの方程式を満たすか？",
     options: [
       "$\\pi = \\pi$P",
@@ -149,6 +157,7 @@ export const questionsJun1kyu = [
     id: 109,
     topic: "markov",
     type: "written",
+    difficulty: "standard",
     question: "エルゴード定理の内容を簡潔に説明し、マルコフ連鎖の応用例を述べよ。",
     sampleAnswer: "エルゴード定理は、既約かつ非周期的なマルコフ連鎖が定常分布に収束することを述べる。応用例として、ページランクアルゴリズムやMCMC法がある。",
     keywords: ["収束", "定常分布", "ページランク", "MCMC"],
@@ -160,6 +169,7 @@ export const questionsJun1kyu = [
     id: 110,
     topic: "brownian",
     type: "choice",
+    difficulty: "basic",
     question: "ブラウン運動B(t)の性質として正しいものはどれか？",
     options: [
       "B(0) $\\neq$ 0、E[B(t)] = 0、V[B(t)] = $\\sigma^2$t",
@@ -180,6 +190,7 @@ export const questionsJun1kyu = [
     id: 111,
     topic: "brownian",
     type: "written",
+    difficulty: "standard",
     question: "ウィーナー過程とは何か、また、どの分野で応用されるか説明せよ。",
     sampleAnswer: "ウィーナー過程はブラウン運動の数学的表現で、独立増分と連続性を持つ確率過程である。金融工学（ブラック・ショーレズモデル）や物理学などで応用される。",
     keywords: ["独立増分", "確率過程", "ブラック・ショーレズ", "金融"],
@@ -191,6 +202,7 @@ export const questionsJun1kyu = [
     id: 112,
     topic: "timeseries",
     type: "choice",
+    difficulty: "basic",
     question: "AR(1)プロセス Xₜ = $\\varphi$Xₜ₋₁ + $\\varepsilon$ₜ が定常であるための条件はどれか？",
     options: [
       "|$\\varphi$| < 1",
@@ -211,6 +223,7 @@ export const questionsJun1kyu = [
     id: 113,
     topic: "timeseries",
     type: "choice",
+    difficulty: "basic",
     question: "ACF（自己相関関数）とPACF（偏自己相関関数）の使い分けとして正しいものはどれか？",
     options: [
       "ACFはAR過程、PACFはMA過程を特定するのに用いる",
@@ -231,6 +244,7 @@ export const questionsJun1kyu = [
     id: 114,
     topic: "timeseries",
     type: "choice",
+    difficulty: "basic",
     question: "ARIMA(p,d,q)モデルにおいて、dの値が意味するものはどれか？",
     options: [
       "自己回帰項の数",
@@ -251,6 +265,7 @@ export const questionsJun1kyu = [
     id: 115,
     topic: "timeseries",
     type: "written",
+    difficulty: "standard",
     question: "GARCH(1,1)モデルの構造と、条件付き分散の推移式を説明せよ。",
     sampleAnswer: "GARCH(1,1)は $\\sigma$ₜ^2 = $\\omega + \\alpha \\varepsilon$ₜ₋₁^2 + $\\beta \\sigma$ₜ₋₁^2 で表される。条件付き分散は過去の誤差の二乗と前期の分散に依存し、ボラティリティ・クラスタリングを捉える。",
     keywords: ["条件付き分散", "ボラティリティ", "$\\alpha$と$\\beta$", "クラスタリング"],
@@ -262,6 +277,7 @@ export const questionsJun1kyu = [
     id: 116,
     topic: "cluster",
     type: "choice",
+    difficulty: "basic",
     question: "クラスタリングにおいてWard法とシングルリンケージ法の主な違いはどれか？",
     options: [
       "Ward法は最短距離、シングルリンケージは平均距離を使う",
@@ -282,6 +298,7 @@ export const questionsJun1kyu = [
     id: 117,
     topic: "cluster",
     type: "choice",
+    difficulty: "basic",
     question: "k-meansアルゴリズムの収束性について正しいものはどれか？",
     options: [
       "常に大域的最適解に収束する",
@@ -302,6 +319,7 @@ export const questionsJun1kyu = [
     id: 118,
     topic: "cluster",
     type: "written",
+    difficulty: "standard",
     question: "クラスタ数の決定方法を2つ以上挙げ、それぞれの特徴を説明せよ。",
     sampleAnswer: "エルボー法は群内平方和の減少率の変化点を調べる。シルエット分析はクラスタ内の凝縮度とクラスタ間分離度を評価する。X平均法やベイズ情報量基準（BIC）も用いられる。",
     keywords: ["エルボー法", "シルエット分析", "BIC", "X平均法"],
@@ -313,6 +331,7 @@ export const questionsJun1kyu = [
     id: 119,
     topic: "pca",
     type: "choice",
+    difficulty: "basic",
     question: "主成分分析（PCA）における第1主成分の定義として正しいものはどれか？",
     options: [
       "平均を最小化する方向",
@@ -333,6 +352,7 @@ export const questionsJun1kyu = [
     id: 120,
     topic: "pca",
     type: "choice",
+    difficulty: "basic",
     question: "PCAの固有値$\\lambda$ᵢが表すものはどれか？",
     options: [
       "各主成分の方向",
@@ -353,6 +373,7 @@ export const questionsJun1kyu = [
     id: 121,
     topic: "pca",
     type: "written",
+    difficulty: "standard",
     question: "PCAにおいて、相関行列から出発する場合と共分散行列から出発する場合の違いを説明せよ。",
     sampleAnswer: "相関行列からのPCAは変数を標準化するため、スケールが異なる変数の扱いに適している。共分散行列からのPCAはスケールに依存するため、スケールが同じ変数に適する。",
     keywords: ["標準化", "スケール", "相関", "共分散"],
@@ -364,6 +385,7 @@ export const questionsJun1kyu = [
     id: 122,
     topic: "factor",
     type: "choice",
+    difficulty: "basic",
     question: "因子分析における因子回転の目的として正しいものはどれか？",
     options: [
       "モデルの適合度を向上させる",
@@ -384,6 +406,7 @@ export const questionsJun1kyu = [
     id: 123,
     topic: "factor",
     type: "choice",
+    difficulty: "basic",
     question: "共通性（communality）の定義として正しいものはどれか？",
     options: [
       "各観測変数の全分散",
@@ -404,6 +427,7 @@ export const questionsJun1kyu = [
     id: 124,
     topic: "factor",
     type: "written",
+    difficulty: "standard",
     question: "因子分析と主成分分析の目的の違いを説明せよ。",
     sampleAnswer: "主成分分析は観測変数の分散を説明することが目的で、次元削減が主。因子分析は潜在的な共通因子を発見することが目的で、構造を理解することが重視される。",
     keywords: ["次元削減", "潜在因子", "分散説明", "構造発見"],
@@ -415,6 +439,7 @@ export const questionsJun1kyu = [
     id: 125,
     topic: "anova",
     type: "choice",
+    difficulty: "basic",
     question: "一元配置分散分析（one-way ANOVA）のF統計量の定義として正しいものはどれか？",
     options: [
       "F = 群内平方和 / 群間平方和",
@@ -435,6 +460,7 @@ export const questionsJun1kyu = [
     id: 126,
     topic: "anova",
     type: "choice",
+    difficulty: "basic",
     question: "二元配置分散分析で交互作用が有意な場合の解釈として正しいものはどれか？",
     options: [
       "主効果がないことを示す",
@@ -455,6 +481,7 @@ export const questionsJun1kyu = [
     id: 127,
     topic: "anova",
     type: "written",
+    difficulty: "standard",
     question: "複数比較の問題を説明し、その解決方法を述べよ。",
     sampleAnswer: "複数の仮説検定を行うと第1種の誤りが累積する（多重検定問題）。対策としてボンフェローニ法、チューキー法、ダンカン法などの調整法を用いる。",
     keywords: ["第1種の誤り", "有意水準調整", "ボンフェローニ", "チューキー"],
@@ -466,6 +493,7 @@ export const questionsJun1kyu = [
     id: 128,
     topic: "sampling",
     type: "choice",
+    difficulty: "basic",
     question: "ネイマン配置（Neyman allocation）の目的として正しいものはどれか？",
     options: [
       "層内の分散を最小化する",
@@ -486,6 +514,7 @@ export const questionsJun1kyu = [
     id: 129,
     topic: "sampling",
     type: "choice",
+    difficulty: "basic",
     question: "系統抽出法とは何か、その特徴として正しいものはどれか？",
     options: [
       "確率的サンプリングで、実装が簡単である",
@@ -506,6 +535,7 @@ export const questionsJun1kyu = [
     id: 130,
     topic: "sampling",
     type: "written",
+    difficulty: "standard",
     question: "層化無作為抽出法の利点と、層の設定において考慮すべき点を説明せよ。",
     sampleAnswer: "利点は各層で分散が小さくなり、推定精度が向上することである。層設定では層内の同質性と層間の異質性を重視する。また、層サイズと分散を考慮してネイマン配置を適用する。",
     keywords: ["層内同質性", "層間異質性", "推定精度", "ネイマン配置"],
@@ -517,6 +547,7 @@ export const questionsJun1kyu = [
     id: 131,
     topic: "conditional",
     type: "choice",
+    difficulty: "basic",
     question: "反復期待の法則（Law of Iterated Expectations）について正しいものはどれか？",
     options: [
       "E[E[X|Y]] = E[X]",
@@ -537,6 +568,7 @@ export const questionsJun1kyu = [
     id: 132,
     topic: "conditional",
     type: "written",
+    difficulty: "standard",
     question: "条件付き分散V[X|Y] = E[V[X|Y]] + V[E[X|Y]] が示すものを説明せよ。",
     sampleAnswer: "全分散は、条件付き分散の期待値（説明されない分散）と条件付き期待値の分散（説明される分散）の和で表される。これは分散を分解し、説明力を評価するのに用いられる。",
     keywords: ["分散分解", "説明力", "条件付き分散", "条件付き期待値"],
@@ -548,6 +580,7 @@ export const questionsJun1kyu = [
     id: 133,
     topic: "qualreg",
     type: "choice",
+    difficulty: "basic",
     question: "ロジスティック回帰モデルにおいて、オッズ比を解釈する際の正しい説明はどれか？",
     options: [
       "説明変数が1単位増加したときの確率の増加量",
@@ -568,6 +601,7 @@ export const questionsJun1kyu = [
     id: 134,
     topic: "qualreg",
     type: "choice",
+    difficulty: "basic",
     question: "多項ロジスティック回帰の場合分析対象となるのはどれか？",
     options: [
       "2値の目的変数",
@@ -588,6 +622,7 @@ export const questionsJun1kyu = [
     id: 135,
     topic: "qualreg",
     type: "written",
+    difficulty: "standard",
     question: "ロジスティック回帰モデルの構築において、説明変数の選択と交互作用項の取り扱いについて述べよ。",
     sampleAnswer: "説明変数はドメイン知識と統計的有意性に基づいて選択し、多重共線性を確認する。交互作用項は2つの説明変数の結合効果を捉えるが、解釈複雑性を考慮して導入する。",
     keywords: ["変数選択", "多重共線性", "交互作用", "解釈"],
@@ -599,6 +634,7 @@ export const questionsJun1kyu = [
     id: 136,
     topic: "survival",
     type: "choice",
+    difficulty: "basic",
     question: "カプラン・マイヤー推定量（Kaplan-Meier estimator）が推定するものはどれか？",
     options: [
       "条件付き確率",
@@ -619,6 +655,7 @@ export const questionsJun1kyu = [
     id: 137,
     topic: "survival",
     type: "choice",
+    difficulty: "basic",
     question: "コックス比例ハザードモデルの仮定として重要なものはどれか？",
     options: [
       "誤差項が正規分布する",
@@ -639,6 +676,7 @@ export const questionsJun1kyu = [
     id: 138,
     topic: "survival",
     type: "written",
+    difficulty: "standard",
     question: "生存分析における打ち切り（censoring）とは何か、その処理方法を説明せよ。",
     sampleAnswer: "打ち切りは研究終了時点でも目的事象が起こっていない状況をいう。カプラン・マイヤー推定量やコックスモデルは打ち切りを適切に処理し、有効なデータを活用する。",
     keywords: ["打ち切りデータ", "生存時間", "カプラン・マイヤー", "情報活用"],
@@ -650,6 +688,7 @@ export const questionsJun1kyu = [
     id: 139,
     topic: "mgf",
     type: "choice",
+    difficulty: "basic",
     question: "モーメント母関数（MGF）M(t) = E[eᵗˣ] が有用である理由として正しいものはどれか？",
     options: [
       "データのプロット性質を直感的に示す",
@@ -670,6 +709,7 @@ export const questionsJun1kyu = [
     id: 140,
     topic: "mgf",
     type: "written",
+    difficulty: "standard",
     question: "標準正規分布N(0,1)のモーメント母関数M(t) = exp($t^2$/2)を利用して、4次モーメントE[X⁴]を求めよ。",
     sampleAnswer: "M(t) = exp($t^2$/2)、M'(t) = t exp($t^2$/2)、M''(t) = (1+$t^2$)exp($t^2$/2)、M'''(t) = (3t+t³)exp($t^2$/2)、M⁽⁴⁾(t) = (3+6$t^2$+t⁴)exp($t^2$/2)。M⁽⁴⁾(0) = 3 = E[X⁴]。",
     keywords: ["モーメント", "微分", "標準正規分布", "E[X⁴]=3"],
@@ -681,6 +721,7 @@ export const questionsJun1kyu = [
     id: 141,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "basic",
     question: "強度$\\lambda$のポアソン過程において、到着間隔時間の分布はどれか？",
     options: [
       "ポアソン分布Poi($\\lambda$)",
@@ -701,6 +742,7 @@ export const questionsJun1kyu = [
     id: 142,
     topic: "poisson-process",
     type: "written",
+    difficulty: "standard",
     question: "ポアソン過程の重ね合わせ性質と分岐性質を説明せよ。",
     sampleAnswer: "重ね合わせ：独立したポアソン過程の和もポアソン過程である。分岐：ポアソン過程の各イベントを確率pで2つのグループに分ける場合、各グループもポアソン過程になる。",
     keywords: ["独立", "重ね合わせ", "分岐", "確率的性質"],
@@ -712,6 +754,7 @@ export const questionsJun1kyu = [
     id: 143,
     topic: "bayes",
     type: "choice",
+    difficulty: "basic",
     question: "共役事前分布の利点として正しいものはどれか？",
     options: [
       "常に対称的な分布を生じる",
@@ -732,6 +775,7 @@ export const questionsJun1kyu = [
     id: 144,
     topic: "bayes",
     type: "choice",
+    difficulty: "basic",
     question: "二項分布の尤度関数に対する共役事前分布はどれか？",
     options: [
       "正規分布",
@@ -752,6 +796,7 @@ export const questionsJun1kyu = [
     id: 145,
     topic: "bayes",
     type: "written",
+    difficulty: "standard",
     question: "メトロポリス・ハスティングス法のアルゴリズムを説明し、受理確率の計算式を述べよ。",
     sampleAnswer: "提案分布から候補$\\theta$*を生成し、受理確率 $\\alpha$ = min{1, $\\pi($\\theta$*|y)q($\\theta$|$\\theta$*) / ($\\pi($\\theta$|y)q($\\theta$*|$\\theta$))} で判定する。確率$\\alpha$で受理、1-$\\alpha$で棄却し、遺棄期間後、抽出値は目標分布からのサンプルになる。",
     keywords: ["MCMC", "提案分布", "受理確率", "遺棄期間"],
@@ -763,6 +808,7 @@ export const questionsJun1kyu = [
     id: 146,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "basic",
     question: "多変量正規分布$N(\\mu, \\sum)$の条件付き分布の性質として正しいものはどれか？",
     options: [
       "条件付き分布は正規分布である",
@@ -783,6 +829,7 @@ export const questionsJun1kyu = [
     id: 147,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "basic",
     question: "多変量正規分布からのサンプリング方法として実用的なものはどれか？",
     options: [
       "各成分を独立に正規分布から生成",
@@ -803,6 +850,7 @@ export const questionsJun1kyu = [
     id: 148,
     topic: "mvnormal",
     type: "written",
+    difficulty: "standard",
     question: "多変量正規分布における独立性と無相関性の関係を説明せよ。",
     sampleAnswer: "一般の分布では独立と無相関は異なるが、多変量正規分布では無相関⇔独立が成り立つ。無相関であれば共分散がゼロになり、正規分布の場合これは独立性を意味する。",
     keywords: ["無相関", "独立", "共分散", "正規分布の性質"],
@@ -814,6 +862,7 @@ export const questionsJun1kyu = [
     id: 149,
     topic: "incomplete",
     type: "choice",
+    difficulty: "basic",
     question: "EM（期待値最大化）アルゴリズムの各ステップの名称として正しいものはどれか？",
     options: [
       "E-ステップは期待値を計算、M-ステップは最小化を行う",
@@ -834,6 +883,7 @@ export const questionsJun1kyu = [
     id: 150,
     topic: "incomplete",
     type: "written",
+    difficulty: "standard",
     question: "EMアルゴリズムの5つのステップを説明し、収束条件を述べよ。",
     sampleAnswer: "初期化$\\to$E-ステップ（潜在変数の条件付き期待値計算）$\\to$M-ステップ（尤度関数最大化）$\\to$収束判定$\\to$反復。収束判定は $\\theta$⁽ᵗ⁺¹⁾ - $\\theta$⁽ᵗ⁾ < $\\varepsilon$ または $\\log L$⁽ᵗ⁺¹⁾ - $\\log L$⁽ᵗ⁾ < $\\varepsilon$ で行う。",
     keywords: ["E-ステップ", "M-ステップ", "潜在変数", "尤度関数"],
@@ -845,6 +895,7 @@ export const questionsJun1kyu = [
     id: 151,
     topic: "multreg",
     type: "choice",
+    difficulty: "basic",
     question: "分散拡大係数（VIF）の定義と解釈として正しいものはどれか？",
     options: [
       "VIF = 1 / (1 - Rⱼ^2)で、値が10以上は多重共線性が疑わしい",
@@ -865,6 +916,7 @@ export const questionsJun1kyu = [
     id: 152,
     topic: "multreg",
     type: "choice",
+    difficulty: "basic",
     question: "重回帰モデルで変数選択を行う方法として実用的でないものはどれか？",
     options: [
       "前進選択法（forward selection）",
@@ -885,6 +937,7 @@ export const questionsJun1kyu = [
     id: 153,
     topic: "multreg",
     type: "written",
+    difficulty: "standard",
     question: "重回帰分析における赤池情報量基準（AIC）と修正決定係数（調整$R^2$）の使い分けを説明せよ。",
     sampleAnswer: "AIC = -2$\\log L$ + 2pは情報量損失を評価し、過学習に対する調整を含む。調整$R^2$ = 1 - (1-$R^2$)(n-1)/(n-p-1)は決定係数をp（変数数）で調整する。AICは予測性能重視、調整$R^2$は説明度重視。",
     keywords: ["情報量", "過学習", "予測性能", "説明度"],
@@ -896,6 +949,7 @@ export const questionsJun1kyu = [
     id: 154,
     topic: "contingency",
     type: "choice",
+    difficulty: "basic",
     question: "カイ二乗検定で独立性を検定する場合の帰無仮説として正しいものはどれか？",
     options: [
       "2つの変数は正の相関がある",
@@ -916,6 +970,7 @@ export const questionsJun1kyu = [
     id: 155,
     topic: "contingency",
     type: "written",
+    difficulty: "standard",
     question: "2×2分割表における相対危険度（RR）とオッズ比（OR）を定義し、その使い分けを説明せよ。",
     sampleAnswer: "RR = (a/(a+b)) / (c/(c+d))は前向き研究（コホート研究）で用い、疾病発生確率の比。OR = ad/bcは後向き研究（症例対照研究）で用いられ、オッズの比。ORはRRの近似値となり得る。",
     keywords: ["前向き研究", "後向き研究", "リスク", "オッズ"],
@@ -931,6 +986,7 @@ export const questionsJun1kyu = [
     id: 201,
     topic: "mle",
     type: "choice",
+    difficulty: "standard",
     question: "最尤推定量の漸近的性質として正しいものはどれか？",
     options: [
       "有限標本において常に不偏である",
@@ -951,6 +1007,7 @@ export const questionsJun1kyu = [
     id: 202,
     topic: "mle",
     type: "written",
+    difficulty: "advanced",
     question: "指数分布Exp($\\lambda$)からのn個の独立な標本x₁, ..., xₙに基づき、$\\lambda$の最尤推定量を導出せよ。また、その推定量が不偏であるか否かを示せ。",
     sampleAnswer: "対数尤度関数はℓ($\\lambda$) = n log $\\lambda - \\lambda \\sum x_i$。$\\partial$ℓ/$\\partial \\lambda$ = n/$\\lambda - \\sum x_i$ = 0より、$\\lambda$̂ = n/$\\sum x_i$ = 1/$\\bar{x}$。E[1/$\\bar{X}$]はn/(n-1)・$\\lambda$となるため、$\\lambda$̂は不偏ではない。不偏推定量は(n-1)/(n$\\bar{X}$)である。",
     keywords: ["対数尤度", "微分", "指数分布", "不偏性"],
@@ -962,6 +1019,7 @@ export const questionsJun1kyu = [
     id: 203,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "standard",
     question: "カーネル密度推定におけるバンド幅hの選択について正しいものはどれか？",
     options: [
       "hが大きいほど推定は滑らかになるが、バイアスが大きくなる",
@@ -982,6 +1040,7 @@ export const questionsJun1kyu = [
     id: 204,
     topic: "nonparametric",
     type: "written",
+    difficulty: "advanced",
     question: "スピアマンの順位相関係数とケンドールの順位相関係数の定義と違いを説明せよ。",
     sampleAnswer: "スピアマンの順位相関係数$\\rho$ₛはデータを順位に変換してピアソン相関を計算する。ケンドールの$\\tau$は一致ペアと不一致ペアの比率に基づく。$\\tau$の方が外れ値に対してロバストで、小標本での性質が良い。",
     keywords: ["順位相関", "スピアマン", "ケンドール", "ロバスト性"],
@@ -993,6 +1052,7 @@ export const questionsJun1kyu = [
     id: 205,
     topic: "markov",
     type: "choice",
+    difficulty: "standard",
     question: "マルコフ連鎖における「詳細つり合い条件（detailed balance condition）」として正しいものはどれか？",
     options: [
       "$\\pi_i P_{ij} = \\pi$ⱼ $P_{ji}$ がすべてのi, jについて成立する",
@@ -1013,6 +1073,7 @@ export const questionsJun1kyu = [
     id: 206,
     topic: "markov",
     type: "written",
+    difficulty: "advanced",
     question: "マルコフ連鎖における状態の分類（再帰的・一時的、正再帰・零再帰）について説明せよ。",
     sampleAnswer: "再帰的状態は出発すると確率1で戻る状態、一時的状態は戻らない確率が正の状態である。再帰的状態のうち、平均再帰時間が有限なものを正再帰、無限なものを零再帰と呼ぶ。",
     keywords: ["再帰的", "一時的", "正再帰", "零再帰"],
@@ -1024,6 +1085,7 @@ export const questionsJun1kyu = [
     id: 207,
     topic: "brownian",
     type: "choice",
+    difficulty: "standard",
     question: "標準ブラウン運動B(t)について、Cov(B(s), B(t))の値はどれか？（s < t）",
     options: [
       "s + t",
@@ -1044,6 +1106,7 @@ export const questionsJun1kyu = [
     id: 208,
     topic: "brownian",
     type: "choice",
+    difficulty: "standard",
     question: "幾何ブラウン運動dS = $\\mu$S dt + $\\sigma$S dW(t)の解として正しいものはどれか？",
     options: [
       "S(t) = S(0) exp($\\mu$t + $\\sigma$W(t))",
@@ -1064,6 +1127,7 @@ export const questionsJun1kyu = [
     id: 209,
     topic: "brownian",
     type: "written",
+    difficulty: "advanced",
     question: "伊藤の公式（Itô's formula）の内容を説明し、通常の微積分との違いを述べよ。",
     sampleAnswer: "f(B(t))に対して、df = f'(B(t))dB(t) + (1/2)f''(B(t))dtが成り立つ。通常の微積分と異なり、(dB)^2 = dtとなるため、2次の項が残る。これが伊藤補正項である。",
     keywords: ["伊藤の公式", "伊藤補正", "確率微分", "2次変分"],
@@ -1075,6 +1139,7 @@ export const questionsJun1kyu = [
     id: 210,
     topic: "timeseries",
     type: "choice",
+    difficulty: "standard",
     question: "単位根検定（ADF検定）の帰無仮説と対立仮説として正しいものはどれか？",
     options: [
       "H₀：系列は定常、H₁：系列は非定常",
@@ -1097,6 +1162,7 @@ export const questionsJun1kyu = [
     id: 211,
     topic: "cluster",
     type: "choice",
+    difficulty: "standard",
     question: "DBSCAN（密度ベースクラスタリング）の特徴として正しいものはどれか？",
     options: [
       "クラスタ数を事前に指定する必要がある",
@@ -1117,6 +1183,7 @@ export const questionsJun1kyu = [
     id: 212,
     topic: "cluster",
     type: "written",
+    difficulty: "advanced",
     question: "混合ガウスモデル（GMM）によるクラスタリングとk-meansの関係について説明せよ。",
     sampleAnswer: "GMMは各クラスタをガウス分布で表現し、各データ点の各クラスタへの所属確率（事後確率）を計算するソフトクラスタリングである。k-meansはGMMの特殊な場合（すべてのクラスタの共分散が等方的で等しい場合）と見なせる。",
     keywords: ["ソフトクラスタリング", "ガウス分布", "所属確率", "EMアルゴリズム"],
@@ -1128,6 +1195,7 @@ export const questionsJun1kyu = [
     id: 213,
     topic: "pca",
     type: "choice",
+    difficulty: "standard",
     question: "カイザー基準（Kaiser criterion）による主成分数の決定方法として正しいものはどれか？",
     options: [
       "固有値が0より大きい主成分をすべて採用する",
@@ -1148,6 +1216,7 @@ export const questionsJun1kyu = [
     id: 214,
     topic: "pca",
     type: "written",
+    difficulty: "advanced",
     question: "特異値分解（SVD）と主成分分析の関係を説明せよ。",
     sampleAnswer: "データ行列X（中心化済み）のSVDはX = UDVᵀと分解される。Vの列が主成分の方向（固有ベクトル）、D^2/(n-1)の対角成分が固有値に対応する。XᵀX/(n-1) = VD^2Vᵀ/(n-1)が共分散行列の固有値分解である。",
     keywords: ["特異値分解", "固有ベクトル", "データ行列", "共分散行列"],
@@ -1159,6 +1228,7 @@ export const questionsJun1kyu = [
     id: 215,
     topic: "factor",
     type: "choice",
+    difficulty: "standard",
     question: "直交回転と斜交回転の違いとして正しいものはどれか？",
     options: [
       "直交回転は因子間の相関を許容し、斜交回転は相関を仮定しない",
@@ -1179,6 +1249,7 @@ export const questionsJun1kyu = [
     id: 216,
     topic: "factor",
     type: "written",
+    difficulty: "advanced",
     question: "因子分析における因子数の決定方法を3つ挙げ、それぞれの特徴を説明せよ。",
     sampleAnswer: "①カイザー基準：固有値1以上の因子を採用。②スクリープロット：固有値の減少が緩やかになる点で判断。③平行分析：ランダムデータの固有値と比較し、実データの固有値がランダムデータを上回る因子を採用。",
     keywords: ["カイザー基準", "スクリープロット", "平行分析", "固有値"],
@@ -1190,6 +1261,7 @@ export const questionsJun1kyu = [
     id: 217,
     topic: "anova",
     type: "choice",
+    difficulty: "standard",
     question: "分散分析の前提条件として正しくないものはどれか？",
     options: [
       "各群の母集団が正規分布に従う",
@@ -1210,6 +1282,7 @@ export const questionsJun1kyu = [
     id: 218,
     topic: "anova",
     type: "written",
+    difficulty: "advanced",
     question: "反復測定分散分析（repeated measures ANOVA）の特徴と球面性の仮定について説明せよ。",
     sampleAnswer: "反復測定分散分析は同一被験者から複数回測定されたデータを分析する方法で、被験者間変動を除外できる。球面性の仮定（Mauchlyの検定で確認）が満たされない場合、Greenhouse-GeisserやHuynh-Feldtの補正を行う。",
     keywords: ["反復測定", "球面性", "被験者内変動", "Greenhouse-Geisser"],
@@ -1221,6 +1294,7 @@ export const questionsJun1kyu = [
     id: 219,
     topic: "sampling",
     type: "choice",
+    difficulty: "standard",
     question: "二段抽出法（two-stage sampling）について正しい説明はどれか？",
     options: [
       "母集団を2つの層に分けて抽出する方法",
@@ -1241,6 +1315,7 @@ export const questionsJun1kyu = [
     id: 220,
     topic: "sampling",
     type: "written",
+    difficulty: "advanced",
     question: "比推定量（ratio estimator）の定義と、その有効性の条件を説明せよ。",
     sampleAnswer: "比推定量はŶᵣ = ($\\bar{y} / \\bar{x}$)Xで、補助変数xと目的変数yの比を利用して母平均を推定する。yとxに正の相関がある場合に単純推定量より有効で、変動係数Cv(x) < 2$\\rho$Cv(y)が有効性の条件である。",
     keywords: ["比推定量", "補助変数", "相関", "有効性"],
@@ -1252,6 +1327,7 @@ export const questionsJun1kyu = [
     id: 221,
     topic: "conditional",
     type: "choice",
+    difficulty: "standard",
     question: "条件付き期待値E[X|Y]の性質として正しくないものはどれか？",
     options: [
       "E[aX + bZ|Y] = aE[X|Y] + bE[Z|Y]（線形性）",
@@ -1272,6 +1348,7 @@ export const questionsJun1kyu = [
     id: 222,
     topic: "conditional",
     type: "choice",
+    difficulty: "standard",
     question: "条件付き期待値E[X|Y]は確率変数であるが、その意味として正しいものはどれか？",
     options: [
       "Yの値が確定した場合の固定値である",
@@ -1292,6 +1369,7 @@ export const questionsJun1kyu = [
     id: 223,
     topic: "conditional",
     type: "written",
+    difficulty: "advanced",
     question: "条件付き期待値を用いて、E[X^2]をE[X|Y]とV[X|Y]を用いて表せ。また、その導出過程を示せ。",
     sampleAnswer: "全分散公式V[X] = E[V[X|Y]] + V[E[X|Y]]とV[X] = E[X^2] - (E[X])^2を組み合わせる。E[X^2] = E[E[X^2|Y]] = E[V[X|Y] + (E[X|Y])^2] = E[V[X|Y]] + E[(E[X|Y])^2]。",
     keywords: ["全分散公式", "反復期待", "条件付き分散", "二乗の期待値"],
@@ -1303,6 +1381,7 @@ export const questionsJun1kyu = [
     id: 224,
     topic: "qualreg",
     type: "choice",
+    difficulty: "standard",
     question: "プロビットモデルとロジットモデルの主な違いとして正しいものはどれか？",
     options: [
       "プロビットモデルは標準正規分布の累積分布関数を、ロジットモデルはロジスティック関数をリンク関数に用いる",
@@ -1323,6 +1402,7 @@ export const questionsJun1kyu = [
     id: 225,
     topic: "qualreg",
     type: "written",
+    difficulty: "advanced",
     question: "順序ロジスティック回帰モデル（比例オッズモデル）の構造と比例オッズの仮定について説明せよ。",
     sampleAnswer: "順序ロジスティック回帰はlog(P(Y$\\leq$j)/P(Y>j)) = $\\alpha$ⱼ - X$\\beta$の形で、順序カテゴリを分析する。比例オッズの仮定は、説明変数の効果$\\beta$（傾き）がカテゴリの切断点jに依存しないという仮定である。",
     keywords: ["順序変数", "切断点", "比例オッズ", "累積ロジット"],
@@ -1334,6 +1414,7 @@ export const questionsJun1kyu = [
     id: 226,
     topic: "survival",
     type: "choice",
+    difficulty: "standard",
     question: "ハザード関数h(t)と生存関数S(t)の関係として正しいものはどれか？",
     options: [
       "S(t) = exp(-$\\int$₀ᵗ h(u)du)",
@@ -1354,6 +1435,7 @@ export const questionsJun1kyu = [
     id: 227,
     topic: "survival",
     type: "written",
+    difficulty: "advanced",
     question: "ログランク検定（log-rank test）の目的、検定統計量の構成、および使用上の注意点を説明せよ。",
     sampleAnswer: "ログランク検定は2群以上の生存関数の同一性を検定する。各イベント時点での観測死亡数と期待死亡数の差を合計して検定統計量を構成する。比例ハザードの仮定のもとで検出力が最大となる。",
     keywords: ["生存関数比較", "検定統計量", "期待死亡数", "比例ハザード"],
@@ -1365,6 +1447,7 @@ export const questionsJun1kyu = [
     id: 228,
     topic: "mgf",
     type: "choice",
+    difficulty: "standard",
     question: "独立な確率変数X, Yの和Z = X + YのMGFとして正しいものはどれか？",
     options: [
       "Mz(t) = Mx(t) + My(t)",
@@ -1385,6 +1468,7 @@ export const questionsJun1kyu = [
     id: 229,
     topic: "mgf",
     type: "choice",
+    difficulty: "standard",
     question: "ポアソン分布Poi($\\lambda$)のモーメント母関数として正しいものはどれか？",
     options: [
       "M(t) = $\\lambda$eᵗ",
@@ -1405,6 +1489,7 @@ export const questionsJun1kyu = [
     id: 230,
     topic: "mgf",
     type: "written",
+    difficulty: "advanced",
     question: "キュムラント母関数（cumulant generating function）K(t) = log M(t)の性質と、第1〜第4キュムラントの意味を説明せよ。",
     sampleAnswer: "K(t) = log M(t)とし、κₙ = K⁽ⁿ⁾(0)が第nキュムラントである。κ₁ = 平均、κ₂ = 分散、κ₃は歪度に、κ₄は尖度に関連する。独立な確率変数の和のキュムラントは各キュムラントの和となる加法性を持つ。",
     keywords: ["キュムラント", "加法性", "歪度", "尖度"],
@@ -1416,6 +1501,7 @@ export const questionsJun1kyu = [
     id: 231,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "standard",
     question: "非斉次ポアソン過程（非定常ポアソン過程）について正しいものはどれか？",
     options: [
       "強度関数$\\lambda(t)が時間に依存しない",
@@ -1436,6 +1522,7 @@ export const questionsJun1kyu = [
     id: 232,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "standard",
     question: "強度$\\lambda$のポアソン過程において、n番目のイベントが起きる時刻Tₙの分布はどれか？",
     options: [
       "指数分布Exp(n$\\lambda$)",
@@ -1456,6 +1543,7 @@ export const questionsJun1kyu = [
     id: 233,
     topic: "poisson-process",
     type: "written",
+    difficulty: "advanced",
     question: "ポアソン過程の条件付き性質として、[0,T]でN(T)=n個のイベントが発生した場合の各イベント発生時刻の条件付き分布を述べよ。",
     sampleAnswer: "[0,T]でn個のイベントが発生したとき、n個のイベント時刻は[0,T]上の一様分布からのn個の順序統計量と同じ分布を持つ。すなわち、条件付きで各イベントは独立に一様分布U(0,T)に従い、それを順序付けたものである。",
     keywords: ["条件付き分布", "一様分布", "順序統計量", "ポアソン過程"],
@@ -1467,6 +1555,7 @@ export const questionsJun1kyu = [
     id: 234,
     topic: "bayes",
     type: "choice",
+    difficulty: "standard",
     question: "ベイズ推定におけるMAP推定量（最大事後確率推定量）について正しいものはどれか？",
     options: [
       "事前分布を無視した推定量である",
@@ -1487,6 +1576,7 @@ export const questionsJun1kyu = [
     id: 235,
     topic: "bayes",
     type: "written",
+    difficulty: "advanced",
     question: "ベイズファクター（Bayes factor）の定義と、モデル選択における使い方を説明せよ。",
     sampleAnswer: "ベイズファクターBF₁₂ = P(y|M₁)/P(y|M₂)は、2つのモデルの周辺尤度の比である。BF₁₂ > 1ならM₁が支持され、BF₁₂ > 10で強い支持とされる。頻度論のp値と異なり、帰無仮説を支持する証拠も定量化できる。",
     keywords: ["周辺尤度", "モデル選択", "証拠の強さ", "帰無仮説支持"],
@@ -1498,6 +1588,7 @@ export const questionsJun1kyu = [
     id: 236,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "standard",
     question: "多変量正規分布$N(\\mu, \\sum)$に従うベクトルXに対して、マハラノビス距離D^2 = (X-$\\mu$)ᵀ$\\sum$^{-1}(X-$\\mu$)の分布はどれか？",
     options: [
       "正規分布N(0, 1)",
@@ -1518,6 +1609,7 @@ export const questionsJun1kyu = [
     id: 237,
     topic: "mvnormal",
     type: "written",
+    difficulty: "advanced",
     question: "ホテリングのT^2検定の目的、検定統計量、およびF分布との関係を説明せよ。",
     sampleAnswer: "ホテリングのT^2検定は多変量の平均ベクトル$\\mu$が$\\mu$₀に等しいかを検定する。T^2 = n($\\bar{x} - \\mu$₀)ᵀS^{-1}($\\bar{x} - \\mu$₀)で定義され、T^2(n-1)/(p(n-1)) ~ F(p, n-p)の関係がある。",
     keywords: ["平均ベクトル", "T^2統計量", "F分布", "多変量検定"],
@@ -1529,6 +1621,7 @@ export const questionsJun1kyu = [
     id: 238,
     topic: "incomplete",
     type: "choice",
+    difficulty: "standard",
     question: "EMアルゴリズムの収束性について正しいものはどれか？",
     options: [
       "常に大域的最適解に収束する",
@@ -1549,6 +1642,7 @@ export const questionsJun1kyu = [
     id: 239,
     topic: "incomplete",
     type: "choice",
+    difficulty: "standard",
     question: "混合正規分布のパラメータ推定にEMアルゴリズムを適用する場合、E-ステップで計算するものはどれか？",
     options: [
       "各データ点の平均と分散",
@@ -1569,6 +1663,7 @@ export const questionsJun1kyu = [
     id: 240,
     topic: "incomplete",
     type: "written",
+    difficulty: "advanced",
     question: "不完全データ問題の具体例を3つ挙げ、EMアルゴリズムがなぜ有効であるかを説明せよ。",
     sampleAnswer: "①混合分布（各データの成分帰属が潜在変数）②欠測値を含むデータ（欠測メカニズムが潜在的）③打ち切りデータ（正確な観測値が不明）。EMは潜在変数の条件付き期待値を利用して完全データの尤度に帰着させるため、直接最大化が困難な尤度関数を反復的に最適化できる。",
     keywords: ["混合分布", "欠測値", "打ち切り", "潜在変数"],
@@ -1580,6 +1675,7 @@ export const questionsJun1kyu = [
     id: 241,
     topic: "multreg",
     type: "choice",
+    difficulty: "standard",
     question: "重回帰分析の残差診断において、ダービン・ワトソン統計量が検出するものはどれか？",
     options: [
       "多重共線性",
@@ -1600,6 +1696,7 @@ export const questionsJun1kyu = [
     id: 242,
     topic: "multreg",
     type: "written",
+    difficulty: "advanced",
     question: "LASSO回帰（L1正則化）とリッジ回帰（L2正則化）の違いを、推定量の性質と変数選択の観点から説明せよ。",
     sampleAnswer: "LASSO回帰は$\\sum$|$\\beta$ⱼ|のペナルティを課し、一部の係数を完全にゼロにする（スパース推定）ため変数選択の機能を持つ。リッジ回帰は$\\sum \\beta$ⱼ^2のペナルティを課し、係数を縮小するがゼロにはしない。LASSOはL1ノルム、リッジはL2ノルムによる正則化である。",
     keywords: ["L1正則化", "L2正則化", "スパース", "変数選択"],
@@ -1611,6 +1708,7 @@ export const questionsJun1kyu = [
     id: 243,
     topic: "contingency",
     type: "choice",
+    difficulty: "standard",
     question: "フィッシャーの正確検定（Fisher's exact test）について正しいものはどれか？",
     options: [
       "大標本でのみ正確な検定である",
@@ -1631,6 +1729,7 @@ export const questionsJun1kyu = [
     id: 244,
     topic: "contingency",
     type: "choice",
+    difficulty: "standard",
     question: "分割表の関連性の強さを測る指標として、クラメールのV係数の定義はどれか？",
     options: [
       "V = $\\chi^2$ / n",
@@ -1651,6 +1750,7 @@ export const questionsJun1kyu = [
     id: 245,
     topic: "contingency",
     type: "written",
+    difficulty: "advanced",
     question: "マクネマー検定（McNemar's test）の用途と検定統計量を説明せよ。",
     sampleAnswer: "マクネマー検定は対応のある2×2分割表で、周辺確率の変化を検定する。検定統計量は$\\chi^2$ = (b-c)^2/(b+c)で、bとcは不一致セルの度数。帰無仮説は「変化がない（対称性がある）」である。",
     keywords: ["対応のあるデータ", "不一致セル", "対称性", "周辺確率の変化"],
@@ -1662,6 +1762,7 @@ export const questionsJun1kyu = [
     id: 246,
     topic: "graphical",
     type: "choice",
+    difficulty: "standard",
     question: "有向非巡回グラフ（DAG）に基づくベイジアンネットワークにおいて、同時分布の因数分解として正しいものはどれか？",
     options: [
       "P(X₁,...,Xₙ) = Π P(Xᵢ)（すべて独立）",
@@ -1682,6 +1783,7 @@ export const questionsJun1kyu = [
     id: 247,
     topic: "graphical",
     type: "choice",
+    difficulty: "standard",
     question: "無向グラフィカルモデル（マルコフ確率場）において、2つのノードXとYが条件付き独立となる条件はどれか？",
     options: [
       "XとYが隣接していない場合",
@@ -1702,6 +1804,7 @@ export const questionsJun1kyu = [
     id: 248,
     topic: "graphical",
     type: "choice",
+    difficulty: "standard",
     question: "ベイジアンネットワークにおけるd-分離（d-separation）の概念として正しいものはどれか？",
     options: [
       "2つのノードの間の距離が一定以上であること",
@@ -1722,6 +1825,7 @@ export const questionsJun1kyu = [
     id: 249,
     topic: "graphical",
     type: "written",
+    difficulty: "advanced",
     question: "ガウシアングラフィカルモデルにおける精度行列（逆共分散行列）とグラフ構造の関係を説明せよ。",
     sampleAnswer: "ガウシアングラフィカルモデルでは、精度行列$\\Omega = \\sum$^{-1}の(i,j)要素$\\Omega$ᵢⱼ = 0であることとXᵢとXⱼが他のすべての変数で条件付けた場合に独立であることが同値。$\\Omega$ᵢⱼ $\\neq$ 0の場合にグラフ上にXᵢとXⱼの間に辺が存在する。",
     keywords: ["精度行列", "偏相関", "条件付き独立", "スパース推定"],
@@ -1731,6 +1835,7 @@ export const questionsJun1kyu = [
     id: 250,
     topic: "graphical",
     type: "written",
+    difficulty: "advanced",
     question: "構造方程式モデリング（SEM）とグラフィカルモデルの関係について説明せよ。",
     sampleAnswer: "SEMは観測変数間の因果関係をDAGで表現し、潜在変数を含むモデルを推定する手法。パス解析は観測変数のみのSEMに対応する。グラフィカルモデルの枠組みでDAGの因果解釈を与え、直接効果・間接効果の分解が可能。",
     keywords: ["因果関係", "潜在変数", "パス解析", "直接効果・間接効果"],
@@ -1742,6 +1847,7 @@ export const questionsJun1kyu = [
     id: 251,
     topic: "other_mv",
     type: "choice",
+    difficulty: "standard",
     question: "正準相関分析（canonical correlation analysis）の目的として正しいものはどれか？",
     options: [
       "1つの変数群の次元を削減する",
@@ -1762,6 +1868,7 @@ export const questionsJun1kyu = [
     id: 252,
     topic: "other_mv",
     type: "choice",
+    difficulty: "standard",
     question: "多次元尺度法（MDS）の目的として正しいものはどれか？",
     options: [
       "高次元データの距離行列から低次元空間での配置を求める",
@@ -1782,6 +1889,7 @@ export const questionsJun1kyu = [
     id: 253,
     topic: "other_mv",
     type: "choice",
+    difficulty: "standard",
     question: "対応分析（correspondence analysis）の主な分析対象はどれか？",
     options: [
       "連続変数の共分散行列",
@@ -1802,6 +1910,7 @@ export const questionsJun1kyu = [
     id: 254,
     topic: "other_mv",
     type: "written",
+    difficulty: "advanced",
     question: "MANOVAの検定統計量としてウィルクスのΛ（Lambda）を定義し、その解釈を述べよ。",
     sampleAnswer: "ウィルクスのΛ = |W| / |W + B|（Wは群内平方和積和行列、Bは群間平方和積和行列）で定義される。Λは0から1の値をとり、0に近いほど群間差が大きいことを示す。帰無仮説のもとでΛはF分布に近似的に変換できる。",
     keywords: ["群内変動", "群間変動", "ウィルクスのΛ", "多変量分散分析"],
@@ -1811,6 +1920,7 @@ export const questionsJun1kyu = [
     id: 255,
     topic: "other_mv",
     type: "written",
+    difficulty: "advanced",
     question: "独立成分分析（ICA）と主成分分析（PCA）の違いを説明せよ。",
     sampleAnswer: "PCAは分散最大化（2次統計量）に基づき直交成分を抽出するが、ICAは独立性（高次統計量も含む）を最大化して成分を抽出する。ICAは非ガウス性を仮定し、信号分離（ブラインドソース分離）に用いられる。",
     keywords: ["独立性", "非ガウス性", "ブラインドソース分離", "高次統計量"],
@@ -1822,6 +1932,7 @@ export const questionsJun1kyu = [
     id: 256,
     topic: "discriminant",
     type: "choice",
+    difficulty: "standard",
     question: "フィッシャーの線形判別関数の目的として正しいものはどれか？",
     options: [
       "データの分散を最大化する方向を見つける",
@@ -1842,6 +1953,7 @@ export const questionsJun1kyu = [
     id: 257,
     topic: "discriminant",
     type: "choice",
+    difficulty: "standard",
     question: "2群の判別分析において、ベイズ判別規則の判別関数として正しいものはどれか？（事前確率$\\pi$₁, $\\pi$₂、確率密度f₁(x), f₂(x)）",
     options: [
       "$\\pi$₁f₁(x) > $\\pi$₂f₂(x) ならば群1に判別",
@@ -1862,6 +1974,7 @@ export const questionsJun1kyu = [
     id: 258,
     topic: "discriminant",
     type: "choice",
+    difficulty: "standard",
     question: "線形判別分析（LDA）と二次判別分析（QDA）の使い分けとして正しいものはどれか？",
     options: [
       "LDAは常にQDAより性能が良い",
@@ -1882,6 +1995,7 @@ export const questionsJun1kyu = [
     id: 259,
     topic: "discriminant",
     type: "written",
+    difficulty: "advanced",
     question: "判別分析における交差検証（クロスバリデーション）による誤判別率の推定方法を説明せよ。",
     sampleAnswer: "Leave-one-out交差検証では、1つのデータを除いて判別関数を構築し、除いたデータを判別する。これをすべてのデータに対して繰り返し、誤判別された割合を推定誤判別率とする。再代入法による誤判別率は楽観的バイアスがあるため、交差検証が推奨される。",
     keywords: ["Leave-one-out", "再代入誤差", "楽観的バイアス", "汎化誤差"],
@@ -1891,6 +2005,7 @@ export const questionsJun1kyu = [
     id: 260,
     topic: "discriminant",
     type: "written",
+    difficulty: "advanced",
     question: "マハラノビス距離に基づく判別分析の原理を説明し、ユークリッド距離との違いを述べよ。",
     sampleAnswer: "マハラノビス距離d(x, $\\mu$ₖ) = $\\sqrt{(x-$\\mu$ₖ}$ᵀ$\\sum$^{-1}(x-$\\mu$ₖ))は変数間の相関と分散を考慮した距離で、各群の重心からのマハラノビス距離が最小の群に判別する。ユークリッド距離は変数間の相関を無視するため、相関がある場合に不適切な判別境界を与える。",
     keywords: ["マハラノビス距離", "共分散行列", "ユークリッド距離", "重心"],
@@ -1906,6 +2021,7 @@ export const questionsJun1kyu = [
     id: 301,
     topic: "mle",
     type: "choice",
+    difficulty: "standard",
     question: "スコア関数U($\\theta$) = $\\partial$log L($\\theta$)/$\\partial \\theta$の期待値E[U($\\theta$)]として正しいものはどれか？",
     options: [
       "E[U($\\theta$)] = $I(\\theta)$",
@@ -1926,6 +2042,7 @@ export const questionsJun1kyu = [
     id: 302,
     topic: "mle",
     type: "choice",
+    difficulty: "standard",
     question: "多パラメータモデルにおけるフィッシャー情報行列$I(\\theta)$の(i,j)成分の定義として正しいものはどれか？",
     options: [
       "$I(\\theta)$ᵢⱼ = E[$\\partial$log L/$\\partial \\theta$ᵢ]",
@@ -1946,6 +2063,7 @@ export const questionsJun1kyu = [
     id: 303,
     topic: "mle",
     type: "written",
+    difficulty: "advanced",
     question: "尤度比検定（Likelihood Ratio Test）の検定統計量を定義し、その漸近分布を述べよ。また、ワルド検定およびスコア検定との関係を説明せよ。",
     sampleAnswer: "尤度比検定統計量は-2log Λ = -2($\\log L$($\\hat{\\theta}$₀) - $\\log L$($\\hat{\\theta}$))で定義される。帰無仮説のもとで漸近的に$\\chi^2(r)に従う（rは拘束条件の数）。ワルド検定はMLEと帰無仮説値の差に基づき、スコア検定は帰無仮説のもとでのスコア関数に基づく。三者は漸近的に同等である。",
     keywords: ["尤度比", "ワルド検定", "スコア検定", "カイ二乗分布"],
@@ -1957,6 +2075,7 @@ export const questionsJun1kyu = [
     id: 304,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "standard",
     question: "ブートストラップ法の基本的な考え方として正しいものはどれか？",
     options: [
       "母集団分布を正規分布と仮定してパラメータを推定する",
@@ -1977,6 +2096,7 @@ export const questionsJun1kyu = [
     id: 305,
     topic: "nonparametric",
     type: "choice",
+    difficulty: "standard",
     question: "コルモゴロフ・スミルノフ検定（K-S検定）について正しいものはどれか？",
     options: [
       "経験分布関数と理論分布関数の最大乖離を検定統計量とする",
@@ -1997,6 +2117,7 @@ export const questionsJun1kyu = [
     id: 306,
     topic: "nonparametric",
     type: "written",
+    difficulty: "advanced",
     question: "置換検定（permutation test）の原理を説明し、パラメトリック検定と比較した場合の利点と欠点を述べよ。",
     sampleAnswer: "置換検定は帰無仮説のもとでデータのラベルを無作為に並び替え、検定統計量の分布を構成して正確なp値を計算する。利点は分布の仮定が不要で正確な検定が可能なこと、欠点は計算量が大きく（n!通り）、大標本ではモンテカルロ近似が必要なことである。",
     keywords: ["並び替え", "正確なp値", "分布仮定不要", "計算量"],
@@ -2008,6 +2129,7 @@ export const questionsJun1kyu = [
     id: 307,
     topic: "markov",
     type: "choice",
+    difficulty: "standard",
     question: "マルコフ連鎖の混合時間（mixing time）について正しいものはどれか？",
     options: [
       "定常分布に収束するまでの平均遷移回数",
@@ -2028,6 +2150,7 @@ export const questionsJun1kyu = [
     id: 308,
     topic: "markov",
     type: "choice",
+    difficulty: "standard",
     question: "吸収マルコフ連鎖において、吸収されるまでの平均ステップ数を求めるための基本行列Nの定義はどれか？",
     options: [
       "N = (I - Q)^{-1}（Qは一時的状態間の推移確率部分行列）",
@@ -2048,6 +2171,7 @@ export const questionsJun1kyu = [
     id: 309,
     topic: "markov",
     type: "written",
+    difficulty: "advanced",
     question: "ギブスサンプラーのアルゴリズムを説明し、メトロポリス・ハスティングス法の特殊な場合であることを示せ。",
     sampleAnswer: "ギブスサンプラーは各変数を順番に、他の変数を固定した条件付き分布から抽出する。各更新ステップでは完全条件付き分布p($x_i$|x₋ᵢ)から直接サンプリングするため、受理確率は常に1である。これはメトロポリス・ハスティングス法において提案分布を完全条件付き分布とした場合に対応する。",
     keywords: ["完全条件付き分布", "受理確率1", "逐次更新", "MCMC"],
@@ -2059,6 +2183,7 @@ export const questionsJun1kyu = [
     id: 310,
     topic: "brownian",
     type: "choice",
+    difficulty: "standard",
     question: "ブラウン運動B(t)のパス（標本路）の性質として正しいものはどれか？",
     options: [
       "ほとんどすべてのパスは連続かつ微分可能である",
@@ -2079,6 +2204,7 @@ export const questionsJun1kyu = [
     id: 311,
     topic: "brownian",
     type: "choice",
+    difficulty: "standard",
     question: "ブラウン運動B(t)の二次変分（quadratic variation）[B]_Tの値として正しいものはどれか？",
     options: [
       "[B]_T = 0",
@@ -2099,6 +2225,7 @@ export const questionsJun1kyu = [
     id: 312,
     topic: "brownian",
     type: "written",
+    difficulty: "advanced",
     question: "ブラウン橋（Brownian bridge）の定義、性質、および統計学での応用を説明せよ。",
     sampleAnswer: "ブラウン橋B⁰(t)は条件B(0)=0かつB(1)=0を満たすブラウン運動で、B⁰(t) = B(t) - tB(1)で構成される。E[B⁰(t)] = 0、V[B⁰(t)] = t(1-t)、Cov(B⁰(s),B⁰(t)) = s(1-t)（s$\\leq$t）の性質を持つ。コルモゴロフ・スミルノフ検定の帰無分布の導出に用いられる。",
     keywords: ["条件付きブラウン運動", "始点終点固定", "K-S検定", "経験過程"],
@@ -2110,6 +2237,7 @@ export const questionsJun1kyu = [
     id: 313,
     topic: "timeseries",
     type: "choice",
+    difficulty: "standard",
     question: "共和分（cointegration）の概念として正しいものはどれか？",
     options: [
       "2つの定常な時系列の相関が高いこと",
@@ -2130,6 +2258,7 @@ export const questionsJun1kyu = [
     id: 314,
     topic: "timeseries",
     type: "choice",
+    difficulty: "standard",
     question: "状態空間モデルにおけるカルマンフィルターの役割として正しいものはどれか？",
     options: [
       "時系列データの季節成分のみを推定する",
@@ -2150,6 +2279,7 @@ export const questionsJun1kyu = [
     id: 315,
     topic: "timeseries",
     type: "written",
+    difficulty: "advanced",
     question: "スペクトル密度関数の定義とその解釈を説明し、AR(1)過程のスペクトル密度を導出せよ。",
     sampleAnswer: "スペクトル密度関数S($\\omega$)は自己共分散関数$\\gamma(h)のフーリエ変換S($\\omega$) = $\\sum$_{h=-$\\infty$}^{$\\infty$} $\\gamma(h)e^{-i$\\omega$h}で定義される。各周波数$\\omega$における変動の寄与を表す。AR(1)過程X_t = $\\varphi$X_{t-1} + $\\varepsilon$_t（$\\varepsilon$_t ~ WN(0,$\\sigma^2$)）のスペクトル密度はS($\\omega$) = $\\sigma^2$/(|1 - $\\varphi$e^{-i$\\omega$}|^2) = $\\sigma^2$/(1 - 2$\\varphi$cos($\\omega$) + $\\varphi$^2)である。",
     keywords: ["フーリエ変換", "自己共分散", "周波数領域", "AR(1)"],
@@ -2161,6 +2291,7 @@ export const questionsJun1kyu = [
     id: 316,
     topic: "cluster",
     type: "choice",
+    difficulty: "standard",
     question: "階層的クラスタリングの結果を表すデンドログラム（樹形図）について正しいものはどれか？",
     options: [
       "デンドログラムの縦軸はデータの次元数を表す",
@@ -2181,6 +2312,7 @@ export const questionsJun1kyu = [
     id: 317,
     topic: "cluster",
     type: "choice",
+    difficulty: "standard",
     question: "スペクトラルクラスタリングの基本的なアプローチとして正しいものはどれか？",
     options: [
       "データの共分散行列の固有値を利用する",
@@ -2201,6 +2333,7 @@ export const questionsJun1kyu = [
     id: 318,
     topic: "cluster",
     type: "written",
+    difficulty: "advanced",
     question: "クラスタリングの外的評価指標（ランド指数、調整ランド指数）と内的評価指標（シルエット係数）の違いを説明せよ。",
     sampleAnswer: "外的評価指標は真のクラスタラベルとの一致度を測る。ランド指数RI = (a+d)/C(n,2)（a:同クラスタ一致ペア数、d:異クラスタ一致ペア数）。調整ランド指数ARIはランダムなクラスタリングでの期待値を補正する。内的評価指標はラベルなしでクラスタの質を測り、シルエット係数s(i) = (b(i)-a(i))/max(a(i),b(i))で凝集度と分離度を評価する。",
     keywords: ["ランド指数", "調整ランド指数", "シルエット係数", "外的・内的評価"],
@@ -2212,6 +2345,7 @@ export const questionsJun1kyu = [
     id: 319,
     topic: "pca",
     type: "choice",
+    difficulty: "standard",
     question: "カーネルPCA（Kernel PCA）の利点として正しいものはどれか？",
     options: [
       "線形PCAよりも計算が高速である",
@@ -2232,6 +2366,7 @@ export const questionsJun1kyu = [
     id: 320,
     topic: "pca",
     type: "choice",
+    difficulty: "standard",
     question: "PCAにおいてバイプロット（biplot）が表示する情報として正しいものはどれか？",
     options: [
       "主成分スコアのみを2次元平面に表示する",
@@ -2252,6 +2387,7 @@ export const questionsJun1kyu = [
     id: 321,
     topic: "pca",
     type: "written",
+    difficulty: "advanced",
     question: "スパースPCA（Sparse PCA）の目的と定式化を説明し、通常のPCAとの違いを述べよ。",
     sampleAnswer: "スパースPCAは主成分の負荷量にL1ペナルティを課し、多くの負荷量をゼロにする。定式化はmax{aᵀ$\\sum$a - $\\lambda$||a||₁} s.t. ||a||₂ = 1である。通常のPCAでは全変数が非ゼロの負荷量を持つため解釈が困難だが、スパースPCAでは少数の変数のみが寄与するため解釈性が向上する。",
     keywords: ["L1ペナルティ", "スパース", "解釈性", "変数選択"],
@@ -2263,6 +2399,7 @@ export const questionsJun1kyu = [
     id: 322,
     topic: "factor",
     type: "choice",
+    difficulty: "standard",
     question: "因子分析モデル x = Λf + $\\varepsilon$ において、因子負荷行列Λの不定性（回転不定性）が生じる理由はどれか？",
     options: [
       "因子fの分散が1に標準化されているため",
@@ -2283,6 +2420,7 @@ export const questionsJun1kyu = [
     id: 323,
     topic: "factor",
     type: "choice",
+    difficulty: "standard",
     question: "確認的因子分析（CFA）と探索的因子分析（EFA）の違いとして正しいものはどれか？",
     options: [
       "CFAは因子構造を事前に仮定しモデルの適合度を検定するが、EFAはデータから因子構造を探索的に抽出する",
@@ -2303,6 +2441,7 @@ export const questionsJun1kyu = [
     id: 324,
     topic: "factor",
     type: "written",
+    difficulty: "advanced",
     question: "因子分析における推定法（主因子法、最尤法、最小残差法）の特徴と使い分けを説明せよ。",
     sampleAnswer: "主因子法は反復的に共通性を推定して固有値分解を行う方法で、分布の仮定が不要。最尤法は正規性を仮定し、尤度関数を最大化して推定し、モデルの適合度検定（$\\chi^2$検定）が可能。最小残差法（OLS法）は残差行列の二乗和を最小化し、分布の仮定なしに安定した推定を与える。",
     keywords: ["主因子法", "最尤法", "最小残差法", "適合度検定"],
@@ -2314,6 +2453,7 @@ export const questionsJun1kyu = [
     id: 325,
     topic: "anova",
     type: "choice",
+    difficulty: "standard",
     question: "入れ子デザイン（nested design）と交差デザイン（crossed design）の違いとして正しいものはどれか？",
     options: [
       "入れ子デザインでは因子Bの水準が因子Aの各水準内で異なり、交差デザインでは因子Aと因子Bのすべての水準の組み合わせが存在する",
@@ -2334,6 +2474,7 @@ export const questionsJun1kyu = [
     id: 326,
     topic: "anova",
     type: "choice",
+    difficulty: "standard",
     question: "等分散性の仮定が満たされない場合の分散分析の代替法として正しいものはどれか？",
     options: [
       "ウェルチのANOVA（Welch's ANOVA）",
@@ -2354,6 +2495,7 @@ export const questionsJun1kyu = [
     id: 327,
     topic: "anova",
     type: "written",
+    difficulty: "advanced",
     question: "効果量（effect size）の指標としてηp^2（偏イータ二乗）とCohenのfを定義し、分散分析における結果の実質的意義の評価方法を説明せよ。",
     sampleAnswer: "ηp^2 = SS_effect / (SS_effect + SS_error)で、当該効果が説明する分散の割合を表す。Cohenのf = $\\sqrt{ηp^2/(1-ηp^2}$)で定義される。Cohenの基準ではf = 0.10が小、0.25が中、0.40が大の効果。統計的有意性だけでなく効果量で実質的意義を判断し、検定力分析と組み合わせてサンプルサイズ設計に用いる。",
     keywords: ["偏イータ二乗", "Cohenのf", "実質的意義", "検定力分析"],
@@ -2365,6 +2507,7 @@ export const questionsJun1kyu = [
     id: 328,
     topic: "sampling",
     type: "choice",
+    difficulty: "standard",
     question: "ホロビッツ・トンプソン推定量（Horvitz-Thompson estimator）について正しいものはどれか？",
     options: [
       "各単位の抽出確率$\\pi_i$を用いてŶ_HT = $\\sum(y_i / \\pi_i)$で定義される不偏推定量である",
@@ -2385,6 +2528,7 @@ export const questionsJun1kyu = [
     id: 329,
     topic: "sampling",
     type: "choice",
+    difficulty: "standard",
     question: "無回答バイアス（nonresponse bias）への対処方法として適切でないものはどれか？",
     options: [
       "事後層化による加重調整",
@@ -2405,6 +2549,7 @@ export const questionsJun1kyu = [
     id: 330,
     topic: "sampling",
     type: "written",
+    difficulty: "advanced",
     question: "クラスター抽出法（集落抽出法）の設計効果（design effect, deff）を定義し、その値が1より大きくなる理由を説明せよ。",
     sampleAnswer: "設計効果deff = V_cluster($\\bar{y}$)/V_SRS($\\bar{y}$)で、クラスター抽出の分散と同サンプルサイズの単純無作為抽出の分散の比。deff ≈ 1 + (m-1)$\\rho$（mはクラスターサイズ、$\\rho$は級内相関係数）。同一クラスター内の個体は類似する傾向（$\\rho$ > 0）があるため、クラスター抽出は同サンプルサイズの単純無作為抽出より精度が低く、deff > 1となる。",
     keywords: ["設計効果", "級内相関", "クラスターサイズ", "有効サンプルサイズ"],
@@ -2416,6 +2561,7 @@ export const questionsJun1kyu = [
     id: 331,
     topic: "conditional",
     type: "choice",
+    difficulty: "standard",
     question: "条件付き期待値のタワー性質（tower property）E[E[X|Y,Z]|Y] = E[X|Y]の直観的な意味として正しいものはどれか？",
     options: [
       "情報量が多い条件付けから少ない条件付けへ移行すると情報が失われる",
@@ -2436,6 +2582,7 @@ export const questionsJun1kyu = [
     id: 332,
     topic: "conditional",
     type: "choice",
+    difficulty: "standard",
     question: "条件付き期待値E[X|Y]が最良予測子（best predictor）である理由として正しいものはどれか？",
     options: [
       "すべてのYの関数g(Y)の中でE[(X-g(Y))^2]を最小化するから",
@@ -2456,6 +2603,7 @@ export const questionsJun1kyu = [
     id: 333,
     topic: "conditional",
     type: "written",
+    difficulty: "advanced",
     question: "条件付き独立性X ⊥ Z | Yの定義を述べ、無条件の独立性X ⊥ Zとの関係について、成立・不成立の例を挙げて説明せよ。",
     sampleAnswer: "条件付き独立性X ⊥ Z | Yは、Yが与えられたときP(X,Z|Y) = P(X|Y)P(Z|Y)が成り立つことである。条件付き独立が無条件の独立を意味するとは限らない。例：XとZが独立な正規分布でY = X + Zとすると、X ⊥ Zだが X ⊥̸ Z | Y（Yを知るとXとZは従属になる）。逆に、X = Y + $\\varepsilon$でZ = Y + $\\delta$（$\\varepsilon$,$\\delta$独立、Yは潜在）の場合、X ⊥̸ ZだがX ⊥ Z | Y。",
     keywords: ["条件付き独立", "無条件独立", "ベイジアンネットワーク", "合流点"],
@@ -2467,6 +2615,7 @@ export const questionsJun1kyu = [
     id: 334,
     topic: "qualreg",
     type: "choice",
+    difficulty: "standard",
     question: "ロジスティック回帰モデルの適合度を評価する指標として適切なものはどれか？",
     options: [
       "通常の決定係数$R^2$",
@@ -2487,6 +2636,7 @@ export const questionsJun1kyu = [
     id: 335,
     topic: "qualreg",
     type: "choice",
+    difficulty: "standard",
     question: "完全分離（complete separation）がロジスティック回帰で問題となる理由として正しいものはどれか？",
     options: [
       "最尤推定量が有限の値に収束しない（無限大に発散する）",
@@ -2507,6 +2657,7 @@ export const questionsJun1kyu = [
     id: 336,
     topic: "qualreg",
     type: "written",
+    difficulty: "advanced",
     question: "ロジスティック回帰における尤度関数の導出過程と、ニュートン・ラフソン法（反復再重み付け最小二乗法、IRLS）によるパラメータ推定アルゴリズムを説明せよ。",
     sampleAnswer: "Yᵢ ~ Bernoulli($p_i$)、$p_i$ = 1/(1+exp(-Xᵢ$\\beta$))として、対数尤度ℓ($\\beta$) = $\\sum${$y_i$log $p_i$ + (1-$y_i$)log(1-$p_i$)}。スコア方程式$\\partial$ℓ/$\\partial \\beta$ = Xᵀ(y-p) = 0は閉形式で解けないため、ニュートン・ラフソン法$\\beta$^{(t+1)} = $\\beta$^{(t)} + (XᵀWX)^{-1}Xᵀ(y-p)で反復推定する。ここでW = diag($p_i(1-$p_i$))は重み行列で、IRLSとして実装される。",
     keywords: ["対数尤度", "スコア関数", "IRLS", "ニュートン・ラフソン"],
@@ -2518,6 +2669,7 @@ export const questionsJun1kyu = [
     id: 337,
     topic: "survival",
     type: "choice",
+    difficulty: "standard",
     question: "加速故障時間モデル（AFT model）とコックス比例ハザードモデルの違いとして正しいものはどれか？",
     options: [
       "AFTモデルはハザード関数を直接モデル化し、コックスモデルは生存時間を直接モデル化する",
@@ -2538,6 +2690,7 @@ export const questionsJun1kyu = [
     id: 338,
     topic: "survival",
     type: "choice",
+    difficulty: "standard",
     question: "競合リスクモデル（competing risks model）について正しいものはどれか？",
     options: [
       "複数の原因による故障を独立に分析できるモデルである",
@@ -2558,6 +2711,7 @@ export const questionsJun1kyu = [
     id: 339,
     topic: "survival",
     type: "written",
+    difficulty: "advanced",
     question: "ワイブル分布を用いたパラメトリック生存分析について、ハザード関数の形状パラメータの役割を説明し、指数分布との関係を述べよ。",
     sampleAnswer: "ワイブル分布のハザード関数はh(t) = ($\\gamma / \\lambda$)(t/$\\lambda$)^{$\\gamma$-1}で、形状パラメータ$\\gamma$が時間に対するハザードの変化を決定する。$\\gamma$=1で指数分布（一定ハザード）、$\\gamma$>1で増加ハザード（老化）、$\\gamma$<1で減少ハザード（初期故障）を表す。生存関数はS(t) = exp(-(t/$\\lambda$)^$\\gamma$)である。",
     keywords: ["ワイブル分布", "形状パラメータ", "指数分布", "ハザードの時間依存性"],
@@ -2569,6 +2723,7 @@ export const questionsJun1kyu = [
     id: 340,
     topic: "mgf",
     type: "choice",
+    difficulty: "standard",
     question: "確率母関数G(s) = E[sˣ]が特に有用となる確率変数の種類はどれか？",
     options: [
       "連続確率変数",
@@ -2589,6 +2744,7 @@ export const questionsJun1kyu = [
     id: 341,
     topic: "mgf",
     type: "choice",
+    difficulty: "standard",
     question: "特性関数$\\varphi(t) = E[eⁱᵗˣ]がモーメント母関数に対して持つ優位性として正しいものはどれか？",
     options: [
       "特性関数は微分が容易である",
@@ -2609,6 +2765,7 @@ export const questionsJun1kyu = [
     id: 342,
     topic: "mgf",
     type: "written",
+    difficulty: "advanced",
     question: "モーメント母関数を用いて、独立な確率変数X ~ N($\\mu$₁,$\\sigma$₁^2)とY ~ N($\\mu$₂,$\\sigma$₂^2)の和X+YがN($\\mu$₁+$\\mu$₂, $\\sigma$₁^2+$\\sigma$₂^2)に従うことを証明せよ。",
     sampleAnswer: "正規分布$N(\\mu, \\sigma^2)$のMGFはM(t) = exp($\\mu$t + $\\sigma^2 t^2$/2)。独立なX+YのMGFはM_{X+Y}(t) = M_X(t)M_Y(t) = exp($\\mu$₁t + $\\sigma$₁^2$t^2$/2)exp($\\mu$₂t + $\\sigma$₂^2$t^2$/2) = exp(($\\mu$₁+$\\mu$₂)t + ($\\sigma$₁^2+$\\sigma$₂^2)$t^2$/2)。これはN($\\mu$₁+$\\mu$₂, $\\sigma$₁^2+$\\sigma$₂^2)のMGFであり、MGFが分布を一意に決定するため、X+Y ~ N($\\mu$₁+$\\mu$₂, $\\sigma$₁^2+$\\sigma$₂^2)が示された。",
     keywords: ["正規分布の再生性", "MGFの積", "一意性", "独立な和"],
@@ -2620,6 +2777,7 @@ export const questionsJun1kyu = [
     id: 343,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "standard",
     question: "複合ポアソン過程（compound Poisson process）S(t) = $\\sum$ᵢ₌₁^{N(t)} Yᵢの性質として正しいものはどれか？",
     options: [
       "S(t)は常にポアソン分布に従う",
@@ -2640,6 +2798,7 @@ export const questionsJun1kyu = [
     id: 344,
     topic: "poisson-process",
     type: "choice",
+    difficulty: "standard",
     question: "ポアソン過程の薄化（thinning）について正しいものはどれか？",
     options: [
       "強度$\\lambda$のポアソン過程の各イベントを確率p(t)で独立に保持すると、保持されたイベントは強度$\\lambda$p(t)の非斉次ポアソン過程となる",
@@ -2660,6 +2819,7 @@ export const questionsJun1kyu = [
     id: 345,
     topic: "poisson-process",
     type: "written",
+    difficulty: "advanced",
     question: "ポアソン過程の最尤推定について、[0,T]の観測区間でN(T)=n個のイベントが観測された場合の$\\lambda$の最尤推定量を導出し、その統計的性質を述べよ。",
     sampleAnswer: "尤度関数はL($\\lambda$) = $\\lambda$ⁿe^{-$\\lambda$T}/n!（ポアソン分布の確率関数）。対数尤度ℓ($\\lambda$) = n log $\\lambda - \\lambda$T + const。$\\partial$ℓ/$\\partial \\lambda$ = n/$\\lambda$ - T = 0より、$\\lambda$̂ = n/T = N(T)/T。E[$\\lambda$̂] = $\\lambda$（不偏）、V[$\\lambda$̂] = $\\lambda$/T。nが大きいとき、$\\lambda$̂は漸近正規分布N($\\lambda$, $\\lambda$/T)に従う。",
     keywords: ["最尤推定", "不偏性", "漸近正規性", "信頼区間"],
@@ -2671,6 +2831,7 @@ export const questionsJun1kyu = [
     id: 346,
     topic: "bayes",
     type: "choice",
+    difficulty: "standard",
     question: "ジェフリーズの事前分布（Jeffreys prior）について正しいものはどれか？",
     options: [
       "常に一様分布と等しい",
@@ -2691,6 +2852,7 @@ export const questionsJun1kyu = [
     id: 347,
     topic: "bayes",
     type: "choice",
+    difficulty: "standard",
     question: "ベイズ信用区間（credible interval）と頻度論的信頼区間の解釈の違いとして正しいものはどれか？",
     options: [
       "信用区間はパラメータが区間に含まれる確率を直接与えるが、信頼区間は長期的な被覆確率を保証する",
@@ -2711,6 +2873,7 @@ export const questionsJun1kyu = [
     id: 348,
     topic: "bayes",
     type: "written",
+    difficulty: "advanced",
     question: "階層ベイズモデル（hierarchical Bayes model）の構造を説明し、経験ベイズ法との違いを述べよ。",
     sampleAnswer: "階層ベイズモデルはパラメータに事前分布を設定し、その事前分布のハイパーパラメータにもさらに事前分布（ハイパー事前分布）を設定する多段階のモデル。例：$y_i$|$\\theta$ᵢ ~ f($y_i$|$\\theta$ᵢ)、$\\theta$ᵢ|η ~ g($\\theta$ᵢ|η)、η ~ h(η)。経験ベイズ法はハイパーパラメータηを周辺尤度から推定（点推定）して事前分布に代入するが、階層ベイズはηにも事前分布を設定して不確実性を完全に伝搬させる。",
     keywords: ["階層構造", "ハイパーパラメータ", "経験ベイズ", "不確実性の伝搬"],
@@ -2722,6 +2885,7 @@ export const questionsJun1kyu = [
     id: 349,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "standard",
     question: "多変量正規分布$N(\\mu, \\sum)$の周辺分布について正しいものはどれか？",
     options: [
       "周辺分布は常にt分布に従う",
@@ -2742,6 +2906,7 @@ export const questionsJun1kyu = [
     id: 350,
     topic: "mvnormal",
     type: "choice",
+    difficulty: "standard",
     question: "多変量正規分布の標本共分散行列Sが従う分布はどれか？",
     options: [
       "正規分布",
@@ -2762,6 +2927,7 @@ export const questionsJun1kyu = [
     id: 351,
     topic: "mvnormal",
     type: "written",
+    difficulty: "advanced",
     question: "多変量正規分布の線形変換の性質を述べ、白色化（whitening）変換の定義と目的を説明せよ。",
     sampleAnswer: "X ~ $N(\\mu, \\sum)$のとき線形変換Y = AX + bはY ~ N(A$\\mu$+b, A$\\sum$Aᵀ)に従う。白色化変換はW = $\\sum$^{-1/2}(X-$\\mu$)によりW ~ N(0, I)とする変換で、変数間の相関を除去し分散を1に標準化する。$\\sum$^{-1/2}は$\\sum$の固有値分解$\\sum$ = PΛPᵀから$\\sum$^{-1/2} = PΛ^{-1/2}Pᵀで求められる。",
     keywords: ["線形変換", "白色化", "固有値分解", "標準化"],
@@ -2773,6 +2939,7 @@ export const questionsJun1kyu = [
     id: 352,
     topic: "incomplete",
     type: "choice",
+    difficulty: "standard",
     question: "EMアルゴリズムの収束速度を決定する要因として正しいものはどれか？",
     options: [
       "初期値のみに依存する",
@@ -2793,6 +2960,7 @@ export const questionsJun1kyu = [
     id: 353,
     topic: "incomplete",
     type: "choice",
+    difficulty: "standard",
     question: "変分EMアルゴリズム（variational EM）が通常のEMと異なる点はどれか？",
     options: [
       "M-ステップを省略して高速化する",
@@ -2813,6 +2981,7 @@ export const questionsJun1kyu = [
     id: 354,
     topic: "incomplete",
     type: "written",
+    difficulty: "advanced",
     question: "欠測データのメカニズム（MCAR, MAR, MNAR）を定義し、それぞれに対する適切な分析手法を説明せよ。",
     sampleAnswer: "MCAR（完全にランダムな欠測）：欠測の発生がデータの値に全く依存しない。MAR（ランダムな欠測）：欠測の発生が観測されたデータにのみ依存する。MNAR（ランダムでない欠測）：欠測の発生が欠測値自身に依存する。MCARでは完全ケース分析も不偏だが非効率。MARではEMアルゴリズムや多重代入法が有効。MNARでは選択モデルやパターン混合モデルが必要で、感度分析が重要。",
     keywords: ["MCAR", "MAR", "MNAR", "多重代入法"],
@@ -2824,6 +2993,7 @@ export const questionsJun1kyu = [
     id: 355,
     topic: "multreg",
     type: "choice",
+    difficulty: "standard",
     question: "Cook距離（Cook's distance）が測定するものとして正しいものはどれか？",
     options: [
       "残差の大きさ",
@@ -2844,6 +3014,7 @@ export const questionsJun1kyu = [
     id: 356,
     topic: "multreg",
     type: "choice",
+    difficulty: "standard",
     question: "加重最小二乗法（WLS）が通常の最小二乗法（OLS）に対して有利となる状況はどれか？",
     options: [
       "誤差項の分散が一定（等分散）の場合",
@@ -2864,6 +3035,7 @@ export const questionsJun1kyu = [
     id: 357,
     topic: "multreg",
     type: "written",
+    difficulty: "advanced",
     question: "偏回帰係数の解釈とFrisch-Waugh-Lovellの定理の内容を説明せよ。",
     sampleAnswer: "偏回帰係数$\\beta$ⱼは他のすべての説明変数を制御した上でのxⱼのyへの効果を表す。Frisch-Waugh-Lovellの定理は、重回帰の$\\beta$ⱼは、xⱼを他の説明変数に回帰した残差ẽⱼと、yを他の説明変数に回帰した残差ỹの単回帰係数と一致することを示す。すなわち、偏回帰係数は他の変数の影響を除去した純粋な関係を捉えている。",
     keywords: ["偏回帰係数", "制御変数", "Frisch-Waugh-Lovell", "残差回帰"],
@@ -2875,6 +3047,7 @@ export const questionsJun1kyu = [
     id: 358,
     topic: "contingency",
     type: "choice",
+    difficulty: "standard",
     question: "コクラン・マンテル・ヘンツェル検定（Cochran-Mantel-Haenszel test）の目的として正しいものはどれか？",
     options: [
       "1つの2×2分割表の独立性を検定する",
@@ -2895,6 +3068,7 @@ export const questionsJun1kyu = [
     id: 359,
     topic: "contingency",
     type: "choice",
+    difficulty: "standard",
     question: "対数線形モデル（log-linear model）の分割表分析における役割として正しいものはどれか？",
     options: [
       "連続変数の回帰分析を行う",
@@ -2915,6 +3089,7 @@ export const questionsJun1kyu = [
     id: 360,
     topic: "contingency",
     type: "written",
+    difficulty: "advanced",
     question: "シンプソンのパラドックスを具体例で説明し、その原因と対処法を述べよ。",
     sampleAnswer: "シンプソンのパラドックスは全体データでの変数間の関連の方向が、部分集団（層別化後）では逆転する現象。例：2つの治療法A, Bで全体ではAが優れるが、男女別に見るとどちらの群でもBが優れる場合がある。原因は交絡因子（この例では性別）による見せかけの関連であり、対処法としてCMH検定やロジスティック回帰による交絡の調整が必要。",
     keywords: ["シンプソンのパラドックス", "交絡因子", "層別化", "見せかけの関連"],
@@ -2926,6 +3101,7 @@ export const questionsJun1kyu = [
     id: 361,
     topic: "graphical",
     type: "choice",
+    difficulty: "standard",
     question: "マルコフ確率場（MRF）における同時分布のハマースレー・クリフォードの定理が述べる内容として正しいものはどれか？",
     options: [
       "同時分布はクリーク（完全部分グラフ）上のポテンシャル関数の積に分解できる",
@@ -2946,6 +3122,7 @@ export const questionsJun1kyu = [
     id: 362,
     topic: "graphical",
     type: "choice",
+    difficulty: "standard",
     question: "因果推論におけるdo演算子do(X=x)の意味として正しいものはどれか？",
     options: [
       "X=xを観測したときの条件付き分布P(Y|X=x)を計算する",
@@ -2966,6 +3143,7 @@ export const questionsJun1kyu = [
     id: 363,
     topic: "graphical",
     type: "written",
+    difficulty: "advanced",
     question: "バックドア基準（backdoor criterion）を定義し、因果効果の識別にどのように用いられるか、具体例を挙げて説明せよ。",
     sampleAnswer: "DAGにおいて変数集合Zがバックドア基準を満たすとは、①ZがXからYへの有向パス上にないこと、②ZがXとYの間のすべてのバックドアパス（X←...$\\to$Y）をブロックすること。この場合P(Y|do(X=x)) = $\\sum$_z P(Y|X=x,Z=z)P(Z=z)で因果効果が識別される。例：喫煙(X)$\\to$癌(Y)で交絡因子として遺伝(Z)がX,Yの共通原因の場合、Zで調整すればバックドアが閉じられ因果効果を推定できる。",
     keywords: ["バックドア基準", "因果効果", "交絡調整", "識別可能性"],
@@ -2977,6 +3155,7 @@ export const questionsJun1kyu = [
     id: 364,
     topic: "other_mv",
     type: "choice",
+    difficulty: "standard",
     question: "t-SNE（t-distributed Stochastic Neighbor Embedding）の特徴として正しいものはどれか？",
     options: [
       "線形の次元削減手法で、PCAの一般化である",
@@ -2997,6 +3176,7 @@ export const questionsJun1kyu = [
     id: 365,
     topic: "other_mv",
     type: "choice",
+    difficulty: "standard",
     question: "プロクラステス分析（Procrustes analysis）の目的として正しいものはどれか？",
     options: [
       "2つの多変量データ行列の形状を、回転・拡大縮小・平行移動により最もよく一致させる",
@@ -3017,6 +3197,7 @@ export const questionsJun1kyu = [
     id: 366,
     topic: "other_mv",
     type: "written",
+    difficulty: "advanced",
     question: "部分最小二乗法（PLS回帰）の原理をPCR（主成分回帰）と比較して説明し、それぞれの適用場面を述べよ。",
     sampleAnswer: "PCRはXの分散を最大化する主成分を抽出してYに回帰するが、抽出した成分がYと無関係な場合がある。PLS回帰はXとYの共分散を最大化する成分を逐次的に抽出して回帰するため、Yの予測に直接関連する情報を効率的に利用する。PLSは説明変数が多くサンプルサイズが小さい場合（p >> n）に特に有効で、化学計量学や生物統計学で広く用いられる。",
     keywords: ["PLS", "PCR", "共分散最大化", "高次元データ"],
@@ -3028,6 +3209,7 @@ export const questionsJun1kyu = [
     id: 367,
     topic: "discriminant",
     type: "choice",
+    difficulty: "standard",
     question: "正則化判別分析（Regularized Discriminant Analysis, RDA）の考え方として正しいものはどれか？",
     options: [
       "LDAとQDAの間で$\\sum$ₖ($\\alpha$) = $\\alpha \\sum$ₖ + (1-$\\alpha$)$\\sum$_pooledとして共分散推定を補間する",
@@ -3048,6 +3230,7 @@ export const questionsJun1kyu = [
     id: 368,
     topic: "discriminant",
     type: "choice",
+    difficulty: "standard",
     question: "サポートベクターマシン（SVM）と線形判別分析（LDA）の判別境界の違いとして正しいものはどれか？",
     options: [
       "SVMは最大マージンを達成する超平面を求めるが、LDAは群間分散/群内分散の比を最大化する方向を求める",
@@ -3068,9 +3251,1737 @@ export const questionsJun1kyu = [
     id: 369,
     topic: "discriminant",
     type: "written",
+    difficulty: "advanced",
     question: "ナイーブベイズ分類器の仮定と特徴を説明し、判別分析との関係を述べよ。",
     sampleAnswer: "ナイーブベイズ分類器はベイズの定理に基づきP(C|x) ∝ P(C)Πⱼ P(xⱼ|C)を計算し、事後確率最大のクラスCに分類する。「ナイーブ」はクラスCが与えられたとき特徴量が条件付き独立という仮定を指す。この仮定が成り立つ場合、LDAの判別関数はナイーブベイズと等価になる（対角共分散行列のQDAに対応）。仮定が不正確でも分類性能は良好な場合が多く、高次元・小標本データに強い。",
     keywords: ["条件付き独立", "事後確率", "ベイズ分類", "高次元"],
     explanation: "ナイーブベイズはp(x|C) = Πⱼp(xⱼ|C)の条件付き独立仮定により、各特徴量の1次元条件付き分布のみを推定すればよいため、推定すべきパラメータ数がO(pd)（dはクラス数）と少なくなります。LDA/QDAがO(p^2d)のパラメータを要するのと対照的です。テキスト分類（スパムフィルター等）で特に有効で、強い独立仮定にもかかわらず実用的に高い性能を示すことが知られています（ドミンゴスのパラドックス）。"
+  },
+
+  // === 追加問題（ID 401〜492）===
+
+  // MLE (401-404)
+  {
+    id: 401,
+    topic: "mle",
+    type: "choice",
+    difficulty: "basic",
+    question: "スコア関数$U(\\theta) = \\frac{\\partial}{\\partial \\theta} \\log L(\\theta)$の期待値$E[U(\\theta)]$について正しいものはどれか？",
+    options: [
+      "$E[U(\\theta)] = 0$（真のパラメータ値のもとで）",
+      "$E[U(\\theta)] = I(\\theta)$（フィッシャー情報量に等しい）",
+      "$E[U(\\theta)] = 1$",
+      "$E[U(\\theta)]$は一般に0にならない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。正則条件のもとで、スコア関数の期待値は$E[U(\\theta)] = \\int \\frac{\\partial}{\\partial\\theta} f(x;\\theta) dx = \\frac{\\partial}{\\partial\\theta} \\int f(x;\\theta) dx = 0$となります。",
+      "不正解。フィッシャー情報量はスコア関数の分散$I(\\theta) = \\mathrm{Var}[U(\\theta)]$です。期待値ではありません。",
+      "不正解。スコア関数の期待値は0です。1にはなりません。",
+      "不正解。正則条件のもとでは、微分と積分の交換が可能であり、$E[U(\\theta)] = 0$が成り立ちます。"
+    ],
+    explanation: "スコア関数$U(\\theta) = \\partial \\log L / \\partial \\theta$は対数尤度の勾配です。正則条件（微分と積分の順序交換が可能）のもとで$E[U(\\theta)] = 0$が成り立ちます。また$\\mathrm{Var}[U(\\theta)] = I(\\theta)$がフィッシャー情報量の定義の一つです。"
+  },
+  {
+    id: 402,
+    topic: "mle",
+    type: "choice",
+    difficulty: "standard",
+    question: "EMアルゴリズムについて正しい記述はどれか？",
+    options: [
+      "E-stepで完全データの対数尤度の条件付き期待値を計算し、M-stepでそれを最大化するパラメータを求める",
+      "E-stepでパラメータを最大化し、M-stepで期待値を計算する",
+      "EMアルゴリズムは常に大域的最適解に収束する",
+      "EMアルゴリズムは完全データのみに適用される"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。E-step（期待値ステップ）では現在のパラメータ推定値$\\theta^{(t)}$のもとで$Q(\\theta | \\theta^{(t)}) = E[\\log L(\\theta; X, Z) | X, \\theta^{(t)}]$を計算し、M-step（最大化ステップ）では$Q$を最大化する$\\theta^{(t+1)}$を求めます。",
+      "不正解。ステップの順序が逆です。E-stepが期待値計算、M-stepが最大化です。",
+      "不正解。EMアルゴリズムは局所的最適解に収束する保証はありますが、大域的最適解への収束は保証されません。初期値依存性があります。",
+      "不正解。EMアルゴリズムは不完全データ（欠測や潜在変数を含むデータ）に対して用いられる手法です。"
+    ],
+    explanation: "EMアルゴリズムは潜在変数$Z$を含む不完全データの最尤推定に用いられます。各反復で観測対数尤度$\\log L(\\theta; X)$は単調非減少であり、局所最適解への収束が保証されます。混合分布のパラメータ推定などに広く用いられます。"
+  },
+  {
+    id: 403,
+    topic: "mle",
+    type: "choice",
+    difficulty: "advanced",
+    question: "観測情報行列$J(\\theta) = -\\frac{\\partial^2}{\\partial\\theta^2} \\log L(\\theta)$と期待情報行列$I(\\theta) = E[J(\\theta)]$に関して、正しい記述はどれか？",
+    options: [
+      "最尤推定量の漸近分散の推定に$J(\\hat{\\theta})^{-1}$を使う方が$I(\\hat{\\theta})^{-1}$より効率的な場合がある",
+      "観測情報行列と期待情報行列は常に等しい",
+      "期待情報行列は常に観測情報行列より大きい",
+      "観測情報行列は常に正定値である"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。Efron & Hinkley (1978) は、条件付き推論の観点から観測情報行列$J(\\hat{\\theta})$が期待情報行列$I(\\hat{\\theta})$よりも適切な場合があることを示しました。特に補助統計量が存在する場合に効率的です。",
+      "不正解。$J(\\theta)$は特定の観測データに依存しますが、$I(\\theta) = E[J(\\theta)]$はデータに対する期待値であり、一般に異なります。",
+      "不正解。行列の大小関係は一般に成り立ちません。$J(\\theta)$はデータに依存して変動します。",
+      "不正解。$J(\\hat{\\theta})$はMLEにおいて正定値であることが期待されますが、常に保証されるわけではありません（鞍点や非正則な場合）。"
+    ],
+    explanation: "観測情報行列$J(\\hat{\\theta})$はデータに基づく実際の曲率であり、期待情報行列$I(\\theta)$はその期待値です。条件付き推論や補助統計量の理論では、$J(\\hat{\\theta})^{-1}$がMLEの分散推定としてより適切なことがあります。実用上も多くのソフトウェアが$J(\\hat{\\theta})^{-1}$を標準誤差の計算に使用しています。"
+  },
+  {
+    id: 404,
+    topic: "mle",
+    type: "written",
+    difficulty: "advanced",
+    question: "指数型分布族$f(x;\\theta) = h(x) \\exp(\\eta(\\theta) T(x) - A(\\theta))$において、十分統計量$T(X)$に基づくMLEの性質と、$A(\\theta)$の微分がモーメントを与えることを示せ。",
+    sampleAnswer: "指数型分布族の対数尤度は$\\ell(\\theta) = \\sum_i \\log h(x_i) + \\eta(\\theta) \\sum_i T(x_i) - nA(\\theta)$である。スコア方程式は$\\eta'(\\theta) \\sum_i T(x_i) - nA'(\\theta) = 0$となり、MLEは$T = \\sum_i T(x_i)$のみに依存する。$A'(\\theta) = E[T(X)]$、$A''(\\theta) = \\mathrm{Var}[T(X)]$が成り立つ。これは$\\int f(x;\\theta) dx = 1$の両辺を$\\theta$で微分することで導出される。",
+    keywords: ["指数型分布族", "十分統計量", "キュムラント母関数", "スコア方程式"],
+    explanation: "$A(\\theta)$は対数分配関数（キュムラント母関数）と呼ばれ、$A'(\\theta) = E[T(X)]$（1次モーメント）、$A''(\\theta) = \\mathrm{Var}[T(X)]$（2次中心モーメント）を与えます。$\\int h(x)\\exp(\\eta(\\theta)T(x) - A(\\theta))dx = 1$の両辺を$\\theta$で微分し、正則条件のもとで微分と積分を交換することで証明されます。"
+  },
+
+  // Nonparametric (405-408)
+  {
+    id: 405,
+    topic: "nonparametric",
+    type: "choice",
+    difficulty: "basic",
+    question: "カーネル密度推定$\\hat{f}(x) = \\frac{1}{nh}\\sum_{i=1}^{n} K\\left(\\frac{x - X_i}{h}\\right)$におけるバンド幅$h$の役割として正しいものはどれか？",
+    options: [
+      "$h$が大きいほど推定が滑らかになり、小さいほどデータに忠実になる",
+      "$h$が大きいほどデータに忠実になり、小さいほど滑らかになる",
+      "$h$はカーネル関数の形状のみを決定する",
+      "$h$は推定の偏りには影響しない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$h$が大きいとカーネルが広がり滑らかな推定になりますが、偏りが大きくなります。$h$が小さいとデータに忠実ですが、分散が大きくなります。バイアス-分散トレードオフの問題です。",
+      "不正解。逆です。$h$が大きいと平滑化が進み、小さいとデータの凹凸を拾います。",
+      "不正解。カーネル関数の形状は$K$の選択で決まります。$h$は幅（スケール）を決定します。",
+      "不正解。$h$は偏りにも分散にも影響します。偏りは$O(h^2)$、分散は$O((nh)^{-1})$のオーダーです。"
+    ],
+    explanation: "カーネル密度推定のバンド幅$h$はバイアス-分散トレードオフを制御します。最適バンド幅は$h_{\\mathrm{opt}} \\propto n^{-1/5}$のオーダーであり、MISEを最小化する選択が望まれます。Silvermanのルールやクロスバリデーションで選択されます。"
+  },
+  {
+    id: 406,
+    topic: "nonparametric",
+    type: "choice",
+    difficulty: "standard",
+    question: "ブートストラップ法で標本平均の標準誤差を推定する場合、正しい手順はどれか？",
+    options: [
+      "元の標本から復元抽出でB組のブートストラップ標本を作り、各標本の平均を計算し、B個の平均値の標準偏差を求める",
+      "元の標本を非復元抽出でB組に分割し、各グループの平均の標準偏差を求める",
+      "元の標本から復元抽出で1組のブートストラップ標本を作り、その標本の標準偏差を$\\sqrt{n}$で割る",
+      "母集団分布を仮定して、その分布からB組の標本を生成する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。ブートストラップ法では、元の標本サイズ$n$の復元抽出を$B$回繰り返し、各ブートストラップ標本で統計量を計算し、$B$個の統計量値の経験分布からばらつきを推定します。",
+      "不正解。ブートストラップは復元抽出であり、非復元抽出での分割ではありません。また各ブートストラップ標本のサイズは元と同じ$n$です。",
+      "不正解。1回の復元抽出では不十分です。統計量のばらつきを推定するため多数回（例えば$B = 1000$以上）繰り返す必要があります。",
+      "不正解。母集団分布を仮定する方法はパラメトリック・ブートストラップと呼ばれますが、一般的なブートストラップ（ノンパラメトリック）は経験分布からの復元抽出です。"
+    ],
+    explanation: "ノンパラメトリック・ブートストラップは、経験分布$\\hat{F}_n$を母集団分布の推定として使い、そこからの復元抽出を繰り返す方法です。統計量のサンプリング分布を近似的に推定でき、分布の仮定なしに信頼区間の構成や仮説検定が可能です。"
+  },
+  {
+    id: 407,
+    topic: "nonparametric",
+    type: "choice",
+    difficulty: "advanced",
+    question: "スピアマンの順位相関係数$r_S$とケンドールの順位相関係数$\\tau$の関係として正しいものはどれか？",
+    options: [
+      "二変量正規分布のもとで$r_S \\approx \\frac{3}{2}\\sin\\left(\\frac{\\pi}{6}\\tau\\right) \\cdot 2$、すなわち近似的に$r_S \\approx 1.5\\tau - 0.5\\tau^3$の関係がある",
+      "$r_S = \\tau$が常に成り立つ",
+      "$r_S = 2\\tau$が常に成り立つ",
+      "$r_S$と$\\tau$の間には一般に何の関係もない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。Greinerの関係式として知られ、二変量正規分布では$\\rho_S = \\frac{6}{\\pi}\\arcsin(\\rho/2)$、$\\tau = \\frac{2}{\\pi}\\arcsin(\\rho)$が成り立ちます。これらから近似的な関係が得られます。",
+      "不正解。$r_S$と$\\tau$は異なる定義に基づくため一般に等しくなりません。通常$|r_S| \\geq |\\tau|$です。",
+      "不正解。そのような単純な比例関係は成り立ちません。",
+      "不正解。両者は共に単調関連の尺度であり、数学的な関係式が存在します。"
+    ],
+    explanation: "スピアマン$r_S$は順位のピアソン相関、ケンドール$\\tau$は一致対と不一致対の差の比率です。二変量正規分布で母相関$\\rho$のとき、$\\rho_S = \\frac{6}{\\pi}\\arcsin(\\rho/2)$、$\\tau = \\frac{2}{\\pi}\\arcsin(\\rho)$が成り立ちます（Greinerの関係式）。一般に$|r_S| \\geq |\\tau|$であり、$\\tau$の方が保守的です。"
+  },
+  {
+    id: 408,
+    topic: "nonparametric",
+    type: "written",
+    difficulty: "advanced",
+    question: "カーネル密度推定のMISE（平均積分二乗誤差）の漸近展開を示し、最適バンド幅$h_{\\mathrm{opt}}$のオーダーが$n^{-1/5}$となることを導出せよ。",
+    sampleAnswer: "カーネル密度推定の偏りは$\\mathrm{Bias}[\\hat{f}(x)] \\approx \\frac{h^2}{2}\\mu_2(K) f''(x)$、分散は$\\mathrm{Var}[\\hat{f}(x)] \\approx \\frac{1}{nh} R(K) f(x)$である。ここで$\\mu_2(K) = \\int u^2 K(u)du$、$R(K) = \\int K(u)^2 du$。MISEはこれらを積分して$\\mathrm{MISE} \\approx \\frac{h^4}{4}\\mu_2(K)^2 R(f'') + \\frac{1}{nh}R(K)$。$h$で微分して0とおくと$h_{\\mathrm{opt}} = \\left(\\frac{R(K)}{\\mu_2(K)^2 R(f'') n}\\right)^{1/5}$で$n^{-1/5}$のオーダーとなる。",
+    keywords: ["MISE", "バイアス-分散分解", "最適バンド幅", "n^{-1/5}"],
+    explanation: "MISE最適バンド幅の導出はカーネル密度推定の基本理論です。$h^4$の偏り項と$(nh)^{-1}$の分散項のトレードオフから$h_{\\mathrm{opt}} = O(n^{-1/5})$が得られ、このとき$\\mathrm{MISE}_{\\mathrm{opt}} = O(n^{-4/5})$となります。パラメトリック推定の$O(n^{-1})$と比較すると収束が遅く、これがノンパラメトリック推定のコストです。"
+  },
+
+  // Markov (409-412)
+  {
+    id: 409,
+    topic: "markov",
+    type: "choice",
+    difficulty: "basic",
+    question: "マルコフ連鎖の定常分布$\\pi$が満たす条件として正しいものはどれか？",
+    options: [
+      "$\\pi P = \\pi$かつ$\\sum_i \\pi_i = 1$（$P$は推移確率行列）",
+      "$P \\pi = \\pi$かつ$\\sum_i \\pi_i = 0$",
+      "$\\pi P = 0$",
+      "$\\pi$は推移確率行列$P$の最小固有値に対応する固有ベクトルである"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。定常分布$\\pi$は推移確率行列$P$の左固有ベクトル（固有値1）であり、確率分布の条件$\\sum_i \\pi_i = 1$、$\\pi_i \\geq 0$を満たします。",
+      "不正解。$P\\pi = \\pi$は右固有ベクトルの表記であり、定常分布は左固有ベクトル$\\pi P = \\pi$として定義されます。また和は1でなければなりません。",
+      "不正解。$\\pi P = 0$ではなく$\\pi P = \\pi$（自分自身を保つ）が定常分布の条件です。",
+      "不正解。定常分布は固有値1（最大固有値）に対応する左固有ベクトルです。最小固有値ではありません。"
+    ],
+    explanation: "定常分布は、その分布から出発するとマルコフ連鎖の分布が時間を経ても変化しないような分布です。既約かつ非周期的な有限状態マルコフ連鎖では、一意の定常分布が存在し、任意の初期分布から定常分布に収束します（エルゴード定理）。"
+  },
+  {
+    id: 410,
+    topic: "markov",
+    type: "choice",
+    difficulty: "standard",
+    question: "3状態マルコフ連鎖の推移確率行列$P = \\begin{pmatrix} 0 & 1 & 0 \\\\ 0.5 & 0 & 0.5 \\\\ 0 & 1 & 0 \\end{pmatrix}$の定常分布はどれか？",
+    options: [
+      "$\\pi = (1/4, 1/2, 1/4)$",
+      "$\\pi = (1/3, 1/3, 1/3)$",
+      "$\\pi = (1/2, 1/4, 1/4)$",
+      "$\\pi = (1/5, 3/5, 1/5)$"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$\\pi P = \\pi$を解くと、$\\pi_1 = 0.5\\pi_2$、$\\pi_2 = \\pi_1 + \\pi_3$、$\\pi_3 = 0.5\\pi_2$。$\\pi_1 = \\pi_3$と$\\pi_1 + \\pi_2 + \\pi_3 = 1$から$\\pi = (1/4, 1/2, 1/4)$です。",
+      "不正解。一様分布は推移確率行列が二重確率行列の場合の定常分布です。この行列は二重確率行列ではありません。",
+      "不正解。$\\pi P = \\pi$を満たしません。状態1と状態3は対称な構造を持つため$\\pi_1 = \\pi_3$でなければなりません。",
+      "不正解。$\\pi P = \\pi$を計算すると一致しません。"
+    ],
+    explanation: "定常分布は連立方程式$\\pi P = \\pi$と$\\sum \\pi_i = 1$を解いて求めます。この行列では状態1と状態3は状態2を介してのみ遷移可能で対称的な構造を持つため、$\\pi_1 = \\pi_3$となります。"
+  },
+  {
+    id: 411,
+    topic: "markov",
+    type: "choice",
+    difficulty: "advanced",
+    question: "マルコフ連鎖の状態の分類について、再帰的（recurrent）かつ正再帰的（positive recurrent）であるための条件として正しいものはどれか？",
+    options: [
+      "状態$i$への最初の再帰時間$T_i$について$P(T_i < \\infty | X_0 = i) = 1$かつ$E[T_i | X_0 = i] < \\infty$",
+      "$P(T_i < \\infty | X_0 = i) = 1$のみで十分",
+      "$E[T_i | X_0 = i] < \\infty$のみで十分",
+      "状態$i$から他のすべての状態に到達可能であること"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。再帰的は$P(T_i < \\infty) = 1$（確率1で戻る）、正再帰的はさらに$E[T_i] < \\infty$（平均再帰時間が有限）を要求します。正再帰的でない再帰状態は零再帰的（null recurrent）と呼ばれます。",
+      "不正解。$P(T_i < \\infty) = 1$は再帰性の条件ですが、正再帰性にはさらに$E[T_i] < \\infty$が必要です。無限状態空間では再帰的だが零再帰的な状態が存在します。",
+      "不正解。$E[T_i] < \\infty$は$P(T_i < \\infty) = 1$を含意しますが、正再帰性の定義としては両方の条件を明示するのが正確です。",
+      "不正解。それは既約性（irreducibility）の条件であり、再帰性とは異なる概念です。"
+    ],
+    explanation: "マルコフ連鎖の状態分類：過渡的（transient、$P(T_i < \\infty) < 1$）、再帰的（recurrent、$P(T_i < \\infty) = 1$）、正再帰的（positive recurrent、再帰的かつ$E[T_i] < \\infty$）、零再帰的（null recurrent、再帰的だが$E[T_i] = \\infty$）。有限状態既約マルコフ連鎖ではすべての状態が正再帰的です。"
+  },
+  {
+    id: 412,
+    topic: "markov",
+    type: "written",
+    difficulty: "advanced",
+    question: "既約かつ非周期的な有限状態マルコフ連鎖のエルゴード定理を述べ、定常分布と時間平均の関係を説明せよ。",
+    sampleAnswer: "既約かつ非周期的な有限状態マルコフ連鎖では、任意の初期分布に対して$\\lim_{n \\to \\infty} P^n_{ij} = \\pi_j$が成り立つ。さらにエルゴード定理により、任意の関数$f$に対して$\\frac{1}{n}\\sum_{t=0}^{n-1} f(X_t) \\to \\sum_j f(j)\\pi_j = E_\\pi[f(X)]$が概収束で成り立つ。すなわち時間平均が空間平均（定常分布による期待値）に収束する。",
+    keywords: ["エルゴード定理", "既約", "非周期的", "時間平均", "定常分布"],
+    explanation: "エルゴード定理はマルコフ連鎖モンテカルロ法（MCMC）の理論的基盤です。既約性はすべての状態が互いに到達可能、非周期性は状態の周期が1であることを意味します。有限状態空間ではこの2条件でエルゴード性が保証され、推移確率行列の$n$乗が定常分布に収束します。"
+  },
+
+  // Brownian Motion (413-416)
+  {
+    id: 413,
+    topic: "brownian",
+    type: "choice",
+    difficulty: "basic",
+    question: "標準ブラウン運動$B(t)$の性質として正しくないものはどれか？",
+    options: [
+      "$B(t)$は時刻$t$ごとに微分可能である",
+      "$B(0) = 0$",
+      "増分$B(t) - B(s)$は$N(0, t-s)$に従う（$t > s$）",
+      "重なりのない区間の増分は独立である"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解（正しくないもの）。ブラウン運動の標本路はどの点でもほぼ確実に微分不可能です。連続ではありますが、至る所で微分できないという驚くべき性質を持ちます。",
+      "不正解（正しい性質）。標準ブラウン運動は$B(0) = 0$から出発します。",
+      "不正解（正しい性質）。増分$B(t) - B(s) \\sim N(0, t-s)$は定義の一部です。",
+      "不正解（正しい性質）。独立増分性はブラウン運動の基本的定義です。"
+    ],
+    explanation: "ブラウン運動は連続だが至る所微分不可能な標本路を持ちます。このため通常の微積分が適用できず、伊藤積分・伊藤の公式が必要になります。ブラウン運動の全変動は有限区間で無限大、二次変動は$[0,t]$上で$t$に等しくなります。"
+  },
+  {
+    id: 414,
+    topic: "brownian",
+    type: "choice",
+    difficulty: "standard",
+    question: "幾何ブラウン運動$dS_t = \\mu S_t dt + \\sigma S_t dB_t$の解として正しいものはどれか？",
+    options: [
+      "$S_t = S_0 \\exp\\left((\\mu - \\sigma^2/2)t + \\sigma B_t\\right)$",
+      "$S_t = S_0 \\exp(\\mu t + \\sigma B_t)$",
+      "$S_t = S_0 (1 + \\mu t + \\sigma B_t)$",
+      "$S_t = S_0 + \\mu t + \\sigma B_t$"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。伊藤の公式を$\\log S_t$に適用すると$d\\log S_t = (\\mu - \\sigma^2/2)dt + \\sigma dB_t$となり、積分して$\\log(S_t/S_0) = (\\mu - \\sigma^2/2)t + \\sigma B_t$が得られます。",
+      "不正解。伊藤の補正項$-\\sigma^2/2$が欠落しています。伊藤の公式では$d(\\log S) \\neq dS/S$であり、二次変動の項が必要です。",
+      "不正解。これは線形近似であり、正確な解ではありません。",
+      "不正解。これは算術ブラウン運動$dS = \\mu dt + \\sigma dB$の解であり、幾何ブラウン運動の解ではありません。"
+    ],
+    explanation: "幾何ブラウン運動はBlack-Scholesモデルの基礎です。伊藤の公式から$-\\sigma^2/2$の補正項（伊藤補正）が生じることが重要です。$S_t > 0$が保証され、$\\log S_t$は正規分布に従うため、$S_t$は対数正規分布に従います。"
+  },
+  {
+    id: 415,
+    topic: "brownian",
+    type: "choice",
+    difficulty: "advanced",
+    question: "ブラウン運動の反射原理に関して、$M_t = \\max_{0 \\leq s \\leq t} B_s$とするとき、$P(M_t \\geq a, B_t \\leq b)$（$a > 0, b < a$）の値はどれか？",
+    options: [
+      "$P(B_t \\geq 2a - b)$",
+      "$P(B_t \\geq a - b)$",
+      "$P(B_t \\geq a)$",
+      "$P(M_t \\geq a) \\cdot P(B_t \\leq b)$"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。反射原理により、$B$が水準$a$に到達した後のパスを$a$で反射させると、$P(M_t \\geq a, B_t \\leq b) = P(B_t \\geq 2a - b)$が得られます。",
+      "不正解。反射は水準$a$の周りで行うため$2a - b$が正しく、$a - b$ではありません。",
+      "不正解。$B_t$の位置$b$に関する情報が失われています。",
+      "不正解。$M_t$と$B_t$は独立ではないため、確率の積にはなりません。"
+    ],
+    explanation: "反射原理はブラウン運動の強マルコフ性と対称性から導かれます。$B$が水準$a$に到達した時点$\\tau_a$以降、反射パス$\\tilde{B}_t = 2a - B_t$（$t \\geq \\tau_a$）も元のブラウン運動と同じ分布を持ちます。この結果から$P(M_t \\geq a) = 2P(B_t \\geq a)$も導出できます。"
+  },
+  {
+    id: 416,
+    topic: "brownian",
+    type: "written",
+    difficulty: "advanced",
+    question: "伊藤の公式を述べ、$f(B_t) = B_t^2$に適用して$E[B_t^2] = t$を導出せよ。",
+    sampleAnswer: "伊藤の公式：$f \\in C^2$のとき$df(B_t) = f'(B_t)dB_t + \\frac{1}{2}f''(B_t)dt$。$f(x) = x^2$とすると$f'(x) = 2x$、$f''(x) = 2$であるから$dB_t^2 = 2B_t dB_t + dt$。両辺を$[0,t]$で積分して$B_t^2 = 2\\int_0^t B_s dB_s + t$。期待値をとると、伊藤積分$\\int_0^t B_s dB_s$はマルチンゲールで期待値0であるから$E[B_t^2] = t$。",
+    keywords: ["伊藤の公式", "二次変動", "マルチンゲール", "伊藤積分"],
+    explanation: "伊藤の公式は確率解析の基本ツールです。通常のテイラー展開と異なり、$dB_t$の二次の項$(dB_t)^2 = dt$が残ることがポイントです。伊藤積分のマルチンゲール性（期待値0）を用いることで、$E[B_t^2] = t$（ブラウン運動の分散が$t$）が簡潔に導出できます。"
+  },
+
+  // Time Series (417-420)
+  {
+    id: 417,
+    topic: "timeseries",
+    type: "choice",
+    difficulty: "basic",
+    question: "GARCH(1,1)モデル$\\sigma_t^2 = \\omega + \\alpha \\varepsilon_{t-1}^2 + \\beta \\sigma_{t-1}^2$においてボラティリティ・クラスタリングが生じる理由として正しいものはどれか？",
+    options: [
+      "大きなショック$\\varepsilon_{t-1}^2$が次期の条件付き分散$\\sigma_t^2$を増大させ、連続的に大きな変動が続く傾向を生むため",
+      "誤差項が正規分布に従うため",
+      "パラメータ$\\omega$が時間変化するため",
+      "$\\alpha + \\beta = 1$が常に成り立つため"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。GARCH(1,1)では直前のショックの二乗$\\varepsilon_{t-1}^2$と直前の条件付き分散$\\sigma_{t-1}^2$が今期の分散に寄与するため、大きな変動の後には大きな変動が続きやすくなります。",
+      "不正解。正規分布の仮定はボラティリティ・クラスタリングとは無関係です。GARCHモデルは誤差分布に関わらずクラスタリングを生成します。",
+      "不正解。$\\omega$は定数であり時間変化しません。時間変化するのは条件付き分散$\\sigma_t^2$です。",
+      "不正解。$\\alpha + \\beta = 1$は和分GARCH（IGARCH）の場合であり、一般的なGARCHでは$\\alpha + \\beta < 1$（定常条件）です。"
+    ],
+    explanation: "GARCH(1,1)は金融時系列のボラティリティ変動をモデル化する代表的手法です。$\\alpha + \\beta < 1$のとき定常であり、無条件分散は$\\sigma^2 = \\omega/(1 - \\alpha - \\beta)$です。$\\alpha + \\beta$が1に近いほど、ボラティリティの持続性（persistence）が高くなります。"
+  },
+  {
+    id: 418,
+    topic: "timeseries",
+    type: "choice",
+    difficulty: "standard",
+    question: "単位根検定（Augmented Dickey-Fuller検定）における帰無仮説と対立仮説の正しい組み合わせはどれか？",
+    options: [
+      "帰無仮説：単位根が存在する（非定常）、対立仮説：単位根が存在しない（定常）",
+      "帰無仮説：定常である、対立仮説：単位根が存在する",
+      "帰無仮説：$\\phi = 0$、対立仮説：$\\phi \\neq 0$",
+      "帰無仮説：トレンドが存在する、対立仮説：トレンドが存在しない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。ADF検定は$\\Delta y_t = \\alpha + \\gamma y_{t-1} + \\sum \\delta_j \\Delta y_{t-j} + \\varepsilon_t$で$H_0: \\gamma = 0$（単位根あり）対$H_1: \\gamma < 0$（定常）を検定します。",
+      "不正解。ADF検定の帰無仮説は非定常（単位根あり）です。棄却すると定常と結論します。",
+      "不正解。ADF検定で検定するパラメータは$\\gamma$（差分回帰の$y_{t-1}$の係数）であり、$\\phi$ではありません。",
+      "不正解。トレンドの有無はモデルの設定で含めることができますが、検定の本質は単位根の存在です。"
+    ],
+    explanation: "ADF検定はDickey-Fuller検定に系列相関の影響を取り除くためのラグ項を追加したものです。検定統計量はt統計量ですが、単位根の帰無仮説のもとでは通常のt分布に従わず、Dickey-Fuller分布（非標準分布）に従います。臨界値はMonte Carloシミュレーションで求められています。"
+  },
+  {
+    id: 419,
+    topic: "timeseries",
+    type: "choice",
+    difficulty: "advanced",
+    question: "共和分（cointegration）に関して正しい記述はどれか？",
+    options: [
+      "各系列が$I(1)$（1階の和分過程）であるが、それらの線形結合が$I(0)$（定常）となる場合に共和分関係があるという",
+      "すべての$I(1)$系列の線形結合は必ず$I(0)$になる",
+      "共和分関係がある場合、VAR(p)モデルで推定すれば十分で、VECM表現は不要である",
+      "共和分関係がある変数間にはグレンジャー因果性は存在しない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。例えば$y_t \\sim I(1)$、$x_t \\sim I(1)$で$y_t - \\beta x_t \\sim I(0)$となるとき、$y_t$と$x_t$は共和分関係にあります。$\\beta$を共和分ベクトルといいます。",
+      "不正解。$I(1)$系列の線形結合は一般には$I(1)$です。$I(0)$になる特別な線形結合が存在する場合にのみ共和分といいます。",
+      "不正解。共和分関係がある場合、VECM（ベクトル誤差修正モデル）で推定するのが適切です。Grangerの表現定理により、共和分システムはVECM表現を持ちます。",
+      "不正解。共和分関係がある場合、少なくとも一方向のグレンジャー因果性が存在することが知られています。"
+    ],
+    explanation: "共和分はEngle & Granger (1987)の概念で、長期均衡関係の統計的定式化です。Johansenの方法はVECMに基づいて共和分ランク（共和分ベクトルの数）を検定します。共和分関係のある変数を単純に差分をとって分析すると長期的な情報が失われるため、VECMの利用が推奨されます。"
+  },
+  {
+    id: 420,
+    topic: "timeseries",
+    type: "written",
+    difficulty: "advanced",
+    question: "ARIMA(p,d,q)モデルとARFIMA(p,d,q)モデルの違いを説明し、長期記憶（long memory）過程が通常のARIMAでは適切にモデル化できない理由を述べよ。",
+    sampleAnswer: "ARIMAでは$d$は非負整数で$(1-B)^d y_t$が定常ARMA過程に従う。ARFIMAでは$d$を実数（通常$0 < d < 0.5$）に拡張し、$(1-B)^d$を二項級数展開で定義する。長期記憶過程ではACFが$\\rho(k) \\sim Ck^{2d-1}$と双曲線的に減衰し、スペクトル密度が原点で発散する。ARIMAの$d=0$ではACFは指数減衰、$d=1$は非定常となり、双曲線的減衰を表現できない。ARFIMAの分数$d$によりこの中間的な振る舞いが表現可能となる。",
+    keywords: ["長期記憶", "分数差分", "双曲線的減衰", "Hurstパラメータ"],
+    explanation: "長期記憶過程では自己相関が緩やかに（双曲線的に）減衰し、短期記憶過程（ARMA）の指数的減衰とは質的に異なります。Hurst指数$H = d + 0.5$（$0.5 < H < 1$のとき長期記憶）とも関連します。金融時系列のボラティリティや水文学的データなどで観察され、ARFIMA（Granger & Joyeux, 1980; Hosking, 1981）が適切なモデルです。"
+  },
+
+  // Cluster Analysis (421-424)
+  {
+    id: 421,
+    topic: "cluster",
+    type: "choice",
+    difficulty: "basic",
+    question: "シルエットスコアの値の範囲と解釈として正しいものはどれか？",
+    options: [
+      "$-1$から$1$の範囲で、1に近いほどクラスタリングが良好",
+      "$0$から$1$の範囲で、0に近いほどクラスタリングが良好",
+      "$-\\infty$から$\\infty$の範囲",
+      "$0$から$\\infty$の範囲で、大きいほど良好"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。シルエットスコア$s(i) = \\frac{b(i) - a(i)}{\\max(a(i), b(i))}$で、$a(i)$は同一クラスタ内の平均距離、$b(i)$は最も近い他クラスタへの平均距離。$s(i) \\approx 1$は良好な分類、$s(i) \\approx 0$は境界的、$s(i) < 0$は誤分類の可能性を示します。",
+      "不正解。シルエットスコアは負の値も取りえます。負の値は誤分類の可能性を示します。",
+      "不正解。定義上$[-1, 1]$の範囲に収まります。",
+      "不正解。シルエットスコアは$1$を超えず、$0$未満の値も取ります。"
+    ],
+    explanation: "シルエット分析はクラスタ数の選択やクラスタリング品質の評価に用いられます。全データ点のシルエットスコアの平均を最大化するクラスタ数を最適と判断します。Rousseeuw (1987) により提案されました。"
+  },
+  {
+    id: 422,
+    topic: "cluster",
+    type: "choice",
+    difficulty: "standard",
+    question: "DBSCANアルゴリズムの特徴として正しいものはどれか？",
+    options: [
+      "密度に基づくクラスタリングで、事前にクラスタ数を指定する必要がなく、任意の形状のクラスタを検出できる",
+      "k-meansと同様に球形のクラスタのみ検出可能",
+      "階層型クラスタリングの一種である",
+      "すべてのデータ点が必ずいずれかのクラスタに割り当てられる"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。DBSCANは$\\varepsilon$近傍内に$\\mathrm{MinPts}$個以上の点がある密度の高い領域をクラスタとして検出します。クラスタ数は自動的に決まり、任意の形状に対応できます。",
+      "不正解。k-meansは球形のクラスタに偏りがありますが、DBSCANは密度に基づくため形状に制約がありません。",
+      "不正解。DBSCANは密度ベースのクラスタリングであり、階層型ではありません。",
+      "不正解。DBSCANはノイズ点（どのクラスタにも属さない点）を検出できることが特徴です。"
+    ],
+    explanation: "DBSCAN（Density-Based Spatial Clustering of Applications with Noise）はEster et al. (1996)が提案しました。パラメータは$\\varepsilon$（近傍の半径）と$\\mathrm{MinPts}$（コア点の条件となる最小点数）です。欠点として、密度が大きく異なるクラスタの同時検出が困難な場合があります。"
+  },
+  {
+    id: 423,
+    topic: "cluster",
+    type: "choice",
+    difficulty: "advanced",
+    question: "k-meansにおけるエルボー法とGap統計量の違いとして正しいものはどれか？",
+    options: [
+      "エルボー法はクラスタ内平方和の変化を視覚的に判断するが、Gap統計量は一様分布からの参照分布と比較して統計的に最適$k$を決定する",
+      "エルボー法は統計的に最適$k$を決定し、Gap統計量は視覚的判断に依存する",
+      "両者は同一の基準で最適$k$を決定する",
+      "Gap統計量はk-meansには適用できない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。エルボー法は$W_k$（クラスタ内平方和）を$k$に対してプロットし「肘」を視覚的に探しますが主観的です。Gap統計量は$\\mathrm{Gap}(k) = E^*[\\log W_k] - \\log W_k$を計算し、参照分布との比較で客観的な基準を与えます（Tibshirani et al., 2001）。",
+      "不正解。エルボー法は視覚的判断であり統計的基準ではありません。Gap統計量が統計的な基準です。",
+      "不正解。基準が異なります。エルボー法は$W_k$の減少の変曲点、Gap統計量は参照分布との差を用います。",
+      "不正解。Gap統計量はk-meansを含む任意のクラスタリング手法に適用可能です。"
+    ],
+    explanation: "最適クラスタ数の決定はクラスタリングの重要課題です。エルボー法は簡便ですが「肘」の位置が不明確なことがあります。Gap統計量はデータにクラスタ構造がない場合（一様分布）との比較で客観的な基準を提供します。他にCalinski-Harabasz指数、Davies-Bouldin指数なども用いられます。"
+  },
+  {
+    id: 424,
+    topic: "cluster",
+    type: "written",
+    difficulty: "advanced",
+    question: "k-meansアルゴリズムが最小化する目的関数を明記し、アルゴリズムが局所最適解に収束することを説明せよ。また、初期値依存性を軽減するk-means++の初期化戦略を述べよ。",
+    sampleAnswer: "k-meansは目的関数$J = \\sum_{k=1}^{K}\\sum_{i \\in C_k} \\|x_i - \\mu_k\\|^2$を最小化する。割当ステップ（各点を最近傍の中心に割当）とM-step（中心を再計算）の各ステップで$J$は単調非増加であり、$J$は下に有界なので有限ステップで収束する。ただしステップは局所的最適化であり大域最適は保証されない。k-means++は最初の中心をランダムに選び、次の中心をデータ点から既存中心への最短距離の二乗に比例する確率で選択する。これにより$E[J] \\leq 8(\\ln K + 2) J_{\\mathrm{opt}}$が保証される。",
+    keywords: ["目的関数", "局所最適", "k-means++", "単調非増加"],
+    explanation: "k-meansの各反復で$J$が減少し、組み合わせの数が有限であるため有限回で収束します。しかし大域最適は保証されず、初期値に依存します。k-means++ (Arthur & Vassilvitskii, 2007) は$O(\\log K)$の近似比を保証する賢い初期化方法で、実用上も大幅な改善を与えます。"
+  },
+
+  // PCA (425-428)
+  {
+    id: 425,
+    topic: "pca",
+    type: "choice",
+    difficulty: "basic",
+    question: "主成分分析（PCA）と特異値分解（SVD）の関係について正しいものはどれか？",
+    options: [
+      "中心化データ行列$X$のSVD（$X = U\\Sigma V^T$）において、右特異ベクトル$V$の列が主成分の方向（固有ベクトル）に対応する",
+      "左特異ベクトル$U$の列が主成分の方向に対応する",
+      "特異値$\\sigma_i$がそのまま分散共分散行列の固有値に等しい",
+      "PCAとSVDは全く別の手法で関連はない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$X = U\\Sigma V^T$のとき$X^TX = V\\Sigma^2 V^T$であり、$V$の列は$X^TX/(n-1)$の固有ベクトル（主成分方向）です。主成分スコアは$XV = U\\Sigma$で与えられます。",
+      "不正解。$U$の列は主成分スコアのスケーリング版に対応します。主成分の方向は$V$です。",
+      "不正解。分散共分散行列の固有値は$\\sigma_i^2/(n-1)$です。$\\sigma_i$（特異値）そのものではありません。",
+      "不正解。PCAはSVDを用いて効率的に計算できます。両者は密接に関連しています。"
+    ],
+    explanation: "中心化データ行列$X$（$n \\times p$）のSVDから直接PCAの結果が得られます。共分散行列$S = X^TX/(n-1)$の固有値分解を明示的に計算する必要がなく、数値的にも安定です。特に$n < p$の高次元データでは、SVDを用いた計算が効率的です。"
+  },
+  {
+    id: 426,
+    topic: "pca",
+    type: "choice",
+    difficulty: "standard",
+    question: "カーネルPCAについて正しい記述はどれか？",
+    options: [
+      "カーネル関数を用いて暗黙的に高次元特徴空間にデータを写像し、その空間でPCAを実行する手法である",
+      "カーネル密度推定を用いてPCAの結果を平滑化する手法である",
+      "通常のPCAと異なり、常に線形な主成分を抽出する",
+      "カーネルPCAは元の空間でのPCAと常に同じ結果を与える"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。カーネルトリック$k(x_i, x_j) = \\langle \\phi(x_i), \\phi(x_j) \\rangle$により、高次元特徴空間$\\phi$で明示的な写像を計算せずに内積のみで主成分分析を実行できます。",
+      "不正解。カーネル密度推定とは無関係です。カーネルPCAのカーネルは正定値カーネル関数です。",
+      "不正解。カーネルPCAは元の入力空間では非線形な成分を抽出します。特徴空間では線形ですが、入力空間への射影は非線形です。",
+      "不正解。線形カーネル$k(x,y) = x^Ty$を用いた場合のみ通常のPCAと一致します。RBFカーネルなどでは異なる結果になります。"
+    ],
+    explanation: "カーネルPCA (Schölkopf et al., 1998) はカーネル行列$K_{ij} = k(x_i, x_j)$の固有値問題を解きます。中心化カーネル行列$\\tilde{K} = K - \\frac{1}{n}\\mathbf{1}K - K\\frac{1}{n}\\mathbf{1} + \\frac{1}{n^2}\\mathbf{1}K\\mathbf{1}$を用います。非線形構造の抽出に有効ですが、新しいデータの射影や逆写像（pre-image問題）が課題です。"
+  },
+  {
+    id: 427,
+    topic: "pca",
+    type: "choice",
+    difficulty: "advanced",
+    question: "スパースPCA（Sparse PCA）が通常のPCAと異なる点として正しいものはどれか？",
+    options: [
+      "主成分の負荷量にL1正則化（ラッソ型ペナルティ）を加え、多くの負荷量を正確に0にすることで解釈性を高める",
+      "主成分の数を自動的に決定する",
+      "固有値問題を解かずに主成分を計算する",
+      "分散の説明率が通常のPCAより常に高くなる"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。スパースPCAは$\\max_v v^T S v - \\lambda \\|v\\|_1$（$\\|v\\|_2 = 1$）のような問題を解き、負荷量ベクトル$v$の多くの成分を0にします。各主成分が少数の変数のみに依存するため解釈が容易です。",
+      "不正解。主成分数の決定はスパースPCAの主目的ではありません。",
+      "不正解。スパースPCAも最適化問題を解きますが、L1ペナルティにより固有値問題とは異なる定式化になります。",
+      "不正解。スパース制約を課すため、分散の説明率は通常のPCAより低下します（解釈性とのトレードオフ）。"
+    ],
+    explanation: "通常のPCAでは主成分が全変数の線形結合となり、変数数が多い場合の解釈が困難です。スパースPCA（Zou et al., 2006; d'Aspremont et al., 2007）はラッソ型ペナルティで負荷量をスパースにし、解釈性を高めます。分散説明率は低下しますが、実務上の解釈可能性との良いトレードオフが得られます。"
+  },
+  {
+    id: 428,
+    topic: "pca",
+    type: "written",
+    difficulty: "advanced",
+    question: "主成分分析における第$k$主成分が、分散を最大にする方向として逐次的に定まることを、ラグランジュ乗数法を用いて示せ。",
+    sampleAnswer: "第1主成分：$\\max_{w_1} w_1^T S w_1$（$w_1^T w_1 = 1$）。ラグランジュ関数$L = w_1^T S w_1 - \\lambda(w_1^T w_1 - 1)$の微分条件$Sw_1 = \\lambda w_1$より、$w_1$は$S$の固有ベクトル。$w_1^T S w_1 = \\lambda$を最大化するため、最大固有値$\\lambda_1$に対応する固有ベクトルが第1主成分。第$k$主成分：$\\max_{w_k} w_k^T S w_k$（$w_k^T w_k = 1$、$w_k^T w_j = 0$（$j < k$）の制約下）。ラグランジュ関数の微分条件と直交制約を用いると、$w_k$は$S$の第$k$固有値に対応する固有ベクトルとなる。",
+    keywords: ["ラグランジュ乗数法", "固有値問題", "直交制約", "分散最大化"],
+    explanation: "PCAの定式化は制約付き最適化問題です。各主成分は、それまでの主成分と直交する方向のうち分散を最大にする方向として定まります。これはレイリー商$R(w) = w^TSw / w^Tw$の最大化と等価であり、共分散行列$S$のスペクトル分解に帰着します。"
+  },
+
+  // Factor Analysis (429-432)
+  {
+    id: 429,
+    topic: "factor",
+    type: "choice",
+    difficulty: "basic",
+    question: "因子分析におけるプロマックス回転（Promax rotation）の特徴として正しいものはどれか？",
+    options: [
+      "直交回転（バリマックス等）の結果をべき乗して斜交化する方法で、因子間の相関を許容する",
+      "因子の直交性を維持しながら回転する方法",
+      "最尤法で因子負荷量を推定する方法",
+      "因子数を決定するための方法"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。プロマックス回転はバリマックス回転の負荷量を$k$乗（通常$k=4$）して目標行列を作り、それに近づく斜交回転を行います。因子間相関を許容するため、社会科学で広く用いられます。",
+      "不正解。直交性を維持するのはバリマックスやクォーティマックスです。プロマックスは斜交回転です。",
+      "不正解。プロマックスは回転の方法であり、推定法（最尤法、主因子法等）とは別の概念です。",
+      "不正解。因子数の決定にはスクリープロットや平行分析が用いられます。プロマックスは因子数決定後の回転方法です。"
+    ],
+    explanation: "因子回転には直交回転（バリマックス、クォーティマックス等）と斜交回転（プロマックス、オブリミン等）があります。実際のデータでは因子間に相関があることが多く、斜交回転が推奨される場合があります。プロマックスは計算が高速で、大規模データに適しています。"
+  },
+  {
+    id: 430,
+    topic: "factor",
+    type: "choice",
+    difficulty: "standard",
+    question: "因子分析における因子スコアの推定法として、回帰法（Thomson法）の推定式はどれか？（$\\Lambda$は因子負荷行列、$\\Psi$は独自分散の対角行列、$S$は標本共分散行列）",
+    options: [
+      "$\\hat{f} = \\Lambda^T (\\Lambda\\Lambda^T + \\Psi)^{-1} x = \\Lambda^T S^{-1} x$",
+      "$\\hat{f} = \\Lambda^{-1} x$",
+      "$\\hat{f} = (\\Lambda^T \\Lambda)^{-1} \\Lambda^T x$",
+      "$\\hat{f} = S x$"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。回帰法（Thomson法）は$f$の$x$への回帰として因子スコアを推定します。$\\Sigma = \\Lambda\\Lambda^T + \\Psi$（因子モデルの共分散構造）のもとで$E[f|x] = \\Lambda^T \\Sigma^{-1} x$が推定式です。",
+      "不正解。$\\Lambda$は一般に正方行列ではないため逆行列は存在しません。また因子の不定性も考慮されていません。",
+      "不正解。これは最小二乗推定に似ていますが、独自分散$\\Psi$を考慮していません。Bartlett法の推定式は$(\\Lambda^T \\Psi^{-1} \\Lambda)^{-1} \\Lambda^T \\Psi^{-1} x$です。",
+      "不正解。$Sx$に統計的意味はありません。"
+    ],
+    explanation: "因子スコアの推定法には主に回帰法（Thomson法）とBartlett法があります。回帰法は$E[f|x]$を推定し、因子スコアの分散を最小化しますが不偏ではありません。Bartlett法は$\\Psi^{-1}$で重み付けした最小二乗法で不偏ですが、因子間相関を再現しません。"
+  },
+  {
+    id: 431,
+    topic: "factor",
+    type: "choice",
+    difficulty: "advanced",
+    question: "因子分析における因子数の決定法として、平行分析（Parallel Analysis）の手順として正しいものはどれか？",
+    options: [
+      "同じサイズの乱数データから相関行列の固有値を多数回計算し、実データの固有値がその95パーセンタイルを超える因子数を採用する",
+      "固有値が1を超える因子数を採用する（Kaiser基準）",
+      "スクリープロットの傾きの変化点で因子数を決定する",
+      "AICまたはBICが最小となる因子数を採用する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。平行分析（Horn, 1965）は乱数データの固有値との比較で偶然による固有値を判別します。Kaiser基準（固有値>1）より過大推定しにくく、推奨される方法です。",
+      "不正解。Kaiser基準は平行分析ではありません。変数数が多いとき因子数を過大に推定する傾向があります。",
+      "不正解。スクリープロットの検査は主観的であり、平行分析とは異なります。",
+      "不正解。情報量規準による方法は最尤法の枠組みで有効ですが、平行分析の手順ではありません。"
+    ],
+    explanation: "平行分析は因子数決定において最も推奨される方法の一つです。無構造（因子なし）のデータから期待される固有値の分布を参照分布とし、実データの固有値がそれを有意に上回る因子のみを保持します。Monte Carloシミュレーションで参照分布を生成します。"
+  },
+  {
+    id: 432,
+    topic: "factor",
+    type: "written",
+    difficulty: "advanced",
+    question: "因子分析モデル$x = \\Lambda f + \\varepsilon$（$f \\sim N(0, I)$、$\\varepsilon \\sim N(0, \\Psi)$）における回転の不定性を説明し、なぜ因子回転が必要かを述べよ。",
+    sampleAnswer: "任意の直交行列$T$に対して$\\Lambda^* = \\Lambda T$、$f^* = T^T f$とすると$x = \\Lambda^* f^* + \\varepsilon$も同じモデルとなる。$\\Lambda\\Lambda^T = \\Lambda T T^T \\Lambda^T = \\Lambda^* \\Lambda^{*T}$であるから共分散構造$\\Sigma = \\Lambda\\Lambda^T + \\Psi$は不変であり、データから$\\Lambda$と$\\Lambda^*$を区別できない。この回転不定性のため、解釈しやすい（単純構造に近い）$\\Lambda^*$を選ぶ回転が必要となる。バリマックス回転は因子負荷量の分散を最大化し、各変数が少数の因子のみに高い負荷を持つ単純構造を実現する。",
+    keywords: ["回転不定性", "直交行列", "単純構造", "識別不可能"],
+    explanation: "回転不定性は因子分析の本質的な特性です。共分散構造$\\Lambda\\Lambda^T + \\Psi$が同一である限り、統計的には区別できません。Thurstonesの単純構造の原理に基づき、各変数が少数の因子のみに関与するような回転解を求めます。これは科学的な解釈可能性を高めるための方法論的選択です。"
+  },
+
+  // ANOVA (433-436)
+  {
+    id: 433,
+    topic: "anova",
+    type: "choice",
+    difficulty: "basic",
+    question: "混合効果モデル（mixed effects model）における固定効果と変量効果の違いとして正しいものはどれか？",
+    options: [
+      "固定効果は関心のある特定の水準の影響、変量効果はより大きな母集団から無作為に抽出された水準の影響を表す",
+      "固定効果は連続変数、変量効果はカテゴリ変数に対応する",
+      "固定効果はランダムな値、変量効果は固定された値をとる",
+      "混合効果モデルでは固定効果と変量効果は同じ推定法で推定される"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。固定効果は実験者が意図的に設定した水準（薬剤A, B, C等）の効果、変量効果は母集団から無作為に抽出された水準（被験者、学校等）の効果です。変量効果は正規分布等の確率分布に従うと仮定します。",
+      "不正解。固定・変量の区別は変数の型ではなく、水準の選択方法（固定 vs 無作為抽出）に基づきます。",
+      "不正解。逆です。変量効果がランダム変数（確率分布に従う）、固定効果は未知だが固定されたパラメータです。",
+      "不正解。固定効果は通常最小二乗法やMLEで、変量効果はBLUP（Best Linear Unbiased Prediction）やREMLで推定されます。"
+    ],
+    explanation: "混合効果モデルは$y = X\\beta + Zb + \\varepsilon$の形で、$\\beta$が固定効果、$b \\sim N(0, G)$が変量効果です。反復測定データや階層データの分析に適しており、欠測データや不等間隔データにも対応できます。REMLは分散成分の推定にバイアスが小さく推奨されます。"
+  },
+  {
+    id: 434,
+    topic: "anova",
+    type: "choice",
+    difficulty: "standard",
+    question: "入れ子（ネスト）デザインと交差（クロス）デザインの違いとして正しいものはどれか？",
+    options: [
+      "入れ子デザインでは因子Bの水準が因子Aの各水準内で異なる（例：各学校内の教室）が、交差デザインでは全水準の組み合わせが存在する",
+      "入れ子デザインは交互作用を推定でき、交差デザインはできない",
+      "入れ子デザインは因子が2つ以上ある場合に常に使用される",
+      "両者の検定方法は全く同じである"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。入れ子デザインでは因子Bが因子Aに入れ子になっており（$B(A)$と表記）、因子Bの各水準は因子Aの特定の水準にのみ属します。交差デザインでは全組み合わせが存在し、交互作用$A \\times B$の推定が可能です。",
+      "不正解。逆です。交差デザインは交互作用を推定でき、入れ子デザインでは交互作用と入れ子効果が交絡します。",
+      "不正解。因子が2つ以上ある場合にどちらのデザインを使うかはデータの構造に依存します。",
+      "不正解。入れ子デザインと交差デザインでは分散分析表の自由度や平方和の分解が異なります。"
+    ],
+    explanation: "入れ子デザインの例：3病院（因子A）×各病院の医師（因子B、各病院で異なる医師）。医師は病院に入れ子になっています。このとき「病院×医師」の交互作用は推定できず、医師の効果は病院内での変動として推定されます。分散分析表の構造が交差デザインとは異なるため注意が必要です。"
+  },
+  {
+    id: 435,
+    topic: "anova",
+    type: "choice",
+    difficulty: "advanced",
+    question: "反復測定分散分析（repeated measures ANOVA）で球面性の仮定が満たされない場合の対処法として正しいものはどれか？",
+    options: [
+      "Greenhouse-Geisser補正やHuynh-Feldt補正で自由度を調整するか、多変量検定（MANOVAアプローチ）を用いる",
+      "データを対数変換して球面性を満たすようにする",
+      "各時点のデータを独立とみなして通常の一元配置分散分析を行う",
+      "球面性が満たされなくてもF検定の結果は影響を受けない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。球面性違反時、一変量検定では$\\varepsilon$補正（GG補正：保守的、HF補正：やや自由）で自由度を$\\varepsilon$倍に調整します。代替としてMANOVAアプローチは球面性を仮定しません。",
+      "不正解。対数変換は分散の均一化には役立ちますが、球面性（共分散行列の構造）を保証するものではありません。",
+      "不正解。反復測定データの各時点は同一被験者からのデータであり独立ではありません。独立性の仮定は不適切です。",
+      "不正解。球面性が満たされないとF検定の第一種の過誤率が名目水準を超え、偽陽性が増加します。"
+    ],
+    explanation: "球面性はMauchlyの検定で検証されます。$\\varepsilon = 1$のとき完全な球面性、$\\varepsilon = 1/(k-1)$が下限です。GG補正の$\\hat{\\varepsilon}$は下方バイアスがあり保守的、HF補正はそれを修正しますが1を超える場合があります。被験者数が少ない場合はMANOVAアプローチが推奨されます。"
+  },
+  {
+    id: 436,
+    topic: "anova",
+    type: "written",
+    difficulty: "advanced",
+    question: "二元配置分散分析の交互作用効果の意味を数学的に定式化し、交互作用が存在する場合に主効果の解釈にどのような注意が必要かを説明せよ。",
+    sampleAnswer: "二元配置モデルは$y_{ijk} = \\mu + \\alpha_i + \\beta_j + (\\alpha\\beta)_{ij} + \\varepsilon_{ijk}$で、交互作用$(\\alpha\\beta)_{ij}$は因子Aの水準$i$での因子Bの効果が水準により異なることを表す。数学的には$(\\alpha\\beta)_{ij} = \\mu_{ij} - \\mu - \\alpha_i - \\beta_j$（セル平均からの加法的モデルの逸脱）。交互作用が有意な場合、主効果$\\alpha_i$（因子Aの水準間の平均的差異）は因子Bの水準によって異なるため、主効果の解釈は限定的になる。単純主効果（因子Bの特定水準での因子Aの効果）の分析が推奨される。",
+    keywords: ["交互作用", "加法性", "単純主効果", "セル平均"],
+    explanation: "交互作用はセル平均$\\mu_{ij}$が因子の加法的な組み合わせ$\\mu + \\alpha_i + \\beta_j$で説明できないことを意味します。交互作用が有意な場合、主効果（周辺平均の差）は実態を正確に反映しないため、単純主効果や交互作用プロットによる検討が必要です。"
+  },
+
+  // Sampling (437-440)
+  {
+    id: 437,
+    topic: "sampling",
+    type: "choice",
+    difficulty: "basic",
+    question: "比推定量（ratio estimator）$\\hat{R} = \\bar{y}/\\bar{x}$で母平均$\\bar{Y}$を推定する方法として正しいものはどれか？",
+    options: [
+      "$\\hat{\\bar{Y}}_R = \\hat{R} \\cdot \\bar{X} = (\\bar{y}/\\bar{x}) \\cdot \\bar{X}$（$\\bar{X}$は母集団の$x$の平均で既知）",
+      "$\\hat{\\bar{Y}}_R = \\bar{y} + \\bar{x}$",
+      "$\\hat{\\bar{Y}}_R = \\bar{y} \\cdot \\bar{x}$",
+      "$\\hat{\\bar{Y}}_R = \\bar{y} - \\hat{R}$"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。比推定量は補助変数$x$と目的変数$y$の比$R = Y/X$を標本から推定し、既知の母平均$\\bar{X}$を乗じることで精度の高い推定を行います。$y$と$x$の相関が高いほど有効です。",
+      "不正解。和では比推定の構造を反映していません。",
+      "不正解。積では次元も合いません。",
+      "不正解。比率$\\hat{R}$を引く意味がありません。"
+    ],
+    explanation: "比推定量は補助変数$x$の情報を活用する推定法です。$y$と$x$の相関が高く、原点を通る直線関係がある場合に有効です。バイアスを持ちますが（$O(1/n)$）、大標本では無視でき、分散の減少が大きい場合に単純推定量より効率的です。"
+  },
+  {
+    id: 438,
+    topic: "sampling",
+    type: "choice",
+    difficulty: "standard",
+    question: "層別抽出法におけるネイマン最適配分の特徴として正しいものはどれか？",
+    options: [
+      "各層の標本サイズ$n_h$を層の大きさ$N_h$と層内標準偏差$S_h$の積に比例させる：$n_h \\propto N_h S_h$",
+      "各層の標本サイズを等しくする",
+      "各層の標本サイズを層の大きさに比例させる（比例配分）",
+      "各層の標本サイズを層内分散に反比例させる"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。ネイマン配分$n_h = n \\cdot \\frac{N_h S_h}{\\sum_h N_h S_h}$は層別推定量の分散を最小化します。ばらつきが大きい層からより多く抽出します。",
+      "不正解。等配分は最適ではありません。層の大きさや分散が異なる場合、効率が低下します。",
+      "不正解。比例配分$n_h \\propto N_h$は各層の分散が等しい場合にのみ最適です。",
+      "不正解。分散が大きい層からより多く抽出するのがネイマン配分です。分散に反比例させると逆効果です。"
+    ],
+    explanation: "ネイマン配分は総標本サイズ$n$を固定した下で、層別推定量$\\bar{y}_{st} = \\sum_h W_h \\bar{y}_h$の分散を最小化する配分です。費用が層によって異なる場合は$n_h \\propto N_h S_h / \\sqrt{c_h}$（$c_h$は層$h$の1標本あたり費用）に拡張できます。"
+  },
+  {
+    id: 439,
+    topic: "sampling",
+    type: "choice",
+    difficulty: "advanced",
+    question: "集落抽出法（cluster sampling）において、推定量の分散が大きくなりやすい理由として正しいものはどれか？",
+    options: [
+      "集落内のデータが類似している（級内相関が正）ため、同じ標本サイズでも有効な情報量が少なくなる",
+      "集落間のばらつきが常に0であるため",
+      "集落のサイズが全て等しいため",
+      "集落抽出では標本サイズが必然的に小さくなるため"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。級内相関係数$\\rho$が正の場合、集落抽出の分散は単純無作為抽出の約$(1 + (m-1)\\rho)$倍（$m$は集落内サイズ）に増大します。これをデザイン効果（DEFF）といいます。",
+      "不正解。集落間にばらつきがあるからこそ、どの集落を選ぶかで推定値が大きく変わります。",
+      "不正解。集落のサイズが不等な場合もありますが、それは分散が大きくなる主因ではありません。",
+      "不正解。集落抽出の標本サイズは設計次第であり、必然的に小さくなるわけではありません。"
+    ],
+    explanation: "デザイン効果$\\mathrm{DEFF} = 1 + (m-1)\\rho$は集落抽出が単純無作為抽出に比べてどれだけ非効率かを表します。$\\rho$が大きいほど（集落内が均質なほど）DEFFが大きくなります。実務では調査費用の削減（集落単位で訪問）と精度のトレードオフで集落抽出が選択されます。"
+  },
+  {
+    id: 440,
+    topic: "sampling",
+    type: "written",
+    difficulty: "advanced",
+    question: "層別抽出法における比例配分とネイマン最適配分を比較し、それぞれの分散の式を示して最適配分が効率的となる条件を述べよ。",
+    sampleAnswer: "層別推定量$\\bar{y}_{st} = \\sum_{h=1}^{H} W_h \\bar{y}_h$の分散は$V(\\bar{y}_{st}) = \\sum_h W_h^2 S_h^2 / n_h$（有限母集団補正を無視）。比例配分$n_h = nW_h$のとき$V_{\\mathrm{prop}} = \\frac{1}{n}\\sum_h W_h S_h^2$。ネイマン配分$n_h = n \\cdot W_h S_h / \\sum_h W_h S_h$のとき$V_{\\mathrm{opt}} = \\frac{1}{n}(\\sum_h W_h S_h)^2$。$V_{\\mathrm{prop}} - V_{\\mathrm{opt}} = \\frac{1}{n}\\sum_h W_h(S_h - \\bar{S}_w)^2 \\geq 0$（$\\bar{S}_w = \\sum_h W_h S_h$）。層内標準偏差$S_h$のばらつきが大きいほど最適配分の利得が大きい。",
+    keywords: ["比例配分", "ネイマン配分", "層別推定量", "分散比較"],
+    explanation: "比例配分は各層の分散が等しい場合に最適配分と一致します。層内標準偏差にばらつきがある場合、ネイマン配分はばらつきの大きい層に多くの標本を配分し、全体の分散を最小化します。実務では層内分散が未知の場合、パイロット調査や先行研究の情報を用いて近似的に最適配分を行います。"
+  },
+
+  // Conditional Expectation (441-444)
+  {
+    id: 441,
+    topic: "conditional",
+    type: "choice",
+    difficulty: "basic",
+    question: "全期待値の法則（tower property）$E[Y] = E[E[Y|X]]$の意味として正しいものはどれか？",
+    options: [
+      "$Y$の期待値は、まず$X$が与えられたときの$Y$の条件付き期待値を求め、それを$X$の分布で平均することで得られる",
+      "$Y$の期待値は$X$の期待値に等しい",
+      "$E[Y|X]$は定数である",
+      "この公式は$X$と$Y$が独立な場合にのみ成立する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$E[Y] = E_X[E[Y|X]] = \\int E[Y|X=x] f_X(x) dx$です。内側の期待値は$X$を固定して$Y$について、外側の期待値は$X$について取ります。",
+      "不正解。一般に$E[Y] \\neq E[X]$です。全期待値の法則は$Y$の周辺期待値を条件付き期待値の平均として表すものです。",
+      "不正解。$E[Y|X]$は$X$の関数であり確率変数です。$X$の値に応じて変わります。",
+      "不正解。全期待値の法則は$X$と$Y$の独立性によらず常に成立します。"
+    ],
+    explanation: "全期待値の法則（繰り返し期待値の法則）は条件付き期待値の最も基本的な性質です。複雑な期待値計算を、条件付けによって段階的に行うことができます。例えば$N \\sim \\mathrm{Poi}(\\lambda)$個の$X_i$の和$S = \\sum_{i=1}^N X_i$の期待値は$E[S] = E[E[S|N]] = E[N \\cdot E[X]] = \\lambda E[X]$と計算できます。"
+  },
+  {
+    id: 442,
+    topic: "conditional",
+    type: "choice",
+    difficulty: "standard",
+    question: "条件付き分散の公式$\\mathrm{Var}(Y) = E[\\mathrm{Var}(Y|X)] + \\mathrm{Var}(E[Y|X])$における各項の解釈として正しいものはどれか？",
+    options: [
+      "$E[\\mathrm{Var}(Y|X)]$は$X$では説明できない$Y$のばらつき、$\\mathrm{Var}(E[Y|X])$は$X$で説明できる$Y$のばらつき",
+      "$E[\\mathrm{Var}(Y|X)]$は$X$で説明できるばらつき、$\\mathrm{Var}(E[Y|X])$は説明できないばらつき",
+      "両項は常に等しい",
+      "この公式は$X$と$Y$が正の相関を持つ場合のみ成立する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$E[\\mathrm{Var}(Y|X)]$は「$X$を知っても残る$Y$のばらつきの平均」（群内変動）、$\\mathrm{Var}(E[Y|X])$は「$X$による$Y$の条件付き平均のばらつき」（群間変動）です。",
+      "不正解。解釈が逆です。$\\mathrm{Var}(E[Y|X])$の方が$X$で説明できる部分です。",
+      "不正解。一般に等しくなりません。$X$と$Y$が独立なら$\\mathrm{Var}(E[Y|X]) = 0$です。",
+      "不正解。条件付き分散の公式は$X$と$Y$の関係に関わらず常に成立します。"
+    ],
+    explanation: "条件付き分散の公式（Eveの法則）は分散の分解を与えます。分散分析との対応では$E[\\mathrm{Var}(Y|X)]$が残差変動（群内変動）、$\\mathrm{Var}(E[Y|X])$が因子による変動（群間変動）に相当します。決定係数$R^2 = \\mathrm{Var}(E[Y|X]) / \\mathrm{Var}(Y)$ともつながります。"
+  },
+  {
+    id: 443,
+    topic: "conditional",
+    type: "choice",
+    difficulty: "advanced",
+    question: "$Y$の最良予測量（best predictor）に関して正しいものはどれか？$X$の関数$g(X)$で$E[(Y - g(X))^2]$を最小化するものを考える。",
+    options: [
+      "最良予測量は$g^*(X) = E[Y|X]$（条件付き期待値）であり、線形に限定しなくても成り立つ",
+      "最良予測量は$g^*(X) = \\beta_0 + \\beta_1 X$（線形関数）",
+      "最良予測量は$g^*(X) = \\mathrm{Med}(Y|X)$（条件付き中央値）",
+      "最良予測量はデータの分布に依存するため一般的な結果はない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。任意の関数$g(X)$について$E[(Y-g(X))^2] = E[(Y-E[Y|X])^2] + E[(E[Y|X]-g(X))^2] \\geq E[(Y-E[Y|X])^2]$であるから、$g^*(X) = E[Y|X]$が二乗誤差を最小化します。",
+      "不正解。線形関数に限定した場合の最良線形予測量（BLP）は$\\beta_0 + \\beta_1 X$ですが、一般の最良予測量は条件付き期待値です。",
+      "不正解。条件付き中央値は絶対誤差$E[|Y - g(X)|]$を最小化する予測量です。二乗誤差を最小化するのは条件付き期待値です。",
+      "不正解。損失関数が二乗誤差の場合、分布に関わらず$E[Y|X]$が最良予測量です。"
+    ],
+    explanation: "条件付き期待値$E[Y|X]$が平均二乗誤差の意味で最良予測量であることは、確率論の基本定理です。$E[(Y-g(X))^2]$を$g$について最小化すると、条件付き期待値に至ります。BLP（最良線形予測量）はこれを線形関数の範囲に限定したもので、必ずしも最良予測量とは一致しません。"
+  },
+  {
+    id: 444,
+    topic: "conditional",
+    type: "written",
+    difficulty: "advanced",
+    question: "条件付き分散の公式$\\mathrm{Var}(Y) = E[\\mathrm{Var}(Y|X)] + \\mathrm{Var}(E[Y|X])$を証明せよ。",
+    sampleAnswer: "$\\mathrm{Var}(Y) = E[Y^2] - (E[Y])^2$。$E[Y^2] = E[E[Y^2|X]]$（全期待値の法則）。$E[Y^2|X] = \\mathrm{Var}(Y|X) + (E[Y|X])^2$より、$E[Y^2] = E[\\mathrm{Var}(Y|X)] + E[(E[Y|X])^2]$。また$(E[Y])^2 = (E[E[Y|X]])^2$。よって$\\mathrm{Var}(Y) = E[\\mathrm{Var}(Y|X)] + E[(E[Y|X])^2] - (E[E[Y|X]])^2 = E[\\mathrm{Var}(Y|X)] + \\mathrm{Var}(E[Y|X])$。",
+    keywords: ["全期待値の法則", "分散分解", "条件付き分散", "条件付き期待値"],
+    explanation: "この証明は全期待値の法則$E[Y] = E[E[Y|X]]$と条件付き分散の定義$\\mathrm{Var}(Y|X) = E[Y^2|X] - (E[Y|X])^2$の2つを組み合わせます。この分解は分散分析、ベイズ統計、保険数理など多くの分野で基本的な役割を果たします。"
+  },
+
+  // Qualitative Regression (445-448)
+  {
+    id: 445,
+    topic: "qualreg",
+    type: "choice",
+    difficulty: "basic",
+    question: "ROC曲線（Receiver Operating Characteristic curve）の縦軸と横軸の組み合わせとして正しいものはどれか？",
+    options: [
+      "縦軸：真陽性率（感度）、横軸：偽陽性率（1 - 特異度）",
+      "縦軸：特異度、横軸：感度",
+      "縦軸：正解率、横軸：閾値",
+      "縦軸：適合率、横軸：再現率"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。ROC曲線は分類閾値を変化させたとき、$x$軸に偽陽性率FPR = FP/(FP+TN)、$y$軸に真陽性率TPR = TP/(TP+FN)をプロットしたものです。",
+      "不正解。ROC曲線の軸は感度（TPR）と1-特異度（FPR）です。",
+      "不正解。正解率と閾値のグラフはROC曲線ではありません。",
+      "不正解。適合率と再現率のグラフはPR曲線（Precision-Recall curve）です。ROC曲線とは異なります。"
+    ],
+    explanation: "ROC曲線のAUC（曲線下面積）は分類器の判別能力の指標で、0.5（ランダム分類）から1.0（完全分類）の範囲を取ります。AUCはランダムに選んだ正例のスコアがランダムに選んだ負例のスコアより高い確率に等しいです。クラス不均衡が大きい場合はPR曲線も併せて検討すべきです。"
+  },
+  {
+    id: 446,
+    topic: "qualreg",
+    type: "choice",
+    difficulty: "standard",
+    question: "多項ロジットモデル（multinomial logit model）について正しい記述はどれか？",
+    options: [
+      "3カテゴリ以上の名義尺度の応答変数に対して、基準カテゴリとの対数オッズ比を線形モデルで表す",
+      "順序尺度の応答変数にのみ適用可能",
+      "二値応答のロジスティック回帰とは全く異なるモデル",
+      "カテゴリ数に関わらずパラメータ数は同じ"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$J$カテゴリの場合、基準カテゴリ$J$に対して$\\log(P(Y=j|x)/P(Y=J|x)) = \\beta_j^T x$（$j=1,...,J-1$）とモデル化します。$J-1$個の線形予測子を同時に推定します。",
+      "不正解。順序尺度には順序ロジットモデル（比例オッズモデル）が適しています。多項ロジットは名義尺度に適用します。",
+      "不正解。$J=2$の場合は通常のロジスティック回帰と一致します。多項ロジットは二値ロジットの一般化です。",
+      "不正解。カテゴリ数$J$が増えるとパラメータ数は$(J-1) \\times (p+1)$に増加します。"
+    ],
+    explanation: "多項ロジットモデルではIIA（Independence of Irrelevant Alternatives、無関係な選択肢からの独立性）の仮定が暗黙に課されます。IIAが不適切な場合はネスティッドロジットや混合ロジットが代替となります。推定は最尤法で行い、Newton-Raphson法で反復計算します。"
+  },
+  {
+    id: 447,
+    topic: "qualreg",
+    type: "choice",
+    difficulty: "advanced",
+    question: "ロジスティック回帰における完全分離（complete separation）問題について正しいものはどれか？",
+    options: [
+      "説明変数の線形結合で2群が完全に分離される場合、最尤推定量が存在しない（$\\hat{\\beta} \\to \\pm\\infty$）",
+      "完全分離が起きると推定量は常に0に収束する",
+      "完全分離は標本サイズが大きい場合にのみ問題となる",
+      "完全分離はプロビットモデルでは起こらない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。完全分離のとき尤度関数は$\\hat{\\beta}$の大きさが増すにつれて単調に増加し、最大値に達しません。パラメータ推定値が発散し、標準誤差も無限大になります。",
+      "不正解。推定量は$\\pm\\infty$に発散します。0には収束しません。",
+      "不正解。むしろ標本サイズが小さく変数が多い場合に起こりやすいです。",
+      "不正解。完全分離の問題はプロビットモデルでも同様に発生します。リンク関数の形に関わらない問題です。"
+    ],
+    explanation: "完全分離への対処法：(1) Firth (1993)のペナルティ付き最尤推定（Jeffreysの事前分布に相当するバイアス補正）、(2) 正則化（L1/L2ペナルティ）、(3) ベイズ推定（適切な事前分布）。Firthの方法は小標本でも有効で、完全分離がなくてもMLEのバイアスを軽減します。"
+  },
+  {
+    id: 448,
+    topic: "qualreg",
+    type: "written",
+    difficulty: "advanced",
+    question: "ロジスティック回帰の最尤推定がNewton-Raphson法（IRLS: 反復重み付き最小二乗法）で実行できることを示せ。",
+    sampleAnswer: "ロジスティック回帰の対数尤度は$\\ell(\\beta) = \\sum_i [y_i \\log p_i + (1-y_i)\\log(1-p_i)]$（$p_i = \\mathrm{logit}^{-1}(x_i^T\\beta)$）。スコア関数$\\nabla\\ell = X^T(y - p)$、ヘシアン$\\nabla^2\\ell = -X^TWX$（$W = \\mathrm{diag}(p_i(1-p_i))$）。Newton-Raphsonの更新式$\\beta^{(t+1)} = \\beta^{(t)} - (\\nabla^2\\ell)^{-1}\\nabla\\ell = \\beta^{(t)} + (X^TWX)^{-1}X^T(y-p)$。これを整理すると$\\beta^{(t+1)} = (X^TWX)^{-1}X^TWz$（$z = X\\beta^{(t)} + W^{-1}(y-p)$は作業応答変数）。これは重み$W$の加重最小二乗法と同じ形であり、$W$が各反復で更新されるためIRLSと呼ばれる。",
+    keywords: ["Newton-Raphson", "IRLS", "スコア関数", "フィッシャー情報行列"],
+    explanation: "IRLS（Iteratively Reweighted Least Squares）はGLM（一般化線形モデル）全般の推定アルゴリズムです。各反復で重み行列$W$と作業応答変数$z$を更新しながら加重最小二乗法を繰り返します。ロジスティック回帰ではヘシアンと期待情報行列が一致するため、Newton-Raphson法とFisher scoringが同じアルゴリズムになります。"
+  },
+
+  // Survival Analysis (449-452)
+  {
+    id: 449,
+    topic: "survival",
+    type: "choice",
+    difficulty: "basic",
+    question: "Cox比例ハザードモデルの比例ハザード仮定について正しい記述はどれか？",
+    options: [
+      "共変量の効果（ハザード比）が時間$t$に依存せず一定であるという仮定",
+      "ベースラインハザードが定数であるという仮定",
+      "生存時間が指数分布に従うという仮定",
+      "打ち切りがランダムであるという仮定"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。Coxモデルは$h(t|x) = h_0(t)\\exp(\\beta^T x)$で、ハザード比$h(t|x_1)/h(t|x_2) = \\exp(\\beta^T(x_1 - x_2))$が時間$t$に依存しません。",
+      "不正解。Coxモデルはベースラインハザード$h_0(t)$を未指定のまま推定する半パラメトリックモデルであり、定数である必要はありません。",
+      "不正解。指数分布の仮定はパラメトリックモデル（例：指数回帰モデル）のもので、Coxモデルでは不要です。",
+      "不正解。ランダム打ち切りの仮定は多くの生存分析手法に共通であり、比例ハザード仮定とは別の概念です。"
+    ],
+    explanation: "比例ハザード仮定は、ログマイナスログ生存関数のプロット（$\\log(-\\log S(t))$ vs $\\log t$）の平行性、Schoenfeld残差の時間との相関の検定（$\\texttt{cox.zph}$）等で検証されます。仮定が満たされない場合は、時間依存共変量の導入や層別Cox分析を検討します。"
+  },
+  {
+    id: 450,
+    topic: "survival",
+    type: "choice",
+    difficulty: "standard",
+    question: "競合リスク（competing risks）モデルにおいて、原因別ハザード関数と部分分布ハザード関数（Fine-Gray）の違いとして正しいものはどれか？",
+    options: [
+      "原因別ハザードはイベント$k$が起きていない人のみのリスク集合で計算するが、Fine-Grayモデルは他の原因で脱落した人もリスク集合に留める",
+      "原因別ハザードは全イベントを同時にモデル化し、Fine-Grayモデルは1つのイベントのみを扱う",
+      "Fine-Grayモデルの方が常に推定精度が高い",
+      "両者は常に同じ結果を与える"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。原因別ハザード$h_k(t) = \\lim \\frac{P(t \\leq T < t+dt, D=k | T \\geq t)}{dt}$はイベント未発生の人のみがリスク集合。Fine-Grayの部分分布ハザードは$\\tilde{h}_k(t)$で、他原因で脱落した人もリスク集合に含め、累積発生関数$F_k(t)$を直接モデル化します。",
+      "不正解。原因別ハザードも各イベント原因ごとに別々にモデル化します。",
+      "不正解。どちらが適切かは研究の目的（病因論的か予測的か）に依存します。",
+      "不正解。リスク集合の定義が異なるため、一般に異なる結果を与えます。"
+    ],
+    explanation: "競合リスクの分析では研究目的によってモデルを選択します。病因論的な因果推論には原因別ハザードモデル、ある原因による累積発生率の予測にはFine-Grayモデルが適します。Kaplan-Meier法で他原因を打ち切りとして扱うと累積発生率が過大推定される問題もあります。"
+  },
+  {
+    id: 451,
+    topic: "survival",
+    type: "choice",
+    difficulty: "advanced",
+    question: "加速故障時間（AFT: Accelerated Failure Time）モデルの特徴として正しいものはどれか？",
+    options: [
+      "共変量が生存時間のスケールに乗法的に影響する（$\\log T = \\beta^T x + \\sigma \\varepsilon$）モデルで、Cox模型とは異なるパラメトリック/セミパラメトリック手法",
+      "Cox比例ハザードモデルと常に同じ結果を与える",
+      "打ち切りデータには適用できない",
+      "ベースライン分布の指定が不要である"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。AFTモデルは$\\log T = \\beta^T x + \\sigma\\varepsilon$で、共変量が時間を加速（または減速）させます。$\\varepsilon$の分布により指数、ワイブル、対数正規等のモデルになります。Coxモデルとは異なるアプローチです。",
+      "不正解。ワイブル分布の場合のみ、AFTモデルと比例ハザードモデルが一致します。一般には異なります。",
+      "不正解。AFTモデルも打ち切りデータに対応できます。尤度関数に打ち切りを適切に組み込みます。",
+      "不正解。パラメトリックAFTモデルでは誤差分布の指定が必要です。セミパラメトリックAFTは分布を指定しませんが推定が複雑です。"
+    ],
+    explanation: "AFTモデルは生存時間そのものをモデル化する点でCoxモデルと異なります。解釈が直観的（「治療により寿命が$e^\\beta$倍に延びる」）で、比例ハザード仮定が不適切な場合の代替となります。ワイブルAFTでは$S(t|x) = S_0(t \\cdot e^{-\\beta^Tx})$と加速因子の解釈ができます。"
+  },
+  {
+    id: 452,
+    topic: "survival",
+    type: "written",
+    difficulty: "advanced",
+    question: "Cox比例ハザードモデルの部分尤度（partial likelihood）の構成を説明し、ベースラインハザード$h_0(t)$を推定せずに回帰係数$\\beta$を推定できる理由を述べよ。",
+    sampleAnswer: "Coxの部分尤度は$L(\\beta) = \\prod_{i: \\delta_i=1} \\frac{\\exp(\\beta^T x_i)}{\\sum_{j \\in R(t_i)} \\exp(\\beta^T x_j)}$で、$\\delta_i$はイベント指示変数、$R(t_i)$は時刻$t_i$のリスク集合。各イベント時点で「リスク集合の中でイベントが起きた個体が選ばれる確率」を乗じたものである。分母分子の$h_0(t_i)$が約分されるため、ベースラインハザードが消去され$\\beta$のみの関数となる。Cox (1975)は部分尤度を通常の尤度と同様に扱えることを示し、$\\hat{\\beta}$は一致性と漸近正規性を持つ。",
+    keywords: ["部分尤度", "リスク集合", "ベースラインハザード消去", "半パラメトリック"],
+    explanation: "部分尤度はCox (1972, 1975)の画期的なアイデアです。完全なデータの尤度からベースラインハザードに依存する部分を「捨て」、$\\beta$に関する情報のみを抽出します。この推定量は完全な最尤推定量と比較して効率性の損失が小さいことが知られています。推定後、ベースラインハザードはBreslow推定量$\\hat{H}_0(t)$で推定可能です。"
+  },
+
+  // MGF (453-456)
+  {
+    id: 453,
+    topic: "mgf",
+    type: "choice",
+    difficulty: "basic",
+    question: "積率母関数（MGF）$M_X(t) = E[e^{tX}]$の一意性定理について正しいものはどれか？",
+    options: [
+      "0を含む開区間で有限な2つの分布のMGFが一致すれば、それらの分布は同一である",
+      "MGFが存在しない場合でも一意性は保証される",
+      "MGFが$t=0$で等しければ分布は同一である",
+      "MGFの一意性は離散分布にのみ成り立つ"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。MGFが$(-\\delta, \\delta)$（$\\delta > 0$）で有限ならば、分布を一意に定めます。これにより、MGFの一致を示せば分布の同一性が証明できます。",
+      "不正解。MGFが存在しない分布もあります（例：コーシー分布）。一意性はMGFが存在する場合に成り立ちます。",
+      "不正解。$M_X(0) = 1$は全ての分布で成り立つため、$t=0$での一致では不十分です。",
+      "不正解。連続分布にも離散分布にも成り立ちます。"
+    ],
+    explanation: "MGFの一意性定理は分布の同一性を証明する強力なツールです。例えば$X_1, ..., X_n$がi.i.d.のとき$\\bar{X}$のMGFを計算して既知の分布のMGFと一致することを示せば、$\\bar{X}$の分布が同定できます。MGFが存在しない場合は特性関数$\\varphi_X(t) = E[e^{itX}]$を用います（常に存在し一意性を持つ）。"
+  },
+  {
+    id: 454,
+    topic: "mgf",
+    type: "choice",
+    difficulty: "standard",
+    question: "キュムラント母関数$K_X(t) = \\log M_X(t)$の第2キュムラント$\\kappa_2$が表すものはどれか？",
+    options: [
+      "$X$の分散$\\mathrm{Var}(X)$",
+      "$X$の期待値$E[X]$",
+      "$X$の歪度",
+      "$X$の尖度"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$\\kappa_n = K_X^{(n)}(0)$で、$\\kappa_1 = E[X]$（平均）、$\\kappa_2 = \\mathrm{Var}(X)$（分散）、$\\kappa_3$は3次中心モーメント、$\\kappa_4$は過剰尖度に関連します。",
+      "不正解。$E[X]$は第1キュムラント$\\kappa_1$です。",
+      "不正解。歪度は$\\kappa_3 / \\kappa_2^{3/2}$で、キュムラントの比です。$\\kappa_2$そのものではありません。",
+      "不正解。過剰尖度は$\\kappa_4 / \\kappa_2^2$で表されます。$\\kappa_2$は分散です。"
+    ],
+    explanation: "キュムラント母関数$K_X(t) = \\log M_X(t)$のテイラー展開$K_X(t) = \\sum_{n=1}^{\\infty} \\kappa_n t^n / n!$で定義されるキュムラントは、独立な確率変数の和に対して加法的（$\\kappa_n(X+Y) = \\kappa_n(X) + \\kappa_n(Y)$）という重要な性質を持ちます。正規分布は$\\kappa_1 = \\mu$、$\\kappa_2 = \\sigma^2$、$\\kappa_n = 0$（$n \\geq 3$）で特徴づけられます。"
+  },
+  {
+    id: 455,
+    topic: "mgf",
+    type: "choice",
+    difficulty: "advanced",
+    question: "ラプラス変換$\\mathcal{L}[f](s) = \\int_0^\\infty e^{-sx} f(x) dx$と非負確率変数のMGFの関係として正しいものはどれか？",
+    options: [
+      "非負確率変数$X$のMGFは$M_X(t) = \\mathcal{L}[f](-t)$であり、ラプラス変換の$s = -t$での値に等しい",
+      "MGFとラプラス変換は全く異なる概念で関連はない",
+      "ラプラス変換はMGFの逆変換である",
+      "MGFは負の確率変数にのみラプラス変換と関連する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$M_X(t) = E[e^{tX}] = \\int_0^\\infty e^{tx} f(x) dx = \\mathcal{L}[f](-t)$です。非負確率変数では$t < 0$でMGFが常に存在し、ラプラス変換と直接対応します。",
+      "不正解。非負確率変数に対してMGFとラプラス変換は密接に関連しています。",
+      "不正解。逆ラプラス変換はラプラス変換の逆演算であり、MGFの逆変換とは異なります。",
+      "不正解。非負確率変数に対して関連があります。"
+    ],
+    explanation: "ラプラス変換とMGFの対応は、確率論と工学・物理学を結ぶ重要な橋渡しです。待ち行列理論や信頼性工学では、生存関数のラプラス変換がMGFの変形として現れます。また、ラプラス変換の一意性定理はMGFの一意性定理に直接対応します。"
+  },
+  {
+    id: 456,
+    topic: "mgf",
+    type: "written",
+    difficulty: "advanced",
+    question: "正規分布$N(\\mu, \\sigma^2)$のMGFを導出し、それを用いて$\\bar{X}$（$X_i \\sim N(\\mu, \\sigma^2)$ i.i.d.）の分布を求めよ。",
+    sampleAnswer: "$M_X(t) = E[e^{tX}] = \\int e^{tx} \\frac{1}{\\sqrt{2\\pi}\\sigma}e^{-(x-\\mu)^2/(2\\sigma^2)} dx$。指数部分を整理して$tx - (x-\\mu)^2/(2\\sigma^2) = -(x-(\\mu+\\sigma^2 t))^2/(2\\sigma^2) + \\mu t + \\sigma^2 t^2/2$。積分すると$M_X(t) = \\exp(\\mu t + \\sigma^2 t^2/2)$。$\\bar{X} = \\frac{1}{n}\\sum X_i$のMGFは$M_{\\bar{X}}(t) = [M_X(t/n)]^n = [\\exp(\\mu t/n + \\sigma^2 t^2/(2n^2))]^n = \\exp(\\mu t + \\sigma^2 t^2/(2n))$。これは$N(\\mu, \\sigma^2/n)$のMGFであるから、一意性定理より$\\bar{X} \\sim N(\\mu, \\sigma^2/n)$。",
+    keywords: ["積率母関数", "正規分布", "標本平均", "一意性定理"],
+    explanation: "正規分布のMGFの導出では「平方完成」のテクニックが鍵です。独立な確率変数の和のMGFが各変数のMGFの積になる性質と一意性定理を組み合わせることで、正規分布の再生性（正規分布の線形結合は正規分布）が証明できます。"
+  },
+
+  // Poisson Process (457-460)
+  {
+    id: 457,
+    topic: "poisson-process",
+    type: "choice",
+    difficulty: "basic",
+    question: "ポアソン過程の間引き（thinning）について正しいものはどれか？",
+    options: [
+      "レート$\\lambda$のポアソン過程の各イベントを確率$p$で独立に保持すると、保持されたイベントはレート$\\lambda p$のポアソン過程になる",
+      "間引き後の過程はもはやポアソン過程ではない",
+      "間引き後のレートは$\\lambda / p$になる",
+      "保持されたイベントと棄却されたイベントは独立ではない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。ポアソン過程の間引き定理により、保持されたイベントはレート$\\lambda p$、棄却されたイベントはレート$\\lambda(1-p)$のポアソン過程となり、両者は独立です。",
+      "不正解。間引き後もポアソン過程の性質（独立増分・定常増分）が保たれます。",
+      "不正解。レートは$\\lambda p$（減少）であり$\\lambda/p$（増加）ではありません。",
+      "不正解。保持・棄却されたイベントは互いに独立なポアソン過程となります。"
+    ],
+    explanation: "間引き定理はポアソン過程の重要な性質で、通信ネットワーク（パケットの種類別分類）、生態学（種の分類）、保険（保険金請求の分類）等で応用されます。逆の操作（独立なポアソン過程の重ね合わせ）もポアソン過程になります（重ね合わせ定理）。"
+  },
+  {
+    id: 458,
+    topic: "poisson-process",
+    type: "choice",
+    difficulty: "standard",
+    question: "複合ポアソン過程$S(t) = \\sum_{i=1}^{N(t)} X_i$（$N(t)$はレート$\\lambda$のポアソン過程、$X_i$はi.i.d.）の期待値と分散として正しいものはどれか？",
+    options: [
+      "$E[S(t)] = \\lambda t E[X]$、$\\mathrm{Var}(S(t)) = \\lambda t E[X^2]$",
+      "$E[S(t)] = \\lambda t$、$\\mathrm{Var}(S(t)) = \\lambda t$",
+      "$E[S(t)] = \\lambda t E[X]$、$\\mathrm{Var}(S(t)) = \\lambda t \\mathrm{Var}(X)$",
+      "$E[S(t)] = E[N(t)] + E[X]$、$\\mathrm{Var}(S(t)) = \\mathrm{Var}(N(t)) + \\mathrm{Var}(X)$"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。全期待値の法則：$E[S(t)] = E[N(t)] \\cdot E[X] = \\lambda t E[X]$。条件付き分散の公式：$\\mathrm{Var}(S(t)) = E[N(t)]\\mathrm{Var}(X) + (E[X])^2 \\mathrm{Var}(N(t)) = \\lambda t \\mathrm{Var}(X) + \\lambda t (E[X])^2 = \\lambda t E[X^2]$。",
+      "不正解。これは$X_i = 1$の場合（通常のポアソン過程）のみ正しいです。",
+      "不正解。分散の式が不完全です。$\\mathrm{Var}(E[S|N])$の項が欠落しており、正しくは$\\lambda t E[X^2]$です。",
+      "不正解。ランダムな個数の和の期待値は積であり、和ではありません。"
+    ],
+    explanation: "複合ポアソン過程は保険数理（総保険金請求額のモデル）で重要です。$E[S(t)]$にはWaldの等式、$\\mathrm{Var}(S(t))$には条件付き分散の公式（$\\mathrm{Var}(S) = E[N]\\mathrm{Var}(X) + (E[X])^2\\mathrm{Var}(N)$）が使われます。MGFは$M_S(u) = \\exp(\\lambda t (M_X(u) - 1))$です。"
+  },
+  {
+    id: 459,
+    topic: "poisson-process",
+    type: "choice",
+    difficulty: "advanced",
+    question: "非斉次ポアソン過程（レート関数$\\lambda(t)$）における区間$[s, t]$のイベント数$N(s,t)$の分布として正しいものはどれか？",
+    options: [
+      "$N(s,t) \\sim \\mathrm{Poi}\\left(\\int_s^t \\lambda(u) du\\right)$",
+      "$N(s,t) \\sim \\mathrm{Poi}(\\lambda(t)(t-s))$",
+      "$N(s,t) \\sim \\mathrm{Poi}(\\lambda(s)(t-s))$",
+      "$N(s,t)$はポアソン分布に従わない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。非斉次ポアソン過程では平均関数$\\Lambda(s,t) = \\int_s^t \\lambda(u) du$がポアソン分布のパラメータとなります。$\\lambda(t)$が定数$\\lambda$のとき$\\Lambda(s,t) = \\lambda(t-s)$で斉次ポアソン過程に帰着します。",
+      "不正解。$\\lambda(t)$は時刻$t$でのレートであり、区間全体のレートではありません。積分が必要です。",
+      "不正解。同様に$\\lambda(s)$だけでは不十分です。",
+      "不正解。非斉次ポアソン過程のイベント数もポアソン分布に従いますが、パラメータがレートの積分で与えられます。"
+    ],
+    explanation: "非斉次ポアソン過程は時間変化するイベント発生率をモデル化します。シミュレーションでは間引き法（$\\lambda^* = \\max \\lambda(t)$のポアソン過程を生成し、時刻$t$のイベントを確率$\\lambda(t)/\\lambda^*$で保持）が用いられます。地震の発生、コールセンターの着信等の時間的不均一性のモデリングに応用されます。"
+  },
+  {
+    id: 460,
+    topic: "poisson-process",
+    type: "written",
+    difficulty: "advanced",
+    question: "ポアソン過程の到着時刻$S_1 < S_2 < ... < S_n$の条件付き分布（$N(t) = n$が与えられたとき）が$[0,t]$上の一様分布の順序統計量と同じ分布を持つことを示せ。",
+    sampleAnswer: "$N(t) = n$のもとで$(S_1, ..., S_n)$の条件付き密度を求める。$f_{S_1,...,S_n|N(t)=n}(s_1,...,s_n) = \\frac{f_{S_1,...,S_n,N(t)=n}(s_1,...,s_n)}{P(N(t)=n)}$。ポアソン過程の定義から$f = \\lambda^n \\exp(-\\lambda t) / \\frac{(\\lambda t)^n e^{-\\lambda t}}{n!} = n!/t^n$（$0 < s_1 < ... < s_n < t$のとき）。これは$[0,t]$上のi.i.d.一様分布$U_{(1)} < ... < U_{(n)}$の順序統計量の同時密度$n!/t^n$に一致する。",
+    keywords: ["順序統計量", "一様分布", "条件付き分布", "到着時刻"],
+    explanation: "この結果はポアソン過程の本質的な性質を示しています。「$n$個のイベントが起きたことがわかれば、各イベントの時刻は$[0,t]$上で一様かつ独立に分布する」と直感的に解釈できます。これはポアソン過程のシミュレーション（$N(t)$を生成してから一様乱数をソートする方法）の理論的根拠にもなります。"
+  },
+
+  // Bayesian Statistics (461-464)
+  {
+    id: 461,
+    topic: "bayes",
+    type: "choice",
+    difficulty: "basic",
+    question: "共役事前分布に関して、二項分布$\\mathrm{Bin}(n, p)$の尤度に対する共役事前分布はどれか？",
+    options: [
+      "ベータ分布$\\mathrm{Beta}(\\alpha, \\beta)$",
+      "正規分布$N(\\mu, \\sigma^2)$",
+      "ガンマ分布$\\mathrm{Gamma}(\\alpha, \\beta)$",
+      "一様分布$U(0, 1)$のみ"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。事前分布$p \\sim \\mathrm{Beta}(\\alpha, \\beta)$のもとで、$X \\sim \\mathrm{Bin}(n,p)$を観測すると事後分布は$p|X \\sim \\mathrm{Beta}(\\alpha + X, \\beta + n - X)$となります。事前分布と事後分布が同じ分布族に属するため共役です。",
+      "不正解。正規分布は$[0,1]$上の分布ではないため、$p$の事前分布として不適切です。正規分布は正規尤度に対する共役事前分布です。",
+      "不正解。ガンマ分布はポアソン分布のレートパラメータに対する共役事前分布です。",
+      "不正解。$U(0,1) = \\mathrm{Beta}(1,1)$はベータ分布の特殊ケースなので共役事前分布の一つですが、「のみ」ではありません。"
+    ],
+    explanation: "共役事前分布は計算の便宜のために用いられ、事後分布が解析的に求まります。代表的な共役ペア：正規尤度-正規事前（平均）、ポアソン尤度-ガンマ事前、多項尤度-ディリクレ事前、指数尤度-ガンマ事前などがあります。"
+  },
+  {
+    id: 462,
+    topic: "bayes",
+    type: "choice",
+    difficulty: "standard",
+    question: "95%ベイズ信用区間（credible interval）と95%頻度論的信頼区間の解釈の違いとして正しいものはどれか？",
+    options: [
+      "信用区間は「パラメータがこの区間に含まれる事後確率が0.95」、信頼区間は「同じ手順で多数回区間を作ると、真のパラメータを含む割合が0.95」",
+      "両者の解釈は全く同じである",
+      "信用区間はパラメータの推定値、信頼区間はパラメータの範囲を与える",
+      "信用区間は常に信頼区間より広い"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。ベイズ信用区間はパラメータの事後分布に基づき「パラメータが区間内にある確率が95%」と直接解釈できます。頻度論的信頼区間は固定されたパラメータに対する手順の確率的性質です。",
+      "不正解。両者は根本的に異なる確率論的解釈を持ちます。",
+      "不正解。両者とも区間推定ですが、確率の解釈が異なります。",
+      "不正解。信用区間と信頼区間の幅の大小関係は事前分布や状況に依存し、一般的な大小関係はありません。"
+    ],
+    explanation: "ベイズ信用区間にはHPD（Highest Posterior Density）区間と等裾区間があります。HPD区間は最短の区間長を持ちますが、事後分布が非対称の場合に等裾区間と異なります。無情報事前分布のもとでは、信用区間と信頼区間が数値的に一致する場合があります。"
+  },
+  {
+    id: 463,
+    topic: "bayes",
+    type: "choice",
+    difficulty: "advanced",
+    question: "ベイズファクター$\\mathrm{BF}_{10} = \\frac{P(D|M_1)}{P(D|M_0)}$に関して正しい記述はどれか？",
+    options: [
+      "周辺尤度$P(D|M_k) = \\int P(D|\\theta, M_k) P(\\theta|M_k) d\\theta$の比であり、事前分布の選択に敏感である",
+      "ベイズファクターは事前分布に依存しない",
+      "ベイズファクターは常にp値と同じ結論を導く",
+      "ベイズファクターが1より大きければ必ず$M_1$が正しい"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。周辺尤度は事前分布を積分で消去したものですが、事前分布の選択に依存します。特に無情報事前分布（improper prior）では周辺尤度が定義できず、ベイズファクターが計算できない問題（Lindleyのパラドックス等）があります。",
+      "不正解。ベイズファクターは事前分布の選択に敏感です。これが利点でもあり課題でもあります。",
+      "不正解。ベイズファクターとp値は異なる基準であり、標本サイズが大きいときに特にずれが生じることがあります（Jeffreys-Lindleyのパラドックス）。",
+      "不正解。$\\mathrm{BF}_{10} > 1$は$M_1$を支持する証拠ですが、$M_1$が正しいことの証明ではありません。Jeffreysの基準ではBF > 3.2で実質的証拠とされます。"
+    ],
+    explanation: "ベイズファクターはモデル選択のベイズ的基準で、p値と異なりモデルの相対的証拠を直接比較します。Jeffreysの解釈基準：BF 1-3.2 弱い証拠、3.2-10 実質的、10-100 強い、>100 決定的。計算にはラプラス近似、ブリッジサンプリング、MCMC等が用いられます。"
+  },
+  {
+    id: 464,
+    topic: "bayes",
+    type: "written",
+    difficulty: "advanced",
+    question: "正規分布$N(\\mu, \\sigma^2)$（$\\sigma^2$既知）における$\\mu$のベイズ推定を、事前分布$\\mu \\sim N(\\mu_0, \\tau^2)$のもとで行い、事後分布が事前情報とデータの精度による加重平均になることを示せ。",
+    sampleAnswer: "事後分布は$\\mu | x_1,...,x_n \\propto \\exp\\left(-\\frac{n(\\mu - \\bar{x})^2}{2\\sigma^2} - \\frac{(\\mu - \\mu_0)^2}{2\\tau^2}\\right)$。指数部分を$\\mu$について整理すると$\\mu$の二次式になり、$\\mu | \\mathbf{x} \\sim N(\\mu_n, \\sigma_n^2)$。ここで$\\sigma_n^{-2} = n/\\sigma^2 + 1/\\tau^2$（精度の加法性）、$\\mu_n = \\sigma_n^2(n\\bar{x}/\\sigma^2 + \\mu_0/\\tau^2)$。すなわち事後平均$\\mu_n = w \\bar{x} + (1-w)\\mu_0$（$w = \\frac{n/\\sigma^2}{n/\\sigma^2 + 1/\\tau^2}$）であり、データの精度$n/\\sigma^2$と事前の精度$1/\\tau^2$の重みによる加重平均である。",
+    keywords: ["共役事前分布", "精度の加法性", "事後分布", "加重平均"],
+    explanation: "正規-正規共役モデルはベイズ推定の最も基本的な例です。$n$が大きくなると$w \\to 1$で事後平均がデータ平均$\\bar{x}$に近づき、事前分布の影響が薄れます。$\\tau^2 \\to \\infty$（無情報事前分布）の極限でも$\\mu_n \\to \\bar{x}$となり、最尤推定と一致します。"
+  },
+
+  // Multivariate Normal (465-468)
+  {
+    id: 465,
+    topic: "mvnormal",
+    type: "choice",
+    difficulty: "basic",
+    question: "二変量正規分布$(X, Y)^T \\sim N_2(\\mu, \\Sigma)$において、$X$と$Y$が無相関（$\\rho = 0$）であることの帰結として正しいものはどれか？",
+    options: [
+      "多変量正規分布では無相関であれば独立も成り立つ",
+      "無相関でも独立とは限らない（多変量正規分布でも）",
+      "無相関は常に独立を意味する（分布に関わらず）",
+      "多変量正規分布では独立であっても無相関とは限らない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。多変量正規分布の特殊な性質として、無相関（$\\rho = 0$すなわち$\\Sigma$が対角）であれば独立が成り立ちます。同時密度が各変数の周辺密度の積に分解されるためです。",
+      "不正解。一般の分布では無相関と独立は異なりますが、多変量正規分布では無相関ならば独立です。",
+      "不正解。一般の分布では無相関が独立を意味しません。これは多変量正規分布の特殊性です。",
+      "不正解。独立ならば常に無相関です（任意の分布で）。"
+    ],
+    explanation: "多変量正規分布の「無相関⇔独立」は重要な性質です。これは同時密度$f(x,y) = \\frac{1}{2\\pi|\\Sigma|^{1/2}}\\exp(...)$において、$\\Sigma$が対角行列のとき指数部分が$x$の項と$y$の項に分離するためです。一般の分布ではこの同値性は成り立ちません（例：$X \\sim N(0,1)$、$Y = X^2$は無相関だが独立でない）。"
+  },
+  {
+    id: 466,
+    topic: "mvnormal",
+    type: "choice",
+    difficulty: "standard",
+    question: "$p$次元多変量正規分布$N_p(\\mu, \\Sigma)$において、$x = \\begin{pmatrix} x_1 \\\\ x_2 \\end{pmatrix}$と分割したとき、$x_1 | x_2$の条件付き分布として正しいものはどれか？（$\\Sigma = \\begin{pmatrix} \\Sigma_{11} & \\Sigma_{12} \\\\ \\Sigma_{21} & \\Sigma_{22} \\end{pmatrix}$）",
+    options: [
+      "$x_1 | x_2 \\sim N(\\mu_1 + \\Sigma_{12}\\Sigma_{22}^{-1}(x_2 - \\mu_2),\\; \\Sigma_{11} - \\Sigma_{12}\\Sigma_{22}^{-1}\\Sigma_{21})$",
+      "$x_1 | x_2 \\sim N(\\mu_1,\\; \\Sigma_{11})$",
+      "$x_1 | x_2 \\sim N(\\mu_1 + \\Sigma_{11}^{-1}\\Sigma_{12}(x_2 - \\mu_2),\\; \\Sigma_{22})$",
+      "$x_1 | x_2 \\sim N(\\mu_2,\\; \\Sigma_{12})$"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。条件付き平均は$\\mu_1$を$x_2$の値で調整し、条件付き共分散は$\\Sigma_{11}$からSchur補元$\\Sigma_{12}\\Sigma_{22}^{-1}\\Sigma_{21}$を引いたものです。",
+      "不正解。これは周辺分布$x_1 \\sim N(\\mu_1, \\Sigma_{11})$であり、条件付き分布ではありません。$x_2$の情報が反映されていません。",
+      "不正解。条件付き共分散の式が正しくありません。$\\Sigma_{22}$ではなく$\\Sigma_{11} - \\Sigma_{12}\\Sigma_{22}^{-1}\\Sigma_{21}$です。",
+      "不正解。条件付き分布の平均も共分散も正しくありません。"
+    ],
+    explanation: "多変量正規分布の条件付き分布は再び正規分布であり、回帰分析と密接に関連します。条件付き期待値$E[x_1|x_2] = \\mu_1 + \\Sigma_{12}\\Sigma_{22}^{-1}(x_2 - \\mu_2)$は$x_2$の線形関数であり、$\\Sigma_{12}\\Sigma_{22}^{-1}$が回帰係数に対応します。Schur補元$\\Sigma_{11|2} = \\Sigma_{11} - \\Sigma_{12}\\Sigma_{22}^{-1}\\Sigma_{21}$は残差分散に対応します。"
+  },
+  {
+    id: 467,
+    topic: "mvnormal",
+    type: "choice",
+    difficulty: "advanced",
+    question: "マハラノビス距離$D^2 = (x - \\mu)^T \\Sigma^{-1} (x - \\mu)$に関して、$x \\sim N_p(\\mu, \\Sigma)$のとき$D^2$の分布はどれか？",
+    options: [
+      "$D^2 \\sim \\chi^2_p$（自由度$p$のカイ二乗分布）",
+      "$D^2 \\sim F_{p, n-p}$（F分布）",
+      "$D^2 \\sim N(0, 1)$",
+      "$D^2 \\sim \\mathrm{Exp}(1)$"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$z = \\Sigma^{-1/2}(x - \\mu) \\sim N_p(0, I_p)$と変換すると$D^2 = z^Tz = \\sum_{i=1}^p z_i^2 \\sim \\chi^2_p$。独立な標準正規変数の二乗和はカイ二乗分布に従います。",
+      "不正解。F分布はHotelling $T^2$検定などで$\\Sigma$を標本共分散行列で推定した場合に現れます。$\\Sigma$が既知のときは$\\chi^2$です。",
+      "不正解。$D^2$は非負であり正規分布には従いません。",
+      "不正解。$p=2$のとき$\\chi^2_2 = \\mathrm{Exp}(1/2)$ですが、一般の$p$では異なります。"
+    ],
+    explanation: "マハラノビス距離は多変量の外れ値検出に用いられます。$\\Sigma$が既知なら$D^2 \\sim \\chi^2_p$、$\\Sigma$を$S$で推定すると$\\frac{n-p}{p(n-1)} \\cdot n \\cdot D^2 \\sim F_{p, n-p}$（$n$が標本サイズ）となり、多変量正規性のQ-Qプロットや外れ値検出に応用されます。"
+  },
+  {
+    id: 468,
+    topic: "mvnormal",
+    type: "written",
+    difficulty: "advanced",
+    question: "ウィシャート分布$W_p(n, \\Sigma)$の定義を述べ、多変量正規母集団の標本共分散行列との関係を説明せよ。",
+    sampleAnswer: "$x_1, ..., x_n \\sim N_p(\\mu, \\Sigma)$がi.i.d.のとき、$A = \\sum_{i=1}^n (x_i - \\bar{x})(x_i - \\bar{x})^T$はウィシャート分布$W_p(n-1, \\Sigma)$に従う。定義として$A = \\sum_{i=1}^m z_i z_i^T$（$z_i \\sim N_p(0, \\Sigma)$ i.i.d.、$m$は自由度）が$W_p(m, \\Sigma)$に従う。$p=1$のとき$A/\\sigma^2 \\sim \\chi^2_m$であり、ウィシャート分布はカイ二乗分布の多変量版である。$E[A] = m\\Sigma$、$A$が正定値であるためには$m \\geq p$が必要である。",
+    keywords: ["ウィシャート分布", "標本共分散行列", "カイ二乗分布の一般化", "自由度"],
+    explanation: "ウィシャート分布は多変量統計の検定理論の基盤です。Hotelling $T^2$検定、多変量分散分析（MANOVA）、尤度比検定等でウィシャート分布の性質が利用されます。逆ウィシャート分布$W_p^{-1}(n, \\Sigma)$はベイズ統計における共分散行列$\\Sigma$の共役事前分布として重要です。"
+  },
+
+  // Incomplete Data (469-472)
+  {
+    id: 469,
+    topic: "incomplete",
+    type: "choice",
+    difficulty: "basic",
+    question: "欠測メカニズムの分類MCAR、MAR、MNARの定義として正しいものはどれか？",
+    options: [
+      "MCAR：欠測確率が観測値にも欠測値にも依存しない、MAR：欠測確率が観測値に依存するが欠測値には依存しない、MNAR：欠測確率が欠測値自体に依存する",
+      "MCAR：データが全て欠測、MAR：一部が欠測、MNAR：欠測なし",
+      "MCAR：欠測がランダム、MAR：欠測が系統的、MNAR：欠測が完全にランダム",
+      "MCAR/MAR/MNARは全て同じメカニズムの別名"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。Rubin (1976)の分類です。$R$を欠測指示変数、$Y_{obs}$を観測値、$Y_{mis}$を欠測値として、MCAR：$P(R|Y_{obs},Y_{mis}) = P(R)$、MAR：$P(R|Y_{obs},Y_{mis}) = P(R|Y_{obs})$、MNAR：$P(R|Y_{obs},Y_{mis})$が$Y_{mis}$に依存。",
+      "不正解。MCAR/MAR/MNARは欠測の量ではなく、欠測メカニズム（欠測が起こる理由）の分類です。",
+      "不正解。MCARが「完全にランダム」、MARが「条件付きランダム」であり、記述が不正確です。",
+      "不正解。3つは明確に異なるメカニズムです。"
+    ],
+    explanation: "欠測メカニズムの判別は適切な分析法の選択に重要です。MCARの場合はリストワイズ除去でも不偏ですが効率が低下します。MARの場合は最尤法や多重代入法で妥当な推定が可能です。MNARの場合は欠測メカニズムのモデル化（選択モデル、パターン混合モデル等）が必要です。"
+  },
+  {
+    id: 470,
+    topic: "incomplete",
+    type: "choice",
+    difficulty: "standard",
+    question: "多重代入法（Multiple Imputation）の手順として正しいものはどれか？",
+    options: [
+      "欠測値を$m$回異なる方法で代入し、各完全データを分析し、$m$個の結果をRubinの規則で統合する",
+      "欠測値を平均値で1回だけ代入して分析する",
+      "欠測値を持つケースを全て除外して分析する",
+      "欠測値を0で置き換えて分析する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。多重代入法は(1)代入モデルから$m$組の代入値を生成、(2)各データセットを通常の方法で分析、(3)$m$個の推定値と分散をRubinの規則$\\hat{Q} = \\bar{Q}$、$T = \\bar{U} + (1 + 1/m)B$で統合します。",
+      "不正解。平均値代入は分散を過小推定し、標準誤差が不適切になります。単一代入は不確実性を反映しません。",
+      "不正解。リストワイズ除去はMCARでも効率が低く、MARでは偏りが生じます。",
+      "不正解。0での代入は多くの場合不適切であり、推定に偏りを生じさせます。"
+    ],
+    explanation: "Rubinの規則：点推定は$m$個の推定値の平均$\\bar{Q} = \\frac{1}{m}\\sum_{l=1}^m \\hat{Q}_l$、分散推定は群内分散$\\bar{U} = \\frac{1}{m}\\sum U_l$と群間分散$B = \\frac{1}{m-1}\\sum(\\hat{Q}_l - \\bar{Q})^2$の和$T = \\bar{U} + (1+1/m)B$です。$m$は5〜20程度で十分とされます。"
+  },
+  {
+    id: 471,
+    topic: "incomplete",
+    type: "choice",
+    difficulty: "advanced",
+    question: "パターン混合モデル（pattern mixture model）とセレクションモデル（selection model）の違いとして正しいものはどれか？",
+    options: [
+      "パターン混合モデルは欠測パターンごとにデータの分布をモデル化し、セレクションモデルはデータの分布と欠測メカニズムを別々にモデル化する",
+      "パターン混合モデルはMCARのみに、セレクションモデルはMNARのみに適用可能",
+      "両者は常に同じ結果を与える",
+      "パターン混合モデルはパラメトリック手法で、セレクションモデルはノンパラメトリック手法である"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。セレクションモデル：$f(Y, R) = f(Y) f(R|Y)$（データモデル×欠測モデル）。パターン混合モデル：$f(Y, R) = f(Y|R) f(R)$（欠測パターン別データモデル×パターン確率）。同じ同時分布の異なる因数分解です。",
+      "不正解。両者ともMNARを含む任意の欠測メカニズムに適用可能です。",
+      "不正解。パラメトリゼーションが異なるため、同じ仮定のもとでも推定値が異なりえます。",
+      "不正解。両者ともパラメトリックな枠組みです。"
+    ],
+    explanation: "セレクションモデル（Heckman型）は$f(R|Y)$で欠測メカニズムを明示的にモデル化します。パターン混合モデルは欠測パターン$R$で層別化し各層のデータモデルを推定しますが、観測されないパターンのパラメータに識別不可能性があり、感度分析が必要です。MNARの分析では両アプローチを比較することが推奨されます。"
+  },
+  {
+    id: 472,
+    topic: "incomplete",
+    type: "written",
+    difficulty: "advanced",
+    question: "MAR（Missing at Random）の仮定のもとで、観測データの尤度が欠測メカニズムのパラメータ$\\phi$と切り離せること（ignorability）を示せ。",
+    sampleAnswer: "完全データの尤度は$L(\\theta, \\phi) = \\prod_i f(y_{obs,i}, y_{mis,i}; \\theta) P(R_i | y_{obs,i}, y_{mis,i}; \\phi)$。観測データの尤度は欠測値を積分して$L_{obs}(\\theta, \\phi) = \\prod_i \\int f(y_{obs,i}, y_{mis,i}; \\theta) P(R_i | y_{obs,i}, y_{mis,i}; \\phi) dy_{mis,i}$。MARの仮定$P(R|y_{obs}, y_{mis}) = P(R|y_{obs}; \\phi)$のもとで$L_{obs} = \\prod_i P(R_i|y_{obs,i}; \\phi) \\int f(y_{obs,i}, y_{mis,i}; \\theta) dy_{mis,i} = \\prod_i P(R_i|y_{obs,i}; \\phi) f(y_{obs,i}; \\theta)$。$\\theta$と$\\phi$が別パラメータであれば、$\\theta$の推定に$\\phi$のモデル化は不要（ignorable）。",
+    keywords: ["MAR", "ignorability", "観測データ尤度", "欠測メカニズム"],
+    explanation: "ignorabilityはMARの仮定とパラメータの分離性（$\\theta$と$\\phi$が事前分布で独立）から導かれます。これが成り立つとき、欠測メカニズムを無視して通常の最尤法やベイズ法を観測データに適用できます。MNARではignorabilityが成り立たず、欠測メカニズムの明示的モデル化が必要です。"
+  },
+
+  // Multiple Regression (473-476)
+  {
+    id: 473,
+    topic: "multreg",
+    type: "choice",
+    difficulty: "basic",
+    question: "分散拡大因子（VIF: Variance Inflation Factor）の解釈として正しいものはどれか？",
+    options: [
+      "$\\mathrm{VIF}_j = 1/(1-R_j^2)$で、$x_j$を他の説明変数で回帰したときの$R^2$を用い、多重共線性の程度を表す",
+      "VIFは目的変数の分散を表す",
+      "VIFが0に近いほど多重共線性が深刻である",
+      "VIFは常に1未満の値をとる"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$\\mathrm{VIF}_j$は$x_j$と他の説明変数の共線性の指標で、$\\hat{\\beta}_j$の分散が共線性がない場合の何倍に膨らんでいるかを示します。一般にVIF > 10で深刻な多重共線性とされます。",
+      "不正解。VIFは説明変数間の共線性の指標であり、目的変数の分散ではありません。",
+      "不正解。VIFの最小値は1（共線性なし）で、大きいほど深刻です。",
+      "不正解。VIFは1以上の値をとります（$R_j^2 \\geq 0$なので$1/(1-R_j^2) \\geq 1$）。"
+    ],
+    explanation: "$\\hat{\\beta}_j$の分散は$\\mathrm{Var}(\\hat{\\beta}_j) = \\sigma^2 / (n \\mathrm{Var}(x_j)) \\cdot \\mathrm{VIF}_j$であり、VIFが大きいと推定量の分散が増大し信頼区間が広がります。対処法：変数の除去、リッジ回帰、主成分回帰、偏最小二乗法（PLS）等があります。"
+  },
+  {
+    id: 474,
+    topic: "multreg",
+    type: "choice",
+    difficulty: "standard",
+    question: "Cookの距離$D_i$の定義と解釈として正しいものはどれか？",
+    options: [
+      "$D_i = \\frac{(\\hat{y} - \\hat{y}_{(i)})^T(\\hat{y} - \\hat{y}_{(i)})}{p \\cdot \\mathrm{MSE}}$で、第$i$観測を除いたときの回帰係数（予測値）の変化の大きさを表す影響度の指標",
+      "$D_i$は残差の大きさのみを表す",
+      "$D_i$はてこ比（leverage）と同一の概念である",
+      "$D_i > 1$の場合にのみ影響点と判断する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。Cookの距離は残差の大きさとてこ比の両方を組み込み、$D_i = \\frac{e_i^2}{p \\cdot \\mathrm{MSE}} \\cdot \\frac{h_{ii}}{(1-h_{ii})^2}$とも表せます。残差が大きくかつてこ比が高い観測が影響力が大きくなります。",
+      "不正解。Cookの距離は残差だけでなくてこ比も反映します。残差が小さくてもてこ比が高ければ影響力は大きくなりえます。",
+      "不正解。てこ比$h_{ii}$はCookの距離の一部ですが、同一ではありません。",
+      "不正解。$D_i > 4/n$や$D_i > F_{0.5}(p, n-p)$等の基準が提案されており、$D_i > 1$は一つの目安です。"
+    ],
+    explanation: "Cookの距離は回帰診断の重要な指標で、「削除影響」を測ります。$D_i = \\frac{r_i^2}{p} \\cdot \\frac{h_{ii}}{1-h_{ii}}$（$r_i$は内部スチューデント化残差）とも表せ、残差×てこ比の統合指標です。影響点（influential point）はCookの距離が大きい観測で、DFFITSやDFBETASと合わせて診断します。"
+  },
+  {
+    id: 475,
+    topic: "multreg",
+    type: "choice",
+    difficulty: "advanced",
+    question: "重回帰分析における偏F検定（partial F-test）について正しいものはどれか？",
+    options: [
+      "フルモデルと一部の変数を除いた縮小モデルのRSS（残差平方和）の差を用いて、除外した変数群の有意性を検定する",
+      "各説明変数を一つずつ検定する方法（個別のt検定）と常に同じ結果を与える",
+      "偏F検定はモデル全体のF検定と同一である",
+      "偏F検定は変数の追加のみを検定し、除外は検定できない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$F = \\frac{(\\mathrm{RSS}_R - \\mathrm{RSS}_F) / q}{\\mathrm{RSS}_F / (n - p)}$（$q$は除外した変数数）で、$H_0$: 除外した変数の係数が全て0を検定します。$F \\sim F_{q, n-p}$に従います。",
+      "不正解。変数が複数の場合、偏F検定と個別のt検定は異なる結果を与えます。多重共線性がある場合に特に乖離します。",
+      "不正解。モデル全体のF検定は切片のみのモデルとの比較であり、偏F検定はフルモデルと縮小モデルの比較です。",
+      "不正解。偏F検定は変数群の除外（不要性）を検定します。変数の追加も同じ枠組みで検討できます。"
+    ],
+    explanation: "偏F検定はネストしたモデルの比較に用いられます。$q=1$のとき偏F統計量は対応するt統計量の二乗$t^2 = F$に等しくなります。AIC/BICによるモデル選択はネストしていないモデルも比較でき、偏F検定を補完します。"
+  },
+  {
+    id: 476,
+    topic: "multreg",
+    type: "written",
+    difficulty: "advanced",
+    question: "リッジ回帰$\\hat{\\beta}_{\\mathrm{ridge}} = (X^TX + \\lambda I)^{-1} X^T y$がOLS推定量と比較してMSEを改善できる条件を、バイアス-分散分解を用いて説明せよ。",
+    sampleAnswer: "OLS：$\\hat{\\beta}_{OLS} = (X^TX)^{-1}X^Ty$は不偏だが$\\mathrm{Var}(\\hat{\\beta}_{OLS}) = \\sigma^2(X^TX)^{-1}$。リッジ：$E[\\hat{\\beta}_{\\mathrm{ridge}}] = (X^TX + \\lambda I)^{-1}X^TX \\beta \\neq \\beta$でバイアスを持つ。$\\mathrm{MSE}(\\hat{\\beta}_{\\mathrm{ridge}}) = \\mathrm{Var} + \\mathrm{Bias}^2 = \\sigma^2 \\mathrm{tr}[W(X^TX)W^T] + \\lambda^2 \\beta^T[(X^TX + \\lambda I)^{-1}]^2 \\beta$（$W = (X^TX + \\lambda I)^{-1}X^TX$）。$X^TX$の固有値に小さいものがある（多重共線性）場合、OLSの分散が非常に大きくなるため、小さな$\\lambda > 0$でバイアスを導入しても分散の減少がバイアスの増加を上回り、MSEが改善される。",
+    keywords: ["バイアス-分散トレードオフ", "リッジ回帰", "正則化", "MSE"],
+    explanation: "リッジ回帰のMSE改善は、$X^TX$の固有値が0に近い場合に顕著です。固有値分解$X^TX = V\\Lambda V^T$を用いると、OLSの分散は$\\sigma^2 \\sum 1/\\lambda_j$、リッジの分散は$\\sigma^2 \\sum \\lambda_j/(\\lambda_j + \\lambda)^2$で、小さい$\\lambda_j$に対する分散の縮小が大きいことがわかります。"
+  },
+
+  // Contingency Table (477-480)
+  {
+    id: 477,
+    topic: "contingency",
+    type: "choice",
+    difficulty: "basic",
+    question: "Cohenのカッパ係数$\\kappa$が測定するものとして正しいものはどれか？",
+    options: [
+      "2人の評価者間の一致度を、偶然の一致を補正して測る指標",
+      "分割表の独立性を検定する統計量",
+      "相関係数と同じもの",
+      "カテゴリ間の順序関係を表す指標"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$\\kappa = \\frac{P_o - P_e}{1 - P_e}$で、$P_o$は観測された一致割合、$P_e$は偶然に期待される一致割合です。$\\kappa = 1$で完全一致、$\\kappa = 0$で偶然の一致水準です。",
+      "不正解。独立性の検定はカイ二乗検定で行います。$\\kappa$は一致度の指標です。",
+      "不正解。$\\kappa$は名義尺度の一致度であり、相関係数（量的変数の直線関係）とは異なります。",
+      "不正解。$\\kappa$は名義尺度用であり順序関係を考慮しません。順序尺度には重み付きカッパが用いられます。"
+    ],
+    explanation: "カッパ係数の解釈基準（Landis & Koch, 1977）：$\\kappa < 0$ 偶然以下、$0$-$0.20$ わずか、$0.21$-$0.40$ まずまず、$0.41$-$0.60$ 中程度、$0.61$-$0.80$ かなり、$0.81$-$1.00$ ほぼ完全。順序尺度では重み付きカッパ（二次重み付きカッパはICCと等価）が使用されます。"
+  },
+  {
+    id: 478,
+    topic: "contingency",
+    type: "choice",
+    difficulty: "standard",
+    question: "順序カテゴリの関連を測る指標として、Goodman-KruskalのガンマとKendallのタウbの違いとして正しいものはどれか？",
+    options: [
+      "ガンマは同順位対を無視し、タウbは同順位対をペナルティとして含めるため、同順位が多い場合にガンマはタウbより大きくなる傾向がある",
+      "ガンマとタウbは常に等しい",
+      "タウbは順序関連の指標ではない",
+      "ガンマは$[-0.5, 0.5]$の範囲を取る"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$\\gamma = (C-D)/(C+D)$（$C$は一致対、$D$は不一致対）、$\\tau_b = (C-D)/\\sqrt{(C+D+T_X)(C+D+T_Y)}$（$T_X, T_Y$は同順位対）。同順位を含めるタウbの方が保守的です。",
+      "不正解。同順位がなければ近い値になりますが、同順位が存在する場合は異なります。",
+      "不正解。$\\tau_b$もKendallの順位相関に基づく順序関連の指標です。",
+      "不正解。$\\gamma$は$[-1, 1]$の範囲を取ります。"
+    ],
+    explanation: "順序関連の指標は分割表の行と列に順序がある場合に用います。ガンマ、タウb、Somers' dなどがあり、同順位対の扱いが異なります。完全な正の関連で1、完全な負の関連で-1をとります。カイ二乗検定は名義尺度用で順序情報を活用しないため、線形トレンド検定（Cochran-Armitage等）と使い分けます。"
+  },
+  {
+    id: 479,
+    topic: "contingency",
+    type: "choice",
+    difficulty: "advanced",
+    question: "対応分析（correspondence analysis）について正しい記述はどれか？",
+    options: [
+      "分割表の行と列のカテゴリを同一の低次元空間にプロットし、カテゴリ間の関連を視覚化する手法で、カイ二乗距離に基づく",
+      "数量化III類とは全く異なる手法である",
+      "対応分析は連続変数にのみ適用可能",
+      "対応分析はクラスタリングの一種である"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。対応分析は分割表の行プロファイルと列プロファイルをカイ二乗距離に基づいてSVDで低次元化し、バイプロットで視覚化します。双対尺度法や数量化III類と本質的に同一です。",
+      "不正解。対応分析と数量化III類は本質的に同じ手法です（名前が異なるだけ）。",
+      "不正解。対応分析はカテゴリカルデータ（分割表）に適用する手法です。",
+      "不正解。対応分析は次元縮約・視覚化の手法であり、クラスタリングとは目的が異なります。"
+    ],
+    explanation: "対応分析では分割表$N$をプロファイル行列に変換し、残差行列$S = D_r^{-1/2}(P - rc^T)D_c^{-1/2}$のSVDを行います（$P$は相対度数、$r, c$は行・列周辺度数、$D_r, D_c$は対角行列）。固有値の合計は総慣性（＝$\\chi^2/n$）に等しく、各次元が捉える関連の割合がわかります。"
+  },
+  {
+    id: 480,
+    topic: "contingency",
+    type: "written",
+    difficulty: "advanced",
+    question: "分割表のカイ二乗独立性検定の検定統計量$\\chi^2 = \\sum \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}$が漸近的に$\\chi^2_{(r-1)(c-1)}$分布に従うことの直感的説明を述べ、期待度数が小さい場合の問題点と対処法を説明せよ。",
+    sampleAnswer: "各セルの$(O_{ij} - E_{ij})/\\sqrt{E_{ij}}$はセル度数のポアソン近似のもとで近似的に$N(0,1)$に従う。これらの二乗和は$rc$個のカイ二乗変数の和だが、行和と列和の制約が$(r-1) + (c-1) + 1$個の自由度を消費し、残り$(r-1)(c-1)$自由度の$\\chi^2$分布に漸近する。期待度数$E_{ij}$が小さい（目安は5未満）場合、正規近似の精度が低下し第一種の過誤が名目水準と乖離する。対処法：(1) Fisherの正確検定（小標本で正確なp値）、(2) セルの統合、(3) イエーツの連続性補正（2×2表）。",
+    keywords: ["漸近カイ二乗分布", "自由度", "期待度数", "Fisherの正確検定"],
+    explanation: "カイ二乗検定は大標本で有効な近似検定です。期待度数の制約（全セルで5以上が目安）はCochranの規則として知られます。Fisherの正確検定は超幾何分布に基づく正確な方法で、2×2表では標準的に利用可能です。大きな分割表ではMonte Carloシミュレーションによる正確検定も用いられます。"
+  },
+
+  // Graphical Models (481-484)
+  {
+    id: 481,
+    topic: "graphical",
+    type: "choice",
+    difficulty: "basic",
+    question: "有向非巡回グラフ（DAG）におけるd-分離（d-separation）の意味として正しいものはどれか？",
+    options: [
+      "グラフ上の経路の遮断規則であり、$X$と$Y$が$Z$を条件としてd-分離されるなら、$X \\perp Y | Z$（条件付き独立）が成り立つ",
+      "d-分離は変数間の因果関係を直接示す",
+      "d-分離はグラフの連結性のみを表す",
+      "d-分離は有向グラフにのみ定義され、無向グラフには関連概念がない"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。d-分離はDAGのグラフ構造から条件付き独立性を読み取る基準です。DAGに適合する確率分布において、d-分離は条件付き独立を含意します（大域的マルコフ性）。",
+      "不正解。d-分離は条件付き独立性を表しますが、因果関係の直接的な証明ではありません（因果の同定には追加の仮定が必要）。",
+      "不正解。d-分離は単なる連結性ではなく、有向パスの遮断（チェイン、フォーク、コライダーの構造）に基づきます。",
+      "不正解。無向グラフでは分離（separation）が対応する概念であり、$X$と$Y$がの間のすべてのパスが$Z$を通るなら条件付き独立です。"
+    ],
+    explanation: "d-分離の3つの基本構造：(1) チェイン（$A \\to B \\to C$）：$B$を条件とすると$A \\perp C | B$、(2) フォーク（$A \\leftarrow B \\to C$）：$B$を条件とすると$A \\perp C | B$、(3) コライダー（$A \\to B \\leftarrow C$）：条件なしで$A \\perp C$だが$B$を条件とすると独立でなくなる（explaining away）。"
+  },
+  {
+    id: 482,
+    topic: "graphical",
+    type: "choice",
+    difficulty: "standard",
+    question: "モラルグラフ（moral graph）の構成方法として正しいものはどれか？",
+    options: [
+      "DAGの各ノードの共通の親同士を辺で結び（marriage）、すべての有向辺を無向辺に置き換える",
+      "DAGのすべての辺を逆向きにする",
+      "DAGから有向辺を除去する",
+      "DAGの葉ノードのみを接続する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。モラル化は(1)同じ子を持つ親ノード同士を辺で結ぶ（marrying parents）、(2)すべての有向辺を無向辺に変換する2ステップです。結果の無向グラフをモラルグラフといいます。",
+      "不正解。辺の逆向きはグラフの反転であり、モラル化とは異なります。",
+      "不正解。辺の除去ではなく、辺の追加（親同士の結合）と方向の除去を行います。",
+      "不正解。葉ノードのみの操作ではなく、全ての親ノードに関する操作です。"
+    ],
+    explanation: "モラルグラフはDAGから無向グラフへの変換であり、正確な推論アルゴリズム（ジャンクションツリー法）の構成に必要です。モラル化により一部の条件付き独立性情報が失われますが（V構造の方向性情報）、推論には必要な変換です。"
+  },
+  {
+    id: 483,
+    topic: "graphical",
+    type: "choice",
+    difficulty: "advanced",
+    question: "ジャンクションツリー（junction tree）アルゴリズムの前提条件として正しいものはどれか？",
+    options: [
+      "グラフがコーダルグラフ（弦グラフ、三角化グラフ）であること。すなわち長さ4以上の誘導サイクルを持たないこと",
+      "グラフが完全グラフであること",
+      "グラフが二部グラフであること",
+      "グラフがツリー構造であること"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。ジャンクションツリーはコーダルグラフのクリーク（最大完全部分グラフ）をノードとするツリーで、running intersection property（RIP）を満たします。非コーダルグラフは三角化（弦の追加）が必要です。",
+      "不正解。完全グラフは自明にコーダルですが、完全でなくてもコーダルであればジャンクションツリーが構成可能です。",
+      "不正解。二部グラフであることは要件ではありません。",
+      "不正解。元のグラフがツリーである必要はありません。ジャンクションツリーはクリークを使って構成されるツリーです。"
+    ],
+    explanation: "ジャンクションツリーアルゴリズムは確率的グラフィカルモデルにおける正確推論の標準的手法です。手順：(1)モラル化、(2)三角化、(3)最大クリークの抽出、(4)RIPを満たす最大重みスパニングツリーの構成、(5)メッセージパッシング。ツリー幅が小さいグラフでは効率的に推論できます。"
+  },
+  {
+    id: 484,
+    topic: "graphical",
+    type: "written",
+    difficulty: "advanced",
+    question: "ベイジアンネットワーク（DAG）における因数分解定理を述べ、グラフ構造が条件付き独立性をどのように符号化するかを例を用いて説明せよ。",
+    sampleAnswer: "因数分解定理：DAG $G$に適合する確率分布は$P(X_1,...,X_p) = \\prod_{i=1}^p P(X_i | \\mathrm{pa}(X_i))$と因数分解される（$\\mathrm{pa}(X_i)$は$X_i$の親ノード集合）。例：$A \\to C, B \\to C, C \\to D$のDAGでは$P(A,B,C,D) = P(A)P(B)P(C|A,B)P(D|C)$。この構造から$A \\perp B$（$A$と$B$は無条件で独立）、$A \\not\\perp B | C$（$C$はコライダーなので条件付けると独立でなくなる）、$A \\perp D | C$（チェイン構造で$C$が遮断）がd-分離から読み取れる。",
+    keywords: ["因数分解定理", "親ノード", "条件付き独立", "d-分離"],
+    explanation: "因数分解定理はベイジアンネットワークの基礎です。各変数がその親のみに条件付き依存するという局所的条件付き独立性が、グラフの構造で表現されます。パラメータ数は完全な同時分布より大幅に少なく、効率的な表現・学習・推論が可能です。構造学習にはスコアベース法（BIC等）や制約ベース法（PC/ICアルゴリズム等）があります。"
+  },
+
+  // Other Multivariate (485-488)
+  {
+    id: 485,
+    topic: "other_mv",
+    type: "choice",
+    difficulty: "basic",
+    question: "正準相関分析（canonical correlation analysis）の目的として正しいものはどれか？",
+    options: [
+      "2組の変数群$X$と$Y$の線形結合$a^TX$と$b^TY$の相関を最大にする重み$a, b$を求める",
+      "1組の変数の分散を最大にする方向を求める",
+      "変数間のクラスタ構造を発見する",
+      "目的変数の予測精度を最大化する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。正準相関分析は$\\mathrm{Corr}(a^TX, b^TY)$を最大化する$a, b$（正準変数）を求めます。最大相関を第1正準相関、対応する線形結合を第1正準変量と呼びます。",
+      "不正解。分散を最大にするのは主成分分析（PCA）です。正準相関分析は2組の変数間の相関を最大化します。",
+      "不正解。クラスタ構造の発見はクラスター分析です。",
+      "不正解。予測精度の最大化は回帰分析の目的です。正準相関分析は2組の変数群の関連を探索します。"
+    ],
+    explanation: "正準相関分析はHotelling (1936)が提案し、$\\Sigma_{XX}^{-1}\\Sigma_{XY}\\Sigma_{YY}^{-1}\\Sigma_{YX}$の固有値問題に帰着します。固有値の平方根が正準相関係数です。PCA、回帰分析、判別分析を特殊ケースとして含む汎用的な枠組みです。"
+  },
+  {
+    id: 486,
+    topic: "other_mv",
+    type: "choice",
+    difficulty: "standard",
+    question: "多次元尺度構成法（MDS: Multidimensional Scaling）について正しい記述はどれか？",
+    options: [
+      "対象間の非類似度（距離）行列から低次元空間上の配置を復元し、元の距離関係をできるだけ保存する手法",
+      "高次元データの分散を最大化する射影を求める手法",
+      "クラスタリングの一種であり、対象をグループに分割する",
+      "計量MDSと非計量MDSは常に同じ結果を与える"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。MDSは距離行列$D$から低次元座標$X$を求め、$d_{ij} \\approx \\|x_i - x_j\\|$が保存されるようにします。ストレス$\\sum (d_{ij} - \\|x_i - x_j\\|)^2$等を最小化します。",
+      "不正解。分散を最大化する射影はPCAです。MDSは距離の保存を目的とします。",
+      "不正解。MDSは次元縮約・可視化の手法であり、クラスタリングとは異なります。",
+      "不正解。計量MDSは距離そのものの保存、非計量MDSは距離の順序（ランク）の保存を目的とし、結果が異なりえます。"
+    ],
+    explanation: "計量MDS（classical MDS）は距離行列から内積行列を復元し固有値分解する方法で、ユークリッド距離の場合はPCAと等価です。非計量MDS（Kruskal, 1964）は単調回帰を用いて順序のみを保存し、順序尺度のデータにも適用可能です。t-SNEやUMAPは非線形MDSの発展形と位置づけられます。"
+  },
+  {
+    id: 487,
+    topic: "other_mv",
+    type: "choice",
+    difficulty: "advanced",
+    question: "自己組織化マップ（SOM: Self-Organizing Map）の学習アルゴリズムの特徴として正しいものはどれか？",
+    options: [
+      "勝者ユニット（BMU）とその近傍のユニットの重みベクトルを入力データに向けて更新し、位相保存的な写像を学習する",
+      "全ユニットの重みベクトルを同時に同じ量だけ更新する",
+      "k-meansと全く同じアルゴリズムである",
+      "SOMの学習は教師あり学習である"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。SOMの学習では入力$x$に最も近い重みを持つユニット（BMU: Best Matching Unit）を見つけ、BMUとその近傍$N(t)$のユニットの重みを$w_j \\leftarrow w_j + \\alpha(t) h_{bj}(t)(x - w_j)$で更新します。近傍関数$h$と学習率$\\alpha$は時間とともに減少します。",
+      "不正解。BMUの近傍のみが更新され、遠いユニットはほとんど更新されません。これが位相保存の鍵です。",
+      "不正解。k-meansは近傍の概念がなく、各データ点を最近傍クラスタに割り当てるだけです。SOMは格子上の位相構造を保存します。",
+      "不正解。SOMは教師なし学習です。正解ラベルを使用しません。"
+    ],
+    explanation: "SOM（Kohonen, 1982）はデータの位相構造を保存しながら低次元（通常2次元格子）に射影する手法です。可視化と探索的データ解析に有用で、高次元データのクラスタ構造や分布の特徴を直感的に把握できます。近傍関数の減衰により、学習初期は大域構造、後期は局所構造を学習します。"
+  },
+  {
+    id: 488,
+    topic: "other_mv",
+    type: "written",
+    difficulty: "advanced",
+    question: "正準相関分析の第1正準相関係数が、$\\Sigma_{XX}^{-1}\\Sigma_{XY}\\Sigma_{YY}^{-1}\\Sigma_{YX}$の最大固有値の平方根であることを導出せよ。",
+    sampleAnswer: "最大化問題：$\\max_{a,b} a^T\\Sigma_{XY}b$、$a^T\\Sigma_{XX}a = 1$、$b^T\\Sigma_{YY}b = 1$。ラグランジュ関数$L = a^T\\Sigma_{XY}b - \\frac{\\lambda}{2}(a^T\\Sigma_{XX}a - 1) - \\frac{\\mu}{2}(b^T\\Sigma_{YY}b - 1)$。$\\partial L/\\partial a = \\Sigma_{XY}b - \\lambda\\Sigma_{XX}a = 0$より$a = \\lambda^{-1}\\Sigma_{XX}^{-1}\\Sigma_{XY}b$。$\\partial L/\\partial b = \\Sigma_{YX}a - \\mu\\Sigma_{YY}b = 0$に代入すると$\\Sigma_{YX}\\Sigma_{XX}^{-1}\\Sigma_{XY}b = \\lambda\\mu\\Sigma_{YY}b$。$\\lambda = \\mu = \\rho$（正準相関）であるから$\\Sigma_{YY}^{-1}\\Sigma_{YX}\\Sigma_{XX}^{-1}\\Sigma_{XY}b = \\rho^2 b$。すなわち$\\rho^2$は$\\Sigma_{YY}^{-1}\\Sigma_{YX}\\Sigma_{XX}^{-1}\\Sigma_{XY}$の固有値で、$\\rho$はその平方根。同様に$a$側では$\\Sigma_{XX}^{-1}\\Sigma_{XY}\\Sigma_{YY}^{-1}\\Sigma_{YX}a = \\rho^2 a$。",
+    keywords: ["正準相関", "固有値問題", "ラグランジュ乗数法", "制約付き最適化"],
+    explanation: "正準相関分析は2つの制約付き最適化問題（相関の最大化）を固有値問題に帰着させます。第$k$正準相関はそれまでの正準変量と直交する制約下で同じ最適化を行うことで得られます。これはPCAの逐次的定式化と並行的な構造です。"
+  },
+
+  // Discriminant Analysis (489-492)
+  {
+    id: 489,
+    topic: "discriminant",
+    type: "choice",
+    difficulty: "basic",
+    question: "分類器の性能評価にROC曲線を使う際、AUC（Area Under the Curve）の値の解釈として正しいものはどれか？",
+    options: [
+      "ランダムに選んだ正例のスコアがランダムに選んだ負例のスコアより高い確率に等しい",
+      "正解率（accuracy）に等しい",
+      "AUCが0.5のとき完全な分類器である",
+      "AUCは閾値に依存する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。$\\mathrm{AUC} = P(S_+ > S_-)$（$S_+$は正例のスコア、$S_-$は負例のスコア）という確率的解釈を持ちます。Mann-Whitney U統計量と等価です。",
+      "不正解。AUCと正解率は異なる指標です。正解率は特定の閾値での性能ですが、AUCは全閾値にわたる総合的性能です。",
+      "不正解。AUC = 0.5はランダム分類と同等であり、AUC = 1.0が完全な分類器です。",
+      "不正解。AUCは全閾値にわたって計算される指標であり、特定の閾値に依存しません。"
+    ],
+    explanation: "AUCは分類器の閾値非依存な評価指標です。AUCの解釈：0.9-1.0 優秀、0.8-0.9 良好、0.7-0.8 まずまず、0.6-0.7 不良、0.5-0.6 ほぼランダム。クラス不均衡時にはPR曲線のAUC（AUPRC）も重要です。DeLongの検定でAUCの差を統計的に比較できます。"
+  },
+  {
+    id: 490,
+    topic: "discriminant",
+    type: "choice",
+    difficulty: "standard",
+    question: "正則化判別分析（Regularized Discriminant Analysis, RDA）について正しい記述はどれか？",
+    options: [
+      "LDAとQDAの中間として$\\hat{\\Sigma}_k(\\alpha) = \\alpha \\hat{\\Sigma}_k + (1-\\alpha)\\hat{\\Sigma}$で共分散行列を推定し、$\\alpha$で正則化の程度を制御する",
+      "LDAに$L_1$ペナルティを加えた手法",
+      "RDAは次元削減の手法であり判別には使えない",
+      "RDAではすべての群の共分散行列が等しいと仮定する"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。Friedman (1989)のRDAは$\\alpha = 0$でLDA（共通共分散）、$\\alpha = 1$でQDA（群別共分散）に対応し、さらに$\\gamma$で$\\hat{\\Sigma}$を$\\hat{\\sigma}^2I$に縮小する二重正則化も可能です。",
+      "不正解。L1ペナルティを用いるのはスパース判別分析であり、RDAとは異なります。",
+      "不正解。RDAは判別分析の一手法であり、分類に使用されます。",
+      "不正解。RDAでは$\\alpha$を調整することで群別共分散と共通共分散の間を連続的に補間します。"
+    ],
+    explanation: "RDAは高次元データや小標本サイズの場合に有効です。QDAは$p(p+1)/2$個のパラメータを群ごとに推定するため、$n_k$が小さいと共分散行列が特異になります。RDAは共通共分散への縮小（$\\alpha$）と対角行列への縮小（$\\gamma$）で安定な推定を行います。$\\alpha, \\gamma$はクロスバリデーションで選択します。"
+  },
+  {
+    id: 491,
+    topic: "discriminant",
+    type: "choice",
+    difficulty: "advanced",
+    question: "判別分析における等コスト仮定の問題点と対処法として正しいものはどれか？",
+    options: [
+      "誤分類のコストが群によって異なる場合（例：疾患の見逃しは過剰診断より深刻）、事前確率やコストを調整した判別規則を用いるべき",
+      "等コスト仮定は常に正しいため調整は不要",
+      "コストが異なる場合でも判別関数は変わらず、閾値のみが変化する",
+      "コスト非対称への唯一の対処法はデータのリサンプリングである"
+    ],
+    correctIndex: 0,
+    optionExplanations: [
+      "正解。ベイズ判別規則ではクラス$k$に分類する基準は$\\pi_k c_{\\ell k} f_k(x)$（$\\pi_k$は事前確率、$c_{\\ell k}$は誤分類コスト、$f_k$は尤度）を考慮します。コスト非対称の場合、判別の閾値だけでなく判別関数の解釈も変わります。",
+      "不正解。等コスト仮定は多くの実際問題で不適切です（医学診断、不正検知等）。",
+      "不正解。コスト考慮は閾値の変更だけでなく、評価指標（コスト加重誤分類率）や判別規則全体に影響します。",
+      "不正解。リサンプリング（オーバー/アンダーサンプリング）は一つの対処法ですが、コスト感度分析やコスト考慮の判別規則も有効です。"
+    ],
+    explanation: "最小リスク判別（ベイズ判別の一般化）ではリスク$R(k|x) = \\sum_{\\ell \\neq k} c_{\\ell k} P(\\ell|x)$を最小化するクラス$k$に分類します。医学診断では感度（偽陰性のコスト）と特異度（偽陽性のコスト）のトレードオフをROC分析で検討し、コスト比を反映した最適閾値を選択します。"
+  },
+  {
+    id: 492,
+    topic: "discriminant",
+    type: "written",
+    difficulty: "advanced",
+    question: "フィッシャーの線形判別関数が、2群の平均の差の射影を群内変動に対して最大化する方向$w$として導出されることを示せ。",
+    sampleAnswer: "フィッシャーの基準：$J(w) = \\frac{w^T S_B w}{w^T S_W w}$を最大化する$w$を求める。$S_B = (\\mu_1 - \\mu_2)(\\mu_1 - \\mu_2)^T$（群間変動行列）、$S_W = \\sum_{k=1}^{2} \\sum_{i \\in C_k} (x_i - \\mu_k)(x_i - \\mu_k)^T$（群内変動行列）。$J(w)$はレイリー商であり、$S_W^{-1}S_B w = \\lambda w$の最大固有値に対応する固有ベクトルが解。$S_B w = (\\mu_1 - \\mu_2)(\\mu_1 - \\mu_2)^T w$は$(\\mu_1 - \\mu_2)$の定数倍なので、$w \\propto S_W^{-1}(\\mu_1 - \\mu_2)$が解。これがフィッシャーの線形判別関数の方向である。",
+    keywords: ["レイリー商", "群間変動", "群内変動", "一般化固有値問題"],
+    explanation: "フィッシャーのアプローチは分布の仮定なしに最適な射影方向を求める点が重要です。2群正規分布で等共分散の場合、フィッシャーの判別関数はベイズ最適判別規則と一致します。多群の場合は$S_B$のランクが$K-1$以下であるため、最大$K-1$個の判別方向が得られます。"
   }
 ];

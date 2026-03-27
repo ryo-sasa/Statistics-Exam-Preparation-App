@@ -1,27 +1,57 @@
-import React, { useState } from 'react';
-import { ChevronDown, Check, X, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronDown, Check, X, ChevronRight, Bookmark } from 'lucide-react';
 import { MathText, renderInlineContent } from './MathText.jsx';
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D'];
 
-export default function PracticePage({ selectedLevel, questions, topics, addResult }) {
+const DIFFICULTY_CONFIG = {
+  basic:    { label: '基礎', color: 'bg-green-100 text-green-700' },
+  standard: { label: '標準', color: 'bg-blue-100 text-blue-700' },
+  advanced: { label: '発展', color: 'bg-red-100 text-red-700' },
+};
+
+export default function PracticePage({ selectedLevel, questions, topics, addResult, bookmarks = [], onToggleBookmark }) {
   const [selectedTopic, setSelectedTopic] = useState('all');
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [userAnswer, setUserAnswer] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
   const [writtenAnswer, setWrittenAnswer] = useState('');
+  const [bookmarkMode, setBookmarkMode] = useState(false);
+  const [selectedDifficulty, setSelectedDifficulty] = useState('all');
 
-  // Filter questions by topic
-  const filteredQuestions = selectedTopic === 'all'
-    ? questions
-    : questions.filter(q => q.topic === selectedTopic);
+  // Reset bookmark mode when level changes
+  useEffect(() => {
+    setBookmarkMode(false);
+    setCurrentQuestionIdx(0);
+  }, [selectedLevel]);
+
+  // Filter questions by topic, bookmark mode, and difficulty
+  const baseQuestions = bookmarkMode
+    ? questions.filter(q => bookmarks.includes(q.id))
+    : questions;
+  const topicFiltered = selectedTopic === 'all'
+    ? baseQuestions
+    : baseQuestions.filter(q => q.topic === selectedTopic);
+  const filteredQuestions = selectedDifficulty === 'all'
+    ? topicFiltered
+    : topicFiltered.filter(q => q.difficulty === selectedDifficulty);
 
   if (filteredQuestions.length === 0) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 pt-20 lg:pt-0 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl text-slate-600 mb-4">このレベルではまだ問題がありません</p>
+          <p className="text-xl text-slate-600 mb-4">
+            {bookmarkMode ? 'ブックマークした問題がありません' : 'このレベルではまだ問題がありません'}
+          </p>
+          {bookmarkMode && (
+            <button
+              onClick={() => { setBookmarkMode(false); setCurrentQuestionIdx(0); }}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              通常モードに戻る
+            </button>
+          )}
         </div>
       </div>
     );
@@ -42,6 +72,7 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
         topicId: currentQuestion.topic,
         level: selectedLevel,
         isCorrect,
+        difficulty: currentQuestion.difficulty || null,
       });
     } else {
       if (!writtenAnswer.trim()) return;
@@ -51,6 +82,7 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
         topicId: currentQuestion.topic,
         level: selectedLevel,
         isCorrect: true,
+        difficulty: currentQuestion.difficulty || null,
       });
     }
   };
@@ -66,7 +98,22 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 pt-20 lg:pt-0">
       <div className="max-w-4xl mx-auto px-6 lg:px-12 py-12">
-        <h1 className="text-4xl font-bold text-slate-900 mb-8">問題演習</h1>
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-4xl font-bold text-slate-900">問題演習</h1>
+          {onToggleBookmark && (
+            <button
+              onClick={() => { setBookmarkMode(!bookmarkMode); setCurrentQuestionIdx(0); setUserAnswer(null); setWrittenAnswer(''); setIsSubmitted(false); }}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+                bookmarkMode
+                  ? 'bg-amber-500 text-white hover:bg-amber-600'
+                  : 'bg-white border border-slate-300 text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              <Bookmark size={16} className={bookmarkMode ? 'fill-white' : ''} />
+              {bookmarkMode ? 'ブックマーク復習中' : `ブックマーク復習 (${bookmarks.length})`}
+            </button>
+          )}
+        </div>
 
         {/* Topic Filter Dropdown */}
         <div className="mb-8">
@@ -97,6 +144,34 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
             </select>
             <ChevronDown size={20} className="absolute right-3 top-3.5 text-slate-600 pointer-events-none" />
           </div>
+
+          {/* Difficulty Filter */}
+          <div className="flex gap-2 mt-3">
+            {[
+              { value: 'all', label: 'すべて' },
+              { value: 'basic', label: '基礎' },
+              { value: 'standard', label: '標準' },
+              { value: 'advanced', label: '発展' },
+            ].map(d => (
+              <button
+                key={d.value}
+                onClick={() => {
+                  setSelectedDifficulty(d.value);
+                  setCurrentQuestionIdx(0);
+                  setUserAnswer(null);
+                  setWrittenAnswer('');
+                  setIsSubmitted(false);
+                }}
+                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  selectedDifficulty === d.value
+                    ? 'bg-slate-800 text-white'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                {d.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Question Card */}
@@ -107,10 +182,30 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
               <span className="inline-block bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-sm font-medium">
                 {isChoiceQuestion ? '選択式' : '記述式'}
               </span>
+              {currentQuestion.difficulty && DIFFICULTY_CONFIG[currentQuestion.difficulty] && (
+                <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${DIFFICULTY_CONFIG[currentQuestion.difficulty].color}`}>
+                  {DIFFICULTY_CONFIG[currentQuestion.difficulty].label}
+                </span>
+              )}
               <span className="text-slate-600 text-sm">
                 {currentQuestionIdx + 1} / {filteredQuestions.length}
               </span>
             </div>
+            {onToggleBookmark && (
+              <button
+                onClick={() => onToggleBookmark(currentQuestion.id)}
+                className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                title={bookmarks.includes(currentQuestion.id) ? 'ブックマークを外す' : 'ブックマークする'}
+              >
+                <Bookmark
+                  size={22}
+                  className={bookmarks.includes(currentQuestion.id)
+                    ? 'text-amber-500 fill-amber-500'
+                    : 'text-slate-400'
+                  }
+                />
+              </button>
+            )}
           </div>
 
           {/* Question Text */}

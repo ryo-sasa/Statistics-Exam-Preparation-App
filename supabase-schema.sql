@@ -41,6 +41,12 @@ CREATE TABLE IF NOT EXISTS bookmarks (
 );
 
 -- ============================================================
+-- マイグレーション: 難易度カラムの追加 (2026-03-27)
+-- 既存データに影響なし（DEFAULT NULL で追加）
+-- ============================================================
+ALTER TABLE results ADD COLUMN IF NOT EXISTS difficulty TEXT DEFAULT NULL;
+
+-- ============================================================
 -- インデックス
 -- ============================================================
 CREATE INDEX IF NOT EXISTS idx_results_user_id ON results(user_id);
