@@ -75,6 +75,7 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
         topicId: currentQuestion.topic,
         level: selectedLevel,
         isCorrect,
+        userAnswer: userAnswer,
         difficulty: currentQuestion.difficulty || null,
       });
     } else {
@@ -85,6 +86,7 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
         topicId: currentQuestion.topic,
         level: selectedLevel,
         isCorrect: true,
+        userAnswer: writtenAnswer,
         difficulty: currentQuestion.difficulty || null,
       });
 

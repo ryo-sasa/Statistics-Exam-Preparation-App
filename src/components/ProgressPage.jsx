@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { CheckCircle, AlertCircle, TrendingUp, Calendar, Target, ChevronDown, ChevronUp, AlertTriangle, PenTool } from 'lucide-react';
+import { MathText, renderInlineContent } from './MathText.jsx';
+
+const OPTION_LABELS = ['A', 'B', 'C', 'D'];
 
 export default function ProgressPage({ selectedLevel, results, topics, questions, setCurrentPage }) {
   // Calculate summary statistics
@@ -8,9 +11,14 @@ export default function ProgressPage({ selectedLevel, results, topics, questions
   const accuracyRate = totalAnswers > 0 ? ((totalCorrect / totalAnswers) * 100).toFixed(1) : 0;
 
   const [expandedTopics, setExpandedTopics] = useState({});
+  const [expandedAnswers, setExpandedAnswers] = useState({});
 
   const toggleTopic = (topicId) => {
     setExpandedTopics(prev => ({ ...prev, [topicId]: !prev[topicId] }));
+  };
+
+  const toggleAnswer = (idx) => {
+    setExpandedAnswers(prev => ({ ...prev, [idx]: !prev[idx] }));
   };
 
   // Build a map of question ID -> latest result
@@ -56,8 +64,8 @@ export default function ProgressPage({ selectedLevel, results, topics, questions
     };
   });
 
-  // Get recent answers (last 10)
-  const recentAnswers = results.slice(-10).reverse();
+  // Get recent answers (last 30)
+  const recentAnswers = results.slice(-30).reverse();
 
   // Format date
   const formatDate = (dateObj) => {
@@ -322,42 +330,112 @@ export default function ProgressPage({ selectedLevel, results, topics, questions
                   {recentAnswers.map((result, idx) => {
                     const topic = topics.find(t => t.id === result.topicId);
                     const question = allQuestions.find(q => q.id === result.questionId);
+                    const isExpanded = expandedAnswers[idx];
+                    const isChoice = question?.type === 'choice';
+
                     return (
                       <div
                         key={idx}
-                        className={`p-4 rounded-lg border-l-4 ${
+                        className={`rounded-lg border-l-4 ${
                           result.isCorrect
                             ? 'bg-green-50 border-green-500'
                             : 'bg-red-50 border-red-500'
                         }`}
                       >
-                        <div className="flex items-start gap-4">
-                          <div className="flex-shrink-0 mt-1">
-                            {result.isCorrect ? (
-                              <CheckCircle size={20} className="text-green-600" />
-                            ) : (
-                              <AlertCircle size={20} className="text-red-600" />
-                            )}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-xs px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-medium">
-                                {topic?.name || 'カテゴリ未設定'}
-                              </span>
-                              <span className={`text-xs font-medium ${result.isCorrect ? 'text-green-600' : 'text-red-600'}`}>
-                                {result.isCorrect ? '正解' : '不正解'}
-                              </span>
-                              <span className="text-xs text-slate-400 ml-auto flex-shrink-0">
-                                {formatDate(result.timestamp || result.answered)}
-                              </span>
+                        {/* Summary row (clickable) */}
+                        <button
+                          onClick={() => question && toggleAnswer(idx)}
+                          className="w-full text-left p-4"
+                        >
+                          <div className="flex items-start gap-4">
+                            <div className="flex-shrink-0 mt-1">
+                              {result.isCorrect ? (
+                                <CheckCircle size={20} className="text-green-600" />
+                              ) : (
+                                <AlertCircle size={20} className="text-red-600" />
+                              )}
                             </div>
-                            {question && (
-                              <p className="text-sm text-slate-800 leading-relaxed">
-                                {question.question.length > 100 ? question.question.slice(0, 100) + '...' : question.question}
-                              </p>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="text-xs px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-medium">
+                                  {topic?.name || 'カテゴリ未設定'}
+                                </span>
+                                <span className={`text-xs font-medium ${result.isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                                  {result.isCorrect ? '正解' : '不正解'}
+                                </span>
+                                <span className="text-xs text-slate-400 ml-auto flex-shrink-0 flex items-center gap-1">
+                                  {formatDate(result.timestamp || result.answered)}
+                                  {question && (isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />)}
+                                </span>
+                              </div>
+                              {question && (
+                                <p className="text-sm text-slate-800 leading-relaxed">
+                                  {isExpanded
+                                    ? <MathText text={question.question} keyPrefix={`rq-${idx}`} />
+                                    : (question.question.length > 100 ? question.question.slice(0, 100) + '...' : question.question)
+                                  }
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </button>
+
+                        {/* Expanded detail */}
+                        {isExpanded && question && (
+                          <div className="px-4 pb-4 space-y-3 border-t border-slate-200/50 pt-3 ml-10">
+                            {/* User's answer */}
+                            <div>
+                              <p className="text-xs font-semibold text-slate-500 mb-1">あなたの回答:</p>
+                              {isChoice ? (
+                                <div className="space-y-1.5">
+                                  {question.options?.map((opt, optIdx) => {
+                                    const isUserChoice = result.userAnswer === optIdx;
+                                    const isCorrectOpt = question.correctIndex === optIdx;
+                                    let optClass = 'bg-white border-slate-200 text-slate-600';
+                                    if (isCorrectOpt) optClass = 'bg-green-100 border-green-300 text-green-800';
+                                    if (isUserChoice && !isCorrectOpt) optClass = 'bg-red-100 border-red-300 text-red-800';
+
+                                    return (
+                                      <div key={optIdx} className={`p-2 rounded border text-sm flex items-start gap-2 ${optClass}`}>
+                                        <span className="font-bold flex-shrink-0">{OPTION_LABELS[optIdx]}.</span>
+                                        <span>{renderInlineContent(opt, `hist-opt-${idx}-${optIdx}`)}</span>
+                                        {isUserChoice && !isCorrectOpt && <span className="ml-auto text-xs text-red-600 flex-shrink-0">あなたの回答</span>}
+                                        {isCorrectOpt && <span className="ml-auto text-xs text-green-600 flex-shrink-0">正解</span>}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              ) : (
+                                <div className="p-3 bg-white rounded border border-slate-200 text-sm text-slate-700">
+                                  {result.userAnswer
+                                    ? <p className="whitespace-pre-wrap">{result.userAnswer}</p>
+                                    : <p className="text-slate-400">（回答データなし）</p>
+                                  }
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Sample answer for written questions */}
+                            {!isChoice && question.sampleAnswer && (
+                              <div>
+                                <p className="text-xs font-semibold text-slate-500 mb-1">模範解答:</p>
+                                <div className="p-3 bg-white rounded border border-slate-200 text-sm text-slate-700">
+                                  <MathText text={question.sampleAnswer} keyPrefix={`sa-${idx}`} />
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Explanation */}
+                            {question.explanation && (
+                              <div>
+                                <p className="text-xs font-semibold text-slate-500 mb-1">解説:</p>
+                                <div className="p-3 bg-blue-50 rounded border border-blue-200 text-sm text-slate-700">
+                                  <MathText text={question.explanation} keyPrefix={`expl-${idx}`} />
+                                </div>
+                              </div>
                             )}
                           </div>
-                        </div>
+                        )}
                       </div>
                     );
                   })}
