@@ -320,10 +320,37 @@ export default function ExamPage({ selectedLevel, questions, addResult, LEVELS }
                     <p className="font-medium text-slate-900">
                       問{idx + 1}: {isCorrect ? '正解' : '不正解'}
                     </p>
-                    <p className="text-sm text-slate-600 mt-1">
+                    <p className="text-sm text-slate-600 mt-1 mb-2">
                       あなたの回答: <span className="font-semibold">{answerLabel}</span>
                       {!isCorrect && ` | 正解: ${correctLabel}`}
                     </p>
+                    <p className="text-sm text-slate-700 mb-1">{q.question}</p>
+                    {q.explanation && (
+                      <details className="mt-2">
+                        <summary className="text-sm text-blue-600 cursor-pointer hover:text-blue-700 font-medium">
+                          解説を表示
+                        </summary>
+                        <div className="mt-2 space-y-2">
+                          <p className="text-sm text-slate-700 bg-blue-50 p-3 rounded whitespace-pre-wrap">
+                            {q.explanation}
+                          </p>
+                          {q.optionExplanations && (
+                            <div className="space-y-1">
+                              {q.options.map((optText, optIdx) => {
+                                const isCorrectOpt = optIdx === q.correctIndex;
+                                return (
+                                  <div key={optIdx} className={`text-xs p-2 rounded ${isCorrectOpt ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+                                    <span className="font-bold">{OPTION_LABELS[optIdx]}.</span> {optText}
+                                    <br />
+                                    <span className="italic">{q.optionExplanations[optIdx]}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      </details>
+                    )}
                   </div>
                 );
               })}

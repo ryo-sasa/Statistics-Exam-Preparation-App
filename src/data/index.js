@@ -27,6 +27,7 @@ import { topics1kyu } from './topics-1kyu.js';
 import { questions2kyu } from './questions-2kyu.js';
 import { questionsJun1kyu } from './questions-jun1kyu.js';
 import { questions1kyu } from './questions-1kyu.js';
+import { questionsJun1kyuExam } from './questions-jun1kyu-exam.js';
 
 const topicsJun1kyu = [
   topicMle, topicNonparametric, topicMarkov, topicBrownian,
@@ -43,9 +44,24 @@ export const TOPICS = {
   "1kyu": topics1kyu,
 };
 
+// 問題演習用（既存の問題プール）
 export const QUESTIONS = {
   "2kyu": questions2kyu,
   "jun1kyu": questionsJun1kyu,
+  "1kyu": questions1kyu,
+};
+
+// 模擬試験用（専用の問題プール）
+export const EXAM_QUESTIONS = {
+  "2kyu": questions2kyu.filter(q => q.type === 'choice'),
+  "jun1kyu": questionsJun1kyuExam,
+  "1kyu": questions1kyu.filter(q => q.type === 'choice'),
+};
+
+// 全問題（進捗表示用）
+export const ALL_QUESTIONS = {
+  "2kyu": questions2kyu,
+  "jun1kyu": [...questionsJun1kyu, ...questionsJun1kyuExam],
   "1kyu": questions1kyu,
 };
 

@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Menu, Flame, User } from "lucide-react";
 
 // Data imports
-import { LEVELS, TOPICS, QUESTIONS } from "./data/index.js";
+import { LEVELS, TOPICS, QUESTIONS, EXAM_QUESTIONS, ALL_QUESTIONS } from "./data/index.js";
 
 // User management
 import {
@@ -150,6 +150,8 @@ export default function App() {
 
   const topics = TOPICS[selectedLevel] || [];
   const questions = QUESTIONS[selectedLevel] || [];
+  const examQuestions = EXAM_QUESTIONS[selectedLevel] || [];
+  const allQuestions = ALL_QUESTIONS[selectedLevel] || [];
   const showChat = currentPage !== "exam";
   const currentLevel = LEVELS.find((l) => l.id === selectedLevel);
 
@@ -163,7 +165,7 @@ export default function App() {
             stats={stats}
             LEVELS={LEVELS}
             topicCount={topics.length}
-            questionCount={questions.length}
+            questionCount={allQuestions.length}
           />
         );
       case "textbook":
@@ -187,7 +189,7 @@ export default function App() {
         return (
           <ExamPage
             selectedLevel={selectedLevel}
-            questions={questions}
+            questions={examQuestions}
             addResult={addResult}
             LEVELS={LEVELS}
           />
@@ -198,6 +200,7 @@ export default function App() {
             selectedLevel={selectedLevel}
             results={results}
             topics={topics}
+            questions={allQuestions}
           />
         );
       case "profile":
@@ -217,7 +220,7 @@ export default function App() {
             stats={stats}
             LEVELS={LEVELS}
             topicCount={topics.length}
-            questionCount={questions.length}
+            questionCount={allQuestions.length}
           />
         );
     }

@@ -191,8 +191,37 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
                 解説を表示
               </button>
               {showExplanation && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-slate-800 leading-relaxed whitespace-pre-wrap">
-                  {currentQuestion.explanation}
+                <div className="space-y-4">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-slate-800 leading-relaxed whitespace-pre-wrap">
+                    {currentQuestion.explanation}
+                  </div>
+
+                  {/* Per-option explanations */}
+                  {isChoiceQuestion && currentQuestion.optionExplanations && (
+                    <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
+                      <h4 className="font-bold text-slate-800 mb-4">各選択肢の解説</h4>
+                      <div className="space-y-3">
+                        {currentQuestion.options.map((optionText, idx) => {
+                          const isCorrectOption = idx === currentQuestion.correctIndex;
+                          return (
+                            <div key={idx} className={`p-3 rounded-lg ${isCorrectOption ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+                              <div className="flex items-start gap-2">
+                                <span className={`font-bold flex-shrink-0 ${isCorrectOption ? 'text-green-700' : 'text-red-700'}`}>
+                                  {OPTION_LABELS[idx]}.
+                                </span>
+                                <div>
+                                  <p className="font-medium text-slate-800 mb-1">{optionText}</p>
+                                  <p className={`text-sm ${isCorrectOption ? 'text-green-700' : 'text-red-700'}`}>
+                                    {currentQuestion.optionExplanations[idx]}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

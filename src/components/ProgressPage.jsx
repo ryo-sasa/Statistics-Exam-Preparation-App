@@ -1,17 +1,48 @@
-import React from 'react';
-import { CheckCircle, AlertCircle, TrendingUp, Calendar, Target } from 'lucide-react';
+import React, { useState } from 'react';
+import { CheckCircle, AlertCircle, TrendingUp, Calendar, Target, ChevronDown, ChevronUp } from 'lucide-react';
 
-export default function ProgressPage({ selectedLevel, results, topics }) {
+export default function ProgressPage({ selectedLevel, results, topics, questions }) {
   // Calculate summary statistics
   const totalAnswers = results.length;
   const totalCorrect = results.filter(r => r.isCorrect).length;
   const accuracyRate = totalAnswers > 0 ? ((totalCorrect / totalAnswers) * 100).toFixed(1) : 0;
 
+  const [expandedTopics, setExpandedTopics] = useState({});
+
+  const toggleTopic = (topicId) => {
+    setExpandedTopics(prev => ({ ...prev, [topicId]: !prev[topicId] }));
+  };
+
+  // Build a map of question ID -> latest result
+  const questionResultMap = {};
+  results.forEach(r => {
+    questionResultMap[r.questionId] = r;
+  });
+
+  // All questions for this level
+  const allQuestions = questions || [];
+
   // Calculate topic-by-topic progress
   const topicProgress = topics.map(topic => {
+    const topicQuestions = allQuestions.filter(q => q.topic === topic.id);
     const topicResults = results.filter(r => r.topicId === topic.id);
     const topicCorrect = topicResults.filter(r => r.isCorrect).length;
     const topicAnswered = topicResults.length;
+
+    // Per-question status (solved or not, latest result)
+    const questionStatus = topicQuestions.map(q => {
+      const result = questionResultMap[q.id];
+      return {
+        id: q.id,
+        question: q.question,
+        type: q.type,
+        solved: !!result,
+        isCorrect: result?.isCorrect ?? null,
+        timestamp: result?.timestamp ?? null,
+      };
+    });
+
+    const solvedCount = questionStatus.filter(q => q.solved).length;
 
     return {
       id: topic.id,
@@ -19,8 +50,11 @@ export default function ProgressPage({ selectedLevel, results, topics }) {
       answered: topicAnswered,
       correct: topicCorrect,
       accuracy: topicAnswered > 0 ? ((topicCorrect / topicAnswered) * 100).toFixed(1) : 0,
+      totalQuestions: topicQuestions.length,
+      solvedCount,
+      questionStatus,
     };
-  }).filter(t => t.answered > 0);
+  });
 
   // Get recent answers (last 10)
   const recentAnswers = results.slice(-10).reverse();
@@ -96,39 +130,103 @@ export default function ProgressPage({ selectedLevel, results, topics }) {
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">カテゴリ別進捗</h2>
 
-              {topicProgress.length === 0 ? (
+              {topicProgress.filter(t => t.totalQuestions > 0).length === 0 ? (
                 <p className="text-slate-600 text-center py-8">
                   まだデータがありません
                 </p>
               ) : (
                 <div className="space-y-6">
-                  {topicProgress.map(topic => (
+                  {topicProgress.filter(t => t.totalQuestions > 0).map(topic => (
                     <div key={topic.id}>
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-semibold text-slate-900">{topic.name}</h3>
-                        <span className="text-sm font-bold text-slate-700">
-                          {topic.correct} / {topic.answered} ({topic.accuracy}%)
-                        </span>
-                      </div>
+                      <button
+                        onClick={() => toggleTopic(topic.id)}
+                        className="w-full text-left"
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            {expandedTopics[topic.id] ? <ChevronUp size={16} className="text-slate-500" /> : <ChevronDown size={16} className="text-slate-500" />}
+                            <h3 className="font-semibold text-slate-900">{topic.name}</h3>
+                          </div>
+                          <span className="text-sm font-bold text-slate-700">
+                            {topic.solvedCount} / {topic.totalQuestions} 問解答済
+                            {topic.answered > 0 && ` (正答率 ${topic.accuracy}%)`}
+                          </span>
+                        </div>
+                      </button>
 
-                      {/* Progress Bar */}
-                      <div className="w-full bg-slate-200 rounded-full h-3">
+                      {/* Progress Bar - solved count based */}
+                      <div className="w-full bg-slate-200 rounded-full h-3 mb-1">
                         <div
                           className={`h-3 rounded-full transition-all ${
-                            topic.accuracy >= 80
+                            topic.solvedCount === topic.totalQuestions
                               ? 'bg-green-500'
-                              : topic.accuracy >= 60
-                              ? 'bg-yellow-500'
-                              : 'bg-red-500'
+                              : topic.solvedCount > 0
+                              ? 'bg-blue-500'
+                              : 'bg-slate-300'
                           }`}
-                          style={{ width: `${topic.accuracy}%` }}
+                          style={{ width: `${(topic.solvedCount / topic.totalQuestions) * 100}%` }}
                         />
                       </div>
 
                       {/* Status indicator */}
-                      <div className="mt-2 text-xs text-slate-600">
-                        {topic.accuracy >= 80 ? '✓ 苦手分野を克服' : '⚠ 復習が必要'}
+                      <div className="mt-1 text-xs text-slate-600">
+                        {topic.solvedCount === topic.totalQuestions
+                          ? '✓ 全問解答済み'
+                          : topic.solvedCount > 0
+                          ? `残り ${topic.totalQuestions - topic.solvedCount} 問`
+                          : '未着手'}
                       </div>
+
+                      {/* Expanded question details */}
+                      {expandedTopics[topic.id] && (
+                        <div className="mt-3 space-y-2 pl-6">
+                          {topic.questionStatus.map((q, idx) => (
+                            <div
+                              key={q.id}
+                              className={`p-3 rounded-lg border text-sm ${
+                                q.solved
+                                  ? q.isCorrect
+                                    ? 'bg-green-50 border-green-200'
+                                    : 'bg-red-50 border-red-200'
+                                  : 'bg-slate-50 border-slate-200'
+                              }`}
+                            >
+                              <div className="flex items-start gap-2">
+                                <span className="flex-shrink-0 mt-0.5">
+                                  {q.solved
+                                    ? q.isCorrect
+                                      ? <CheckCircle size={16} className="text-green-600" />
+                                      : <AlertCircle size={16} className="text-red-600" />
+                                    : <span className="inline-block w-4 h-4 rounded-full border-2 border-slate-300" />
+                                  }
+                                </span>
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-slate-800 leading-relaxed">
+                                    <span className="font-medium text-slate-500">問{idx + 1}.</span>{' '}
+                                    {q.question.length > 80 ? q.question.slice(0, 80) + '...' : q.question}
+                                  </p>
+                                  <div className="flex items-center gap-3 mt-1">
+                                    <span className={`text-xs px-1.5 py-0.5 rounded ${
+                                      q.type === 'choice' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'
+                                    }`}>
+                                      {q.type === 'choice' ? '選択式' : '記述式'}
+                                    </span>
+                                    {q.solved && (
+                                      <span className={`text-xs ${q.isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                                        {q.isCorrect ? '正解' : '不正解'}
+                                        {q.timestamp && ` — ${formatDate(q.timestamp)}`}
+                                      </span>
+                                    )}
+                                    {!q.solved && (
+                                      <span className="text-xs text-slate-400">未解答</span>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
