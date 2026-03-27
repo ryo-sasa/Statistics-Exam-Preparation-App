@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Play, RotateCcw } from 'lucide-react';
+import { MathText, renderInlineContent } from './MathText.jsx';
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D'];
 
@@ -199,7 +200,7 @@ export default function ExamPage({ selectedLevel, questions, addResult, LEVELS }
           {currentQuestion && (
             <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
               <h2 className="text-2xl font-bold text-slate-900 mb-8">
-                {currentQuestion.question}
+                <MathText text={currentQuestion.question} keyPrefix="eq" />
               </h2>
 
               <div className="space-y-3 mb-8">
@@ -221,7 +222,7 @@ export default function ExamPage({ selectedLevel, questions, addResult, LEVELS }
                         <div className="w-8 h-8 rounded-full border-2 flex items-center justify-center font-bold">
                           {label}
                         </div>
-                        <span>{optionText}</span>
+                        <span>{renderInlineContent(optionText, `eopt-${idx}`)}</span>
                       </div>
                     </button>
                   );
@@ -324,15 +325,15 @@ export default function ExamPage({ selectedLevel, questions, addResult, LEVELS }
                       あなたの回答: <span className="font-semibold">{answerLabel}</span>
                       {!isCorrect && ` | 正解: ${correctLabel}`}
                     </p>
-                    <p className="text-sm text-slate-700 mb-1">{q.question}</p>
+                    <p className="text-sm text-slate-700 mb-1"><MathText text={q.question} keyPrefix={`rv-q-${idx}`} /></p>
                     {q.explanation && (
                       <details className="mt-2">
                         <summary className="text-sm text-blue-600 cursor-pointer hover:text-blue-700 font-medium">
                           解説を表示
                         </summary>
                         <div className="mt-2 space-y-2">
-                          <p className="text-sm text-slate-700 bg-blue-50 p-3 rounded whitespace-pre-wrap">
-                            {q.explanation}
+                          <p className="text-sm text-slate-700 bg-blue-50 p-3 rounded">
+                            <MathText text={q.explanation} keyPrefix={`rv-e-${idx}`} />
                           </p>
                           {q.optionExplanations && (
                             <div className="space-y-1">
@@ -340,9 +341,9 @@ export default function ExamPage({ selectedLevel, questions, addResult, LEVELS }
                                 const isCorrectOpt = optIdx === q.correctIndex;
                                 return (
                                   <div key={optIdx} className={`text-xs p-2 rounded ${isCorrectOpt ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
-                                    <span className="font-bold">{OPTION_LABELS[optIdx]}.</span> {optText}
+                                    <span className="font-bold">{OPTION_LABELS[optIdx]}.</span> {renderInlineContent(optText, `rv-o-${idx}-${optIdx}`)}
                                     <br />
-                                    <span className="italic">{q.optionExplanations[optIdx]}</span>
+                                    <span className="italic">{renderInlineContent(q.optionExplanations[optIdx], `rv-oe-${idx}-${optIdx}`)}</span>
                                   </div>
                                 );
                               })}

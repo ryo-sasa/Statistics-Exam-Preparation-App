@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, Check, X, ChevronRight } from 'lucide-react';
+import { MathText, renderInlineContent } from './MathText.jsx';
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D'];
 
@@ -114,7 +115,7 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
 
           {/* Question Text */}
           <h2 className="text-2xl font-bold text-slate-900 mb-8 leading-relaxed">
-            {currentQuestion.question}
+            <MathText text={currentQuestion.question} keyPrefix="q" />
           </h2>
 
           {/* Choice Question Options */}
@@ -150,9 +151,9 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
                       <div className="w-8 h-8 rounded-full border-2 flex items-center justify-center font-bold">
                         {label}
                       </div>
-                      <span>{optionText}</span>
-                      {isSubmitted && isCorrectOption && <Check className="ml-auto text-green-600" size={24} />}
-                      {isSubmitted && isSelected && !isCorrectOption && <X className="ml-auto text-red-600" size={24} />}
+                      <span>{renderInlineContent(optionText, `opt-${idx}`)}</span>
+                      {isSubmitted && isCorrectOption && <Check className="ml-auto flex-shrink-0 text-green-600" size={24} />}
+                      {isSubmitted && isSelected && !isCorrectOption && <X className="ml-auto flex-shrink-0 text-red-600" size={24} />}
                     </div>
                   </button>
                 );
@@ -174,7 +175,7 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
               {isSubmitted && (
                 <div className="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-200">
                   <p className="text-sm font-medium text-slate-700 mb-2">模範解答:</p>
-                  <p className="text-slate-700 whitespace-pre-wrap">{currentQuestion.sampleAnswer}</p>
+                  <p className="text-slate-700 whitespace-pre-wrap"><MathText text={currentQuestion.sampleAnswer} keyPrefix="sa" /></p>
                 </div>
               )}
             </div>
@@ -192,8 +193,8 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
               </button>
               {showExplanation && (
                 <div className="space-y-4">
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-slate-800 leading-relaxed whitespace-pre-wrap">
-                    {currentQuestion.explanation}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-slate-800 leading-relaxed">
+                    <MathText text={currentQuestion.explanation} keyPrefix="expl" />
                   </div>
 
                   {/* Per-option explanations */}
@@ -210,9 +211,9 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
                                   {OPTION_LABELS[idx]}.
                                 </span>
                                 <div>
-                                  <p className="font-medium text-slate-800 mb-1">{optionText}</p>
+                                  <p className="font-medium text-slate-800 mb-1">{renderInlineContent(optionText, `oe-opt-${idx}`)}</p>
                                   <p className={`text-sm ${isCorrectOption ? 'text-green-700' : 'text-red-700'}`}>
-                                    {currentQuestion.optionExplanations[idx]}
+                                    <MathText text={currentQuestion.optionExplanations[idx]} keyPrefix={`oe-${idx}`} />
                                   </p>
                                 </div>
                               </div>

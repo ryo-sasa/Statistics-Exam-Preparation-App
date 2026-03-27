@@ -1,44 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
-import katex from 'katex';
-import 'katex/dist/katex.min.css';
-
-/**
- * Renders a string that may contain:
- *   - $$...$$ display math
- *   - $...$ inline math
- *   - 【解答】...【/解答】 collapsible answer blocks
- *   - **bold** text
- *   - Markdown-style formatting
- */
-
-function TexInline({ tex }) {
-  const ref = useRef(null);
-  useEffect(() => {
-    if (ref.current) {
-      try {
-        katex.render(tex, ref.current, { throwOnError: false, displayMode: false });
-      } catch {
-        ref.current.textContent = tex;
-      }
-    }
-  }, [tex]);
-  return <span ref={ref} className="inline" />;
-}
-
-function TexBlock({ tex }) {
-  const ref = useRef(null);
-  useEffect(() => {
-    if (ref.current) {
-      try {
-        katex.render(tex, ref.current, { throwOnError: false, displayMode: true });
-      } catch {
-        ref.current.textContent = tex;
-      }
-    }
-  }, [tex]);
-  return <div ref={ref} className="my-4 overflow-x-auto" />;
-}
+import { TexInline, TexBlock, renderInlineContent } from './MathText.jsx';
 
 function CollapsibleAnswer({ children }) {
   const [open, setOpen] = useState(false);
@@ -58,42 +20,6 @@ function CollapsibleAnswer({ children }) {
       )}
     </div>
   );
-}
-
-/** Parse a text line into React nodes, handling inline $...$ and **bold** */
-function renderInlineContent(text, keyPrefix) {
-  // Split on $...$ (inline math) and **...** (bold)
-  const parts = [];
-  const regex = /(\$\$[^$]+\$\$|\$[^$]+\$|\*\*[^*]+\*\*)/g;
-  let lastIndex = 0;
-  let match;
-
-  while ((match = regex.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push(
-        <span key={`${keyPrefix}-t${lastIndex}`}>{text.slice(lastIndex, match.index)}</span>
-      );
-    }
-    const m = match[0];
-    if (m.startsWith('$$') && m.endsWith('$$')) {
-      parts.push(<TexBlock key={`${keyPrefix}-db${match.index}`} tex={m.slice(2, -2)} />);
-    } else if (m.startsWith('$') && m.endsWith('$')) {
-      parts.push(<TexInline key={`${keyPrefix}-ib${match.index}`} tex={m.slice(1, -1)} />);
-    } else if (m.startsWith('**') && m.endsWith('**')) {
-      parts.push(
-        <strong key={`${keyPrefix}-b${match.index}`} className="font-bold text-slate-900">
-          {m.slice(2, -2)}
-        </strong>
-      );
-    }
-    lastIndex = match.index + m.length;
-  }
-
-  if (lastIndex < text.length) {
-    parts.push(<span key={`${keyPrefix}-tail`}>{text.slice(lastIndex)}</span>);
-  }
-
-  return parts.length > 0 ? parts : text;
 }
 
 function renderContent(text) {
