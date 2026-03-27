@@ -312,7 +312,7 @@ export default function App() {
         <main className="p-4 lg:p-8">{renderPage()}</main>
       </div>
 
-      {showChat && <ChatPopup selectedLevel={selectedLevel} visible={showChat} useAI={useAI} />}
+      {showChat && <ChatPopup selectedLevel={selectedLevel} visible={showChat} useAI={useAI} topics={topics} />}
     </div>
   );
 }

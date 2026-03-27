@@ -1,31 +1,96 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, Brain, X, Minus, Send, Sparkles } from 'lucide-react';
+import { MessageCircle, Brain, X, Minus, Send, Sparkles, BookOpen } from 'lucide-react';
 import { chatResponses, quickQuestionsByLevel } from '../data/chat-responses.js';
 import { getAIChatResponse } from '../lib/aiService.js';
+import { MathText } from './MathText.jsx';
 
-export default function ChatPopup({ selectedLevel, visible, useAI = false }) {
+export default function ChatPopup({ selectedLevel, visible, useAI = false, topics = [] }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // AI response generator with keyword matching
-  const generateAIResponse = (userMessage) => {
-    const lowerMsg = userMessage.toLowerCase();
+  /**
+   * 教科書コンテンツからクエリに最も関連するセクションを検索
+   * トピック名・セクションタイトル・本文をスコアリングして最適な結果を返す
+   */
+  const searchTextbook = (query) => {
+    if (!topics || topics.length === 0) return null;
 
-    // Longer keywords first for better matching
+    const lowerQuery = query.toLowerCase();
+    // クエリを単語に分割（2文字以上）
+    const queryTerms = lowerQuery.split(/[\s、。,．・]+/).filter(t => t.length >= 2);
+    if (queryTerms.length === 0) return null;
+
+    let bestMatch = null;
+    let bestScore = 0;
+
+    for (const topic of topics) {
+      for (const section of topic.sections || []) {
+        const title = (section.title || '').toLowerCase();
+        const content = (section.content || '').toLowerCase();
+        let score = 0;
+
+        for (const term of queryTerms) {
+          // タイトルへのマッチは高スコア
+          if (title.includes(term)) score += 10;
+          // トピック名へのマッチ
+          if ((topic.name || '').toLowerCase().includes(term)) score += 8;
+          // 本文へのマッチ（出現回数に応じてスコア加算、上限あり）
+          const contentMatches = content.split(term).length - 1;
+          if (contentMatches > 0) score += Math.min(contentMatches, 5) * 2;
+        }
+
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = { topic, section, score };
+        }
+      }
+    }
+
+    // スコアが一定以上ならマッチとみなす
+    if (bestMatch && bestScore >= 6) {
+      // コンテンツから最初の400文字を抽出（数式マークアップ付き）
+      let excerpt = bestMatch.section.content;
+      // 【例題】以降はカット（長くなりすぎるため）
+      const exampleIdx = excerpt.indexOf('【例題】');
+      if (exampleIdx > 0) excerpt = excerpt.slice(0, exampleIdx);
+      // 400文字でトリミング
+      if (excerpt.length > 400) {
+        excerpt = excerpt.slice(0, 400).replace(/\n[^\n]*$/, '') + '...';
+      }
+      return {
+        topicName: bestMatch.topic.name,
+        sectionTitle: bestMatch.section.title,
+        content: excerpt,
+      };
+    }
+
+    return null;
+  };
+
+  // ローカル応答生成：教科書検索 → キーワード辞書 → デフォルト
+  const generateLocalResponse = (userMessage) => {
+    // 1. 教科書コンテンツを検索
+    const textbookResult = searchTextbook(userMessage);
+    if (textbookResult) {
+      return `【${textbookResult.topicName} — ${textbookResult.sectionTitle}】\n\n${textbookResult.content}`;
+    }
+
+    // 2. キーワード辞書
+    const lowerMsg = userMessage.toLowerCase();
     const sortedEntries = Object.entries(chatResponses).sort(
       (a, b) => b[0].length - a[0].length
     );
-
     for (const [keyword, response] of sortedEntries) {
       if (lowerMsg.includes(keyword.toLowerCase())) {
         return response;
       }
     }
 
-    return `申し訳ありませんが、「${userMessage}」に関する情報は用意されていません。以下のキーワードで質問してみてください：分散、ベイズ、最尤法、主成分分析、マルコフ、時系列、回帰、検定、生存分析、ブートストラップなど。`;
+    // 3. デフォルト
+    return `申し訳ありませんが、「${userMessage}」に関する情報は見つかりませんでした。教科書のトピック名やキーワード（例：分散、ベイズ、最尤法、主成分分析、マルコフ）で質問してみてください。`;
   };
 
   const messagesEndRef = useRef(null);
@@ -63,7 +128,7 @@ export default function ChatPopup({ selectedLevel, visible, useAI = false }) {
         const isLimitError = err.message.includes('上限');
         const fallback = isLimitError
           ? err.message
-          : generateAIResponse(query) + '\n\n(AI応答に失敗したため、キーワード応答を表示しています)';
+          : generateLocalResponse(query) + '\n\n(AI応答に失敗したため、キーワード応答を表示しています)';
         setMessages(prev => [...prev, {
           role: 'assistant',
           content: fallback,
@@ -72,12 +137,15 @@ export default function ChatPopup({ selectedLevel, visible, useAI = false }) {
       }
       setIsLoading(false);
     } else {
-      // ローカルモード: キーワードマッチング
+      // ローカルモード: 教科書検索 → キーワードマッチング
       setTimeout(() => {
+        const textbookResult = searchTextbook(query);
+        const content = generateLocalResponse(query);
         setMessages(prev => [...prev, {
           role: 'assistant',
-          content: generateAIResponse(query),
+          content,
           timestamp: new Date(),
+          isTextbook: !!textbookResult,
         }]);
         setIsLoading(false);
       }, 300);
@@ -169,9 +237,14 @@ export default function ChatPopup({ selectedLevel, visible, useAI = false }) {
                             : 'bg-white border border-slate-200 text-slate-900 rounded-bl-none'
                         }`}
                       >
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                        <div className="text-sm leading-relaxed whitespace-pre-wrap">
+                          <MathText text={msg.content} keyPrefix={`msg-${idx}`} />
+                        </div>
                         {msg.isAI && (
                           <p className="text-xs text-purple-400 mt-1 flex items-center gap-1"><Sparkles size={10} /> Claude Haiku</p>
+                        )}
+                        {msg.isTextbook && (
+                          <p className="text-xs text-blue-400 mt-1 flex items-center gap-1"><BookOpen size={10} /> 教科書より</p>
                         )}
                       </div>
                     </div>

@@ -46,6 +46,10 @@ CREATE TABLE IF NOT EXISTS bookmarks (
 -- ============================================================
 ALTER TABLE results ADD COLUMN IF NOT EXISTS difficulty TEXT DEFAULT NULL;
 
+-- マイグレーション: ユーザー別AI利用上限カラムの追加 (2026-03-27)
+-- NULL の場合はデフォルト上限（200回/月）が適用される
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS ai_monthly_limit INT DEFAULT NULL;
+
 -- 5. ai_usage テーブル（AI利用量の月次管理）(2026-03-27)
 CREATE TABLE IF NOT EXISTS ai_usage (
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -133,3 +137,11 @@ ALTER TABLE ai_usage ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Users can view own ai usage"
   ON ai_usage FOR SELECT
   USING ((select auth.uid()) = user_id);
+
+CREATE POLICY "Users can update own ai usage"
+  ON ai_usage FOR UPDATE
+  USING ((select auth.uid()) = user_id);
+
+CREATE POLICY "Users can insert own ai usage"
+  ON ai_usage FOR INSERT
+  WITH CHECK ((select auth.uid()) = user_id);

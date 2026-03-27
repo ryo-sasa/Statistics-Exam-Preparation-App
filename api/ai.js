@@ -10,8 +10,9 @@ const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 const MODEL = 'claude-haiku-4-5-20251001';
 const MAX_TOKENS = 1024;
 
-// 月間リクエスト上限（1回 ≈ 0.5円、200回 ≈ 100円）
-const MONTHLY_LIMIT = 200;
+// デフォルト月間リクエスト上限（1回 ≈ 0.5円、200回 ≈ 100円）
+// profiles.ai_monthly_limit で個別に上書き可能
+const DEFAULT_MONTHLY_LIMIT = 200;
 
 // インメモリ短期レート制限（DDoS防止）
 const rateLimit = new Map();
@@ -36,10 +37,20 @@ function getCurrentMonth() {
 
 /**
  * Supabase で月間利用量をチェック＋インクリメント
- * @returns {{ allowed: boolean, remaining: number, used: number }}
+ * profiles.ai_monthly_limit が設定されていればそちらを上限とする
+ * @returns {{ allowed: boolean, remaining: number, used: number, monthly_limit: number }}
  */
 async function checkAndIncrementUsage(supabase, userId) {
   const month = getCurrentMonth();
+
+  // ユーザー別上限を取得
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('ai_monthly_limit')
+    .eq('id', userId)
+    .single();
+
+  const limit = profile?.ai_monthly_limit ?? DEFAULT_MONTHLY_LIMIT;
 
   // 現在の利用量を取得
   const { data: existing } = await supabase
@@ -51,8 +62,8 @@ async function checkAndIncrementUsage(supabase, userId) {
 
   const currentCount = existing?.request_count || 0;
 
-  if (currentCount >= MONTHLY_LIMIT) {
-    return { allowed: false, remaining: 0, used: currentCount };
+  if (currentCount >= limit) {
+    return { allowed: false, remaining: 0, used: currentCount, monthly_limit: limit };
   }
 
   // upsert でカウントをインクリメント
@@ -68,7 +79,7 @@ async function checkAndIncrementUsage(supabase, userId) {
       .insert({ user_id: userId, month, request_count: 1 });
   }
 
-  return { allowed: true, remaining: MONTHLY_LIMIT - currentCount - 1, used: currentCount + 1 };
+  return { allowed: true, remaining: limit - currentCount - 1, used: currentCount + 1, monthly_limit: limit };
 }
 
 /**
@@ -122,8 +133,8 @@ export default async function handler(req, res) {
     usageInfo = await checkAndIncrementUsage(supabase, userId);
     if (!usageInfo.allowed) {
       return res.status(429).json({
-        error: `今月のAI利用上限（${MONTHLY_LIMIT}回）に達しました。来月にリセットされます。`,
-        monthly_limit: MONTHLY_LIMIT,
+        error: `今月のAI利用上限（${usageInfo.monthly_limit}回）に達しました。来月にリセットされます。`,
+        monthly_limit: usageInfo.monthly_limit,
         used: usageInfo.used,
         remaining: 0,
       });
@@ -193,7 +204,7 @@ export default async function handler(req, res) {
     const content = data.content?.[0]?.text || '';
 
     // レスポンスに残り回数を付与
-    const usageMeta = usageInfo ? { remaining: usageInfo.remaining, used: usageInfo.used, monthly_limit: MONTHLY_LIMIT } : {};
+    const usageMeta = usageInfo ? { remaining: usageInfo.remaining, used: usageInfo.used, monthly_limit: usageInfo.monthly_limit } : {};
 
     if (type === 'evaluate') {
       try {
