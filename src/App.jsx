@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { Menu, Flame, User } from "lucide-react";
+import { Menu, Flame, User, Sparkles } from "lucide-react";
 
 // Data imports
 import { LEVELS, TOPICS, QUESTIONS, EXAM_QUESTIONS, ALL_QUESTIONS } from "./data/index.js";
@@ -32,6 +32,9 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("jun1kyu");
+  const [useAI, setUseAI] = useState(() => {
+    try { return localStorage.getItem('stat_app_use_ai') === 'true'; } catch { return false; }
+  });
   const [bookmarks, setBookmarks] = useState([]);
   const [results, setResults] = useState([]);
   const [stats, setStats] = useState({
@@ -130,6 +133,12 @@ export default function App() {
     }
   }, [isGuest]);
 
+  // Handle AI toggle
+  const handleToggleAI = useCallback((checked) => {
+    setUseAI(checked);
+    try { localStorage.setItem('stat_app_use_ai', String(checked)); } catch {}
+  }, []);
+
   // Handle bookmark toggle
   const handleToggleBookmark = useCallback(async (questionId) => {
     setBookmarks(prev =>
@@ -203,6 +212,7 @@ export default function App() {
             addResult={addResult}
             bookmarks={bookmarks}
             onToggleBookmark={handleToggleBookmark}
+            useAI={useAI}
           />
         );
       case "exam":
@@ -271,6 +281,16 @@ export default function App() {
             統計検定{currentLevel?.name} — {currentLevel?.description}
           </div>
           <div className="flex items-center gap-3">
+            <label className="flex items-center gap-1.5 cursor-pointer select-none" title="生成AIによる回答評価・チャット応答を有効にする">
+              <input
+                type="checkbox"
+                checked={useAI}
+                onChange={(e) => handleToggleAI(e.target.checked)}
+                className="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+              />
+              <Sparkles size={14} className={useAI ? 'text-purple-500' : 'text-gray-400'} />
+              <span className={`text-xs font-medium hidden sm:inline ${useAI ? 'text-purple-600' : 'text-gray-400'}`}>AI</span>
+            </label>
             <div className="flex items-center gap-1 text-sm">
               <Flame size={16} className="text-orange-500" />
               <span className="font-medium text-gray-700">{stats.streak}</span>
@@ -292,7 +312,7 @@ export default function App() {
         <main className="p-4 lg:p-8">{renderPage()}</main>
       </div>
 
-      {showChat && <ChatPopup selectedLevel={selectedLevel} visible={showChat} />}
+      {showChat && <ChatPopup selectedLevel={selectedLevel} visible={showChat} useAI={useAI} />}
     </div>
   );
 }

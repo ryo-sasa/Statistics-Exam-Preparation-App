@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { MessageCircle, Brain, X, Minus, Send } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { MessageCircle, Brain, X, Minus, Send, Sparkles } from 'lucide-react';
 import { chatResponses, quickQuestionsByLevel } from '../data/chat-responses.js';
+import { getAIChatResponse } from '../lib/aiService.js';
 
-export default function ChatPopup({ selectedLevel, visible }) {
+export default function ChatPopup({ selectedLevel, visible, useAI = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -27,30 +28,60 @@ export default function ChatPopup({ selectedLevel, visible }) {
     return `申し訳ありませんが、「${userMessage}」に関する情報は用意されていません。以下のキーワードで質問してみてください：分散、ベイズ、最尤法、主成分分析、マルコフ、時系列、回帰、検定、生存分析、ブートストラップなど。`;
   };
 
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isLoading]);
+
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
-    // Add user message
     const userMsg = {
       role: 'user',
       content: inputValue,
       timestamp: new Date(),
     };
     setMessages(prev => [...prev, userMsg]);
+    const query = inputValue;
     setInputValue('');
     setIsLoading(true);
 
-    // Simulate AI response delay
-    setTimeout(() => {
-      const aiResponse = generateAIResponse(inputValue);
-      const aiMsg = {
-        role: 'assistant',
-        content: aiResponse,
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, aiMsg]);
+    if (useAI) {
+      // AI モード: API 経由で Claude に質問
+      try {
+        const result = await getAIChatResponse({ message: query, level: selectedLevel });
+        const remainingText = result.remaining != null ? `\n\n(残り ${result.remaining}/${result.monthly_limit} 回)` : '';
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: result.response + remainingText,
+          timestamp: new Date(),
+          isAI: true,
+        }]);
+      } catch (err) {
+        // 利用上限エラーの場合はメッセージを表示、それ以外はフォールバック
+        const isLimitError = err.message.includes('上限');
+        const fallback = isLimitError
+          ? err.message
+          : generateAIResponse(query) + '\n\n(AI応答に失敗したため、キーワード応答を表示しています)';
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: fallback,
+          timestamp: new Date(),
+        }]);
+      }
       setIsLoading(false);
-    }, 500);
+    } else {
+      // ローカルモード: キーワードマッチング
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: generateAIResponse(query),
+          timestamp: new Date(),
+        }]);
+        setIsLoading(false);
+      }, 300);
+    }
   };
 
   const quickQuestions = quickQuestionsByLevel[selectedLevel] || quickQuestionsByLevel['jun1kyu'];
@@ -86,8 +117,11 @@ export default function ChatPopup({ selectedLevel, visible }) {
                 <Brain size={20} />
               </div>
               <div>
-                <h3 className="font-bold">統計検定AI助手</h3>
-                <p className="text-xs opacity-80">いつでも質問できます</p>
+                <h3 className="font-bold flex items-center gap-1.5">
+                  統計検定AI助手
+                  {useAI && <Sparkles size={14} className="text-yellow-300" />}
+                </h3>
+                <p className="text-xs opacity-80">{useAI ? '生成AI モード' : 'キーワード応答モード'}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -135,7 +169,10 @@ export default function ChatPopup({ selectedLevel, visible }) {
                             : 'bg-white border border-slate-200 text-slate-900 rounded-bl-none'
                         }`}
                       >
-                        <p className="text-sm leading-relaxed">{msg.content}</p>
+                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                        {msg.isAI && (
+                          <p className="text-xs text-purple-400 mt-1 flex items-center gap-1"><Sparkles size={10} /> Claude Haiku</p>
+                        )}
                       </div>
                     </div>
                   ))
@@ -152,6 +189,7 @@ export default function ChatPopup({ selectedLevel, visible }) {
                     </div>
                   </div>
                 )}
+                <div ref={messagesEndRef} />
               </div>
 
               {/* Quick Questions - only show if no messages */}

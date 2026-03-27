@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Check, X, ChevronRight, Bookmark } from 'lucide-react';
+import { ChevronDown, Check, X, ChevronRight, Bookmark, Loader2 } from 'lucide-react';
 import { MathText, renderInlineContent } from './MathText.jsx';
+import { evaluateWrittenAnswer, evaluateLocally } from '../lib/aiService.js';
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D'];
 
@@ -10,7 +11,7 @@ const DIFFICULTY_CONFIG = {
   advanced: { label: '発展', color: 'bg-red-100 text-red-700' },
 };
 
-export default function PracticePage({ selectedLevel, questions, topics, addResult, bookmarks = [], onToggleBookmark }) {
+export default function PracticePage({ selectedLevel, questions, topics, addResult, bookmarks = [], onToggleBookmark, useAI = false }) {
   const [selectedTopic, setSelectedTopic] = useState('all');
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [userAnswer, setUserAnswer] = useState(null);
@@ -19,6 +20,8 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
   const [writtenAnswer, setWrittenAnswer] = useState('');
   const [bookmarkMode, setBookmarkMode] = useState(false);
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');
+  const [aiEvaluation, setAiEvaluation] = useState(null);
+  const [isEvaluating, setIsEvaluating] = useState(false);
 
   // Reset bookmark mode when level changes
   useEffect(() => {
@@ -84,6 +87,30 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
         isCorrect: true,
         difficulty: currentQuestion.difficulty || null,
       });
+
+      // AI 評価 or ローカル評価
+      if (useAI) {
+        setIsEvaluating(true);
+        evaluateWrittenAnswer({
+          question: currentQuestion.question,
+          sampleAnswer: currentQuestion.sampleAnswer || '',
+          keywords: currentQuestion.keywords || [],
+          userAnswer: writtenAnswer,
+        })
+          .then(result => setAiEvaluation(result))
+          .catch((err) => {
+            // 利用上限エラーはそのまま表示、それ以外はローカル評価にフォールバック
+            if (err.message.includes('上限') || err.message.includes('ログイン')) {
+              setAiEvaluation({ score: null, feedback: err.message, missing: [], good: [] });
+            } else {
+              setAiEvaluation(evaluateLocally({ keywords: currentQuestion.keywords, userAnswer: writtenAnswer }));
+            }
+          })
+          .finally(() => setIsEvaluating(false));
+      } else {
+        const localResult = evaluateLocally({ keywords: currentQuestion.keywords, userAnswer: writtenAnswer });
+        setAiEvaluation(localResult);
+      }
     }
   };
 
@@ -92,6 +119,8 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
     setWrittenAnswer('');
     setIsSubmitted(false);
     setShowExplanation(false);
+    setAiEvaluation(null);
+    setIsEvaluating(false);
     setCurrentQuestionIdx(Math.min(currentQuestionIdx + 1, filteredQuestions.length - 1));
   };
 
@@ -268,10 +297,60 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
                 rows={6}
               />
               {isSubmitted && (
-                <div className="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-200">
-                  <p className="text-sm font-medium text-slate-700 mb-2">模範解答:</p>
-                  <p className="text-slate-700 whitespace-pre-wrap"><MathText text={currentQuestion.sampleAnswer} keyPrefix="sa" /></p>
-                </div>
+                <>
+                  {/* AI 評価結果 */}
+                  {isEvaluating && (
+                    <div className="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-lg flex items-center gap-3">
+                      <Loader2 size={20} className="text-purple-500 animate-spin" />
+                      <span className="text-sm text-purple-700">AIが回答を評価中...</span>
+                    </div>
+                  )}
+                  {aiEvaluation && !isEvaluating && (
+                    <div className="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-sm font-bold text-purple-800">
+                          {useAI ? 'AI 評価' : 'キーワード採点'}
+                        </p>
+                        {aiEvaluation.score !== null && (
+                          <span className={`text-lg font-bold px-3 py-1 rounded-full ${
+                            aiEvaluation.score >= 80 ? 'bg-green-100 text-green-700' :
+                            aiEvaluation.score >= 50 ? 'bg-yellow-100 text-yellow-700' :
+                            'bg-red-100 text-red-700'
+                          }`}>
+                            {aiEvaluation.score}点
+                          </span>
+                        )}
+                      </div>
+                      {aiEvaluation.feedback && (
+                        <p className="text-sm text-slate-700 mb-2">{aiEvaluation.feedback}</p>
+                      )}
+                      {aiEvaluation.good && aiEvaluation.good.length > 0 && (
+                        <div className="mb-2">
+                          {aiEvaluation.good.map((g, i) => (
+                            <p key={i} className="text-sm text-green-700">+ {g}</p>
+                          ))}
+                        </div>
+                      )}
+                      {aiEvaluation.missing && aiEvaluation.missing.length > 0 && (
+                        <div>
+                          {aiEvaluation.missing.map((m, i) => (
+                            <p key={i} className="text-sm text-red-600">- {m}</p>
+                          ))}
+                        </div>
+                      )}
+                      {useAI && aiEvaluation.remaining != null && (
+                        <p className="text-xs text-slate-400 mt-3 text-right">
+                          今月の残り: {aiEvaluation.remaining} / {aiEvaluation.monthly_limit} 回
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <p className="text-sm font-medium text-slate-700 mb-2">模範解答:</p>
+                    <p className="text-slate-700 whitespace-pre-wrap"><MathText text={currentQuestion.sampleAnswer} keyPrefix="sa" /></p>
+                  </div>
+                </>
               )}
             </div>
           )}

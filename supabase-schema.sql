@@ -46,6 +46,14 @@ CREATE TABLE IF NOT EXISTS bookmarks (
 -- ============================================================
 ALTER TABLE results ADD COLUMN IF NOT EXISTS difficulty TEXT DEFAULT NULL;
 
+-- 5. ai_usage テーブル（AI利用量の月次管理）(2026-03-27)
+CREATE TABLE IF NOT EXISTS ai_usage (
+  user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  month TEXT NOT NULL,              -- '2026-03' 形式
+  request_count INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (user_id, month)
+);
+
 -- ============================================================
 -- インデックス
 -- ============================================================
@@ -53,6 +61,7 @@ CREATE INDEX IF NOT EXISTS idx_results_user_id ON results(user_id);
 CREATE INDEX IF NOT EXISTS idx_results_created_at ON results(user_id, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_study_days_user_id ON study_days(user_id);
 CREATE INDEX IF NOT EXISTS idx_bookmarks_user_id ON bookmarks(user_id);
+CREATE INDEX IF NOT EXISTS idx_ai_usage_user_month ON ai_usage(user_id, month);
 
 -- ============================================================
 -- Row Level Security (RLS) ポリシー
@@ -116,4 +125,11 @@ CREATE POLICY "Users can insert own bookmarks"
 
 CREATE POLICY "Users can delete own bookmarks"
   ON bookmarks FOR DELETE
+  USING ((select auth.uid()) = user_id);
+
+-- ai_usage（API Route が Service Role Key でアクセスするため、ユーザー側は閲覧のみ）
+ALTER TABLE ai_usage ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can view own ai usage"
+  ON ai_usage FOR SELECT
   USING ((select auth.uid()) = user_id);
