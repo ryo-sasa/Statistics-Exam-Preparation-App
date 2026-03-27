@@ -36,8 +36,9 @@ function getCurrentMonth() {
 }
 
 /**
- * Supabase で月間利用量をチェック＋インクリメント
+ * Supabase で月間利用量をアトミックにチェック＋インクリメント
  * profiles.ai_monthly_limit が設定されていればそちらを上限とする
+ * レースコンディション防止: INSERT ON CONFLICT + WHERE で上限チェックとインクリメントを1クエリで実行
  * @returns {{ allowed: boolean, remaining: number, used: number, monthly_limit: number }}
  */
 async function checkAndIncrementUsage(supabase, userId) {
@@ -52,34 +53,58 @@ async function checkAndIncrementUsage(supabase, userId) {
 
   const limit = profile?.ai_monthly_limit ?? DEFAULT_MONTHLY_LIMIT;
 
-  // 現在の利用量を取得
-  const { data: existing } = await supabase
-    .from('ai_usage')
-    .select('request_count')
-    .eq('user_id', userId)
-    .eq('month', month)
-    .single();
+  // アトミックな upsert + 上限チェック
+  // INSERT で新規作成を試み、既存なら UPDATE で +1（ただし上限未満の場合のみ）
+  const { data, error } = await supabase.rpc('increment_ai_usage', {
+    p_user_id: userId,
+    p_month: month,
+    p_limit: limit,
+  });
 
-  const currentCount = existing?.request_count || 0;
-
-  if (currentCount >= limit) {
-    return { allowed: false, remaining: 0, used: currentCount, monthly_limit: limit };
-  }
-
-  // upsert でカウントをインクリメント
-  if (existing) {
-    await supabase
+  // RPC が未作成の場合のフォールバック（従来のSELECT→UPDATE方式）
+  if (error && error.message?.includes('function')) {
+    const { data: existing } = await supabase
       .from('ai_usage')
-      .update({ request_count: currentCount + 1 })
+      .select('request_count')
       .eq('user_id', userId)
-      .eq('month', month);
-  } else {
-    await supabase
-      .from('ai_usage')
-      .insert({ user_id: userId, month, request_count: 1 });
+      .eq('month', month)
+      .single();
+
+    const currentCount = existing?.request_count || 0;
+    if (currentCount >= limit) {
+      return { allowed: false, remaining: 0, used: currentCount, monthly_limit: limit };
+    }
+
+    if (existing) {
+      await supabase
+        .from('ai_usage')
+        .update({ request_count: currentCount + 1 })
+        .eq('user_id', userId)
+        .eq('month', month);
+    } else {
+      await supabase
+        .from('ai_usage')
+        .insert({ user_id: userId, month, request_count: 1 });
+    }
+    return { allowed: true, remaining: limit - currentCount - 1, used: currentCount + 1, monthly_limit: limit };
   }
 
-  return { allowed: true, remaining: limit - currentCount - 1, used: currentCount + 1, monthly_limit: limit };
+  if (error) {
+    console.error('Usage check error:', error);
+    // エラー時はリクエストを許可（利用量管理の障害でサービス停止しない）
+    return { allowed: true, remaining: -1, used: -1, monthly_limit: limit };
+  }
+
+  // RPC の結果: { new_count, allowed }
+  const newCount = data?.new_count ?? 0;
+  const allowed = data?.allowed ?? true;
+
+  return {
+    allowed,
+    remaining: allowed ? limit - newCount : 0,
+    used: newCount,
+    monthly_limit: limit,
+  };
 }
 
 /**
@@ -95,8 +120,16 @@ async function getUserFromToken(supabase, authHeader) {
 }
 
 export default async function handler(req, res) {
-  // CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // CORS — 本番ドメインのみ許可
+  const allowedOrigins = [
+    'https://statistics-exam-preparation-app.vercel.app',
+    'http://localhost:5173',  // ローカル開発
+    'http://localhost:4173',  // ローカルプレビュー
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
@@ -144,6 +177,16 @@ export default async function handler(req, res) {
 
   const { type, payload } = req.body || {};
   if (!type || !payload) return res.status(400).json({ error: 'Missing type or payload' });
+
+  // ペイロードサイズ制限
+  const MAX_CHAT_LENGTH = 500;
+  const MAX_ANSWER_LENGTH = 5000;
+  if (type === 'chat' && payload.message && payload.message.length > MAX_CHAT_LENGTH) {
+    return res.status(400).json({ error: `メッセージは${MAX_CHAT_LENGTH}文字以内にしてください。` });
+  }
+  if (type === 'evaluate' && payload.userAnswer && payload.userAnswer.length > MAX_ANSWER_LENGTH) {
+    return res.status(400).json({ error: `回答は${MAX_ANSWER_LENGTH}文字以内にしてください。` });
+  }
 
   try {
     let systemPrompt, userPrompt;

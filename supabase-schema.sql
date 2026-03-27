@@ -59,6 +59,33 @@ CREATE TABLE IF NOT EXISTS ai_usage (
 );
 
 -- ============================================================
+-- RPC: アトミックな AI 利用量インクリメント（レースコンディション防止）
+-- ============================================================
+CREATE OR REPLACE FUNCTION increment_ai_usage(p_user_id UUID, p_month TEXT, p_limit INT)
+RETURNS JSON AS $$
+DECLARE
+  v_count INT;
+BEGIN
+  -- UPSERT + 上限チェックを1トランザクションで実行
+  INSERT INTO ai_usage (user_id, month, request_count)
+  VALUES (p_user_id, p_month, 1)
+  ON CONFLICT (user_id, month)
+  DO UPDATE SET request_count = ai_usage.request_count + 1
+  WHERE ai_usage.request_count < p_limit
+  RETURNING request_count INTO v_count;
+
+  IF v_count IS NULL THEN
+    -- 上限到達（UPDATE の WHERE 条件に合致しなかった）
+    SELECT request_count INTO v_count FROM ai_usage
+    WHERE user_id = p_user_id AND month = p_month;
+    RETURN json_build_object('new_count', v_count, 'allowed', false);
+  END IF;
+
+  RETURN json_build_object('new_count', v_count, 'allowed', true);
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- ============================================================
 -- インデックス
 -- ============================================================
 CREATE INDEX IF NOT EXISTS idx_results_user_id ON results(user_id);
@@ -85,6 +112,25 @@ CREATE POLICY "Users can insert own profile"
 CREATE POLICY "Users can update own profile"
   ON profiles FOR UPDATE
   USING ((select auth.uid()) = id);
+
+-- ⚠️ セキュリティ: ai_monthly_limit はサービスロール（管理者）のみ変更可能にする
+-- 通常ユーザーが UPDATE で ai_monthly_limit を変更しようとした場合、元の値に戻すトリガー
+CREATE OR REPLACE FUNCTION protect_ai_monthly_limit()
+RETURNS TRIGGER AS $$
+BEGIN
+  -- サービスロール以外は ai_monthly_limit の変更を許可しない
+  IF current_setting('role') != 'service_role' THEN
+    NEW.ai_monthly_limit := OLD.ai_monthly_limit;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS protect_ai_monthly_limit_trigger ON profiles;
+CREATE TRIGGER protect_ai_monthly_limit_trigger
+  BEFORE UPDATE ON profiles
+  FOR EACH ROW
+  EXECUTE FUNCTION protect_ai_monthly_limit();
 
 -- results
 ALTER TABLE results ENABLE ROW LEVEL SECURITY;
@@ -131,17 +177,14 @@ CREATE POLICY "Users can delete own bookmarks"
   ON bookmarks FOR DELETE
   USING ((select auth.uid()) = user_id);
 
--- ai_usage（API Route が Service Role Key でアクセスするため、ユーザー側は閲覧のみ）
+-- ai_usage（API Route が Service Role Key でアクセス。ユーザー側は閲覧のみ）
+-- INSERT/UPDATE はサービスロールキーのみ。ユーザーが利用量をリセットできないようにする。
 ALTER TABLE ai_usage ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Users can view own ai usage"
   ON ai_usage FOR SELECT
   USING ((select auth.uid()) = user_id);
 
-CREATE POLICY "Users can update own ai usage"
-  ON ai_usage FOR UPDATE
-  USING ((select auth.uid()) = user_id);
-
-CREATE POLICY "Users can insert own ai usage"
-  ON ai_usage FOR INSERT
-  WITH CHECK ((select auth.uid()) = user_id);
+-- ⚠️ セキュリティ修正: 以下のポリシーが既存DBにある場合は削除すること
+-- DROP POLICY IF EXISTS "Users can update own ai usage" ON ai_usage;
+-- DROP POLICY IF EXISTS "Users can insert own ai usage" ON ai_usage;

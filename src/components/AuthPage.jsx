@@ -196,13 +196,26 @@ export default function AuthPage({ onLogin }) {
                   type="password"
                   value={adminPassword}
                   onChange={(e) => setAdminPassword(e.target.value)}
-                  onKeyDown={(e) => {
+                  onKeyDown={async (e) => {
                     if (e.key === 'Enter') {
-                      if (adminPassword === (import.meta.env.VITE_ADMIN_PASSWORD || '')) {
-                        onLogin('guest');
-                      } else {
-                        setError('管理者パスワードが正しくありません');
-                        setAdminPassword('');
+                      setLoading(true);
+                      try {
+                        const res = await fetch('/api/admin-auth', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ password: adminPassword }),
+                        });
+                        if (res.ok) {
+                          onLogin('guest');
+                        } else {
+                          const data = await res.json().catch(() => ({}));
+                          setError(data.error || '管理者パスワードが正しくありません');
+                          setAdminPassword('');
+                        }
+                      } catch {
+                        setError('接続エラーが発生しました');
+                      } finally {
+                        setLoading(false);
                       }
                     }
                   }}
@@ -211,15 +224,29 @@ export default function AuthPage({ onLogin }) {
                 />
                 <div className="flex gap-2">
                   <button
-                    onClick={() => {
-                      if (adminPassword === (import.meta.env.VITE_ADMIN_PASSWORD || '')) {
-                        onLogin('guest');
-                      } else {
-                        setError('管理者パスワードが正しくありません');
-                        setAdminPassword('');
+                    onClick={async () => {
+                      setLoading(true);
+                      try {
+                        const res = await fetch('/api/admin-auth', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ password: adminPassword }),
+                        });
+                        if (res.ok) {
+                          onLogin('guest');
+                        } else {
+                          const data = await res.json().catch(() => ({}));
+                          setError(data.error || '管理者パスワードが正しくありません');
+                          setAdminPassword('');
+                        }
+                      } catch {
+                        setError('接続エラーが発生しました');
+                      } finally {
+                        setLoading(false);
                       }
                     }}
-                    className="flex-1 py-2 bg-slate-700 text-white rounded-lg text-sm font-medium hover:bg-slate-800"
+                    disabled={loading}
+                    className="flex-1 py-2 bg-slate-700 text-white rounded-lg text-sm font-medium hover:bg-slate-800 disabled:opacity-50"
                   >
                     ログイン
                   </button>
