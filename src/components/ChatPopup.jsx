@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MessageCircle, Brain, X, Minus, Send } from 'lucide-react';
+import { chatResponses, quickQuestionsByLevel } from '../data/chat-responses.js';
 
 export default function ChatPopup({ selectedLevel, visible }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,36 +13,18 @@ export default function ChatPopup({ selectedLevel, visible }) {
   const generateAIResponse = (userMessage) => {
     const lowerMsg = userMessage.toLowerCase();
 
-    const responses = {
-      '分散': '分散（ぶんさん）は、データが平均値からどの程度ばらついているかを示す統計量です。分散が大きいほど、データのばらつきが大きいです。分散の平方根は標準偏差と呼ばれます。',
-      'ベイズ': 'ベイズの定理は、事前確率と尤度から事後確率を計算する方法です。P(A|B) = P(B|A) × P(A) / P(B) という式で表されます。統計検定では重要な概念です。',
-      '主成分分析': '主成分分析（PCA）は、多次元データを少ない次元に圧縮する手法です。データの分散を最大限保つ新しい軸を見つけることで、データの構造を理解しやすくします。',
-      '検定': '統計的検定は、標本データから母集団の性質について仮説を立て、その仮説が正しいかどうかを確率的に判断するプロセスです。有意水準5%が一般的に使われます。',
-      '相関': '相関係数は、2つの変数がどの程度直線的な関係にあるかを示す値です。-1から1の範囲をとり、1に近いほど正の相関が強く、-1に近いほど負の相関が強いです。',
-      '回帰': '回帰分析は、2つ以上の変数の関係を数式で表す手法です。最小二乗法により、データに最も適合する直線または曲線を求めます。予測や因果関係の分析に用いられます。',
-      '標準偏差': '標準偏差は分散の平方根で、元のデータと同じ単位で表されます。データが平均値から標準偏差の1倍以内にある確率は約68%です。',
-      '確率': '確率は、ある事象が起こる可能性の度合いを0から1の数値で表したものです。全ての事象の確率の合計は1です。',
-      '分布': '確率分布は、確率変数がとりうる値とその確率を示したものです。正規分布（ガウス分布）は統計学で最も重要な分布です。',
-      '平均': '平均（期待値）はデータを足して個数で割った値です。母集団の平均を推定するために標本平均が用いられます。',
-      '中央値': '中央値（メジアン）はデータを大きさ順に並べたときの真ん中の値です。外れ値の影響を受けにくいため、平均と合わせて用いられます。',
-      '最頻値': '最頻値（モード）は最も頻繁に現れるデータの値です。カテゴリカルデータの代表値として用いられます。',
-      '信頼区間': '信頼区間は、母数が含まれる可能性が高い区間を示します。95%信頼区間は、同じ方法で100回調査したら95回は母数を含む区間です。',
-      'p値': 'p値は帰無仮説が真の場合に、観測されたような結果が得られる確率です。一般的にp値が0.05未満なら帰無仮説を棄却します。',
-      'カイ二乗': 'カイ二乗検定は、カテゴリカル変数の独立性を検定する手法です。観測度数と期待度数の差を比較します。',
-      't検定': 't検定は、2つのグループの平均が異なるかどうかを検定する手法です。サンプルサイズが小さい場合に有効です。',
-      'z検定': 'z検定は、標本平均が母平均と異なるかどうかを検定する手法です。サンプルサイズが大きい場合やt検定の代わりに用いられます。',
-      'f検定': 'f検定は、複数のグループの平均が等しいかどうかを検定する手法です。分散分析（ANOVA）で用いられます。',
-      'anova': '分散分析（ANOVA）は、3つ以上のグループの平均を比較する手法です。全体のばらつきを群間の分散と群内の分散に分解します。',
-    };
+    // Longer keywords first for better matching
+    const sortedEntries = Object.entries(chatResponses).sort(
+      (a, b) => b[0].length - a[0].length
+    );
 
-    for (const [keyword, response] of Object.entries(responses)) {
-      if (lowerMsg.includes(keyword)) {
+    for (const [keyword, response] of sortedEntries) {
+      if (lowerMsg.includes(keyword.toLowerCase())) {
         return response;
       }
     }
 
-    // Default response if no keyword matches
-    return '申し訳ありませんが、その質問についての情報は用意されていません。質問キーボタンを使うか、もっと詳しく説明してもらえますか？';
+    return `申し訳ありませんが、「${userMessage}」に関する情報は用意されていません。以下のキーワードで質問してみてください：分散、ベイズ、最尤法、主成分分析、マルコフ、時系列、回帰、検定、生存分析、ブートストラップなど。`;
   };
 
   const handleSendMessage = async () => {
@@ -70,12 +53,7 @@ export default function ChatPopup({ selectedLevel, visible }) {
     }, 500);
   };
 
-  const quickQuestions = [
-    { text: '分散', keyword: '分散' },
-    { text: 'ベイズ', keyword: 'ベイズ' },
-    { text: '主成分分析', keyword: '主成分分析' },
-    { text: '検定', keyword: '検定' },
-  ];
+  const quickQuestions = quickQuestionsByLevel[selectedLevel] || quickQuestionsByLevel['jun1kyu'];
 
   const handleQuickQuestion = (question) => {
     setInputValue(question);
@@ -180,14 +158,14 @@ export default function ChatPopup({ selectedLevel, visible }) {
               {messages.length === 0 && (
                 <div className="px-4 py-3 border-t border-slate-200 bg-white">
                   <p className="text-xs font-semibold text-slate-600 mb-2">クイック質問:</p>
-                  <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {quickQuestions.map((q, idx) => (
                       <button
                         key={idx}
                         onClick={() => handleQuickQuestion(q.text)}
-                        className="w-full text-left px-3 py-2 text-sm bg-slate-100 hover:bg-slate-200 rounded transition-colors text-slate-700 font-medium"
+                        className="text-left px-3 py-2 text-sm bg-slate-100 hover:bg-slate-200 rounded transition-colors text-slate-700 font-medium"
                       >
-                        {q.text} について
+                        {q.text}
                       </button>
                     ))}
                   </div>
