@@ -245,33 +245,43 @@ export default function ProgressPage({ selectedLevel, results, topics, questions
                 <div className="space-y-3">
                   {recentAnswers.map((result, idx) => {
                     const topic = topics.find(t => t.id === result.topicId);
+                    const question = allQuestions.find(q => q.id === result.questionId);
                     return (
                       <div
                         key={idx}
-                        className={`p-4 rounded-lg border-l-4 flex items-center justify-between ${
+                        className={`p-4 rounded-lg border-l-4 ${
                           result.isCorrect
                             ? 'bg-green-50 border-green-500'
                             : 'bg-red-50 border-red-500'
                         }`}
                       >
-                        <div className="flex items-center gap-4">
-                          {result.isCorrect ? (
-                            <CheckCircle size={24} className="text-green-600" />
-                          ) : (
-                            <AlertCircle size={24} className="text-red-600" />
-                          )}
-                          <div>
-                            <p className="font-medium text-slate-900">
-                              {topic?.name || 'カテゴリ未設定'}
-                            </p>
-                            <p className="text-sm text-slate-600">
-                              {result.isCorrect ? '正解' : '不正解'}
-                            </p>
+                        <div className="flex items-start gap-4">
+                          <div className="flex-shrink-0 mt-1">
+                            {result.isCorrect ? (
+                              <CheckCircle size={20} className="text-green-600" />
+                            ) : (
+                              <AlertCircle size={20} className="text-red-600" />
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-xs px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-medium">
+                                {topic?.name || 'カテゴリ未設定'}
+                              </span>
+                              <span className={`text-xs font-medium ${result.isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                                {result.isCorrect ? '正解' : '不正解'}
+                              </span>
+                              <span className="text-xs text-slate-400 ml-auto flex-shrink-0">
+                                {formatDate(result.timestamp || result.answered)}
+                              </span>
+                            </div>
+                            {question && (
+                              <p className="text-sm text-slate-800 leading-relaxed">
+                                {question.question.length > 100 ? question.question.slice(0, 100) + '...' : question.question}
+                              </p>
+                            )}
                           </div>
                         </div>
-                        <p className="text-sm text-slate-600">
-                          {formatDate(result.timestamp || result.answered)}
-                        </p>
                       </div>
                     );
                   })}

@@ -33,6 +33,7 @@ pnpm-debug.log*
 
 # Claude Code
 .claude/
+CLAUDE.md
 
 # Supabase local
 .supabase/
