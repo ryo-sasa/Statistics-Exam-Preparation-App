@@ -10,6 +10,7 @@ export default function ChatPopup({ selectedLevel, visible, useAI = false, topic
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [aiFailed, setAiFailed] = useState(false);
 
   /**
    * 教科書コンテンツからクエリに最も関連するセクションを検索
@@ -95,6 +96,11 @@ export default function ChatPopup({ selectedLevel, visible, useAI = false, topic
 
   const messagesEndRef = useRef(null);
 
+  // AI チェックボックスが再度ONになったらリトライ可能にする
+  useEffect(() => {
+    if (useAI) setAiFailed(false);
+  }, [useAI]);
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
@@ -112,7 +118,7 @@ export default function ChatPopup({ selectedLevel, visible, useAI = false, topic
     setInputValue('');
     setIsLoading(true);
 
-    if (useAI) {
+    if (useAI && !aiFailed) {
       // AI モード: API 経由で Claude に質問
       try {
         const result = await getAIChatResponse({ message: query, level: selectedLevel });
@@ -124,16 +130,25 @@ export default function ChatPopup({ selectedLevel, visible, useAI = false, topic
           isAI: true,
         }]);
       } catch (err) {
-        // 利用上限エラーの場合はメッセージを表示、それ以外はフォールバック
         const isLimitError = err.message.includes('上限');
-        const fallback = isLimitError
-          ? err.message
-          : generateLocalResponse(query) + '\n\n(AI応答に失敗したため、キーワード応答を表示しています)';
-        setMessages(prev => [...prev, {
-          role: 'assistant',
-          content: fallback,
-          timestamp: new Date(),
-        }]);
+        if (isLimitError) {
+          // 利用上限エラー
+          setMessages(prev => [...prev, {
+            role: 'assistant',
+            content: err.message,
+            timestamp: new Date(),
+          }]);
+        } else {
+          // API 接続失敗 → 以降はローカルモードに自動切替
+          setAiFailed(true);
+          const localContent = generateLocalResponse(query);
+          setMessages(prev => [...prev, {
+            role: 'assistant',
+            content: 'AI サービスに接続できないため、ローカル応答に切り替えました。\n\n' + localContent,
+            timestamp: new Date(),
+            isTextbook: !!searchTextbook(query),
+          }]);
+        }
       }
       setIsLoading(false);
     } else {

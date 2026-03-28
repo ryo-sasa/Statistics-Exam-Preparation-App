@@ -101,11 +101,12 @@ export default function PracticePage({ selectedLevel, questions, topics, addResu
         })
           .then(result => setAiEvaluation(result))
           .catch((err) => {
-            // 利用上限エラーはそのまま表示、それ以外はローカル評価にフォールバック
             if (err.message.includes('上限') || err.message.includes('ログイン')) {
               setAiEvaluation({ score: null, feedback: err.message, missing: [], good: [] });
             } else {
-              setAiEvaluation(evaluateLocally({ keywords: currentQuestion.keywords, userAnswer: writtenAnswer }));
+              const local = evaluateLocally({ keywords: currentQuestion.keywords, userAnswer: writtenAnswer });
+              local.feedback = 'AI に接続できなかったため、キーワード採点を表示しています。' + (local.feedback ? '\n' + local.feedback : '');
+              setAiEvaluation(local);
             }
           })
           .finally(() => setIsEvaluating(false));
